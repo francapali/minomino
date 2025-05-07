@@ -13,5 +13,7 @@
 ### Art Style
 <Fornire dettagli sullo stile artistico del gioco, se presenti inserire anche dei mockup / sketch>
 
+![Primo mockup singleplayer](img/FirstMockup)
+
 ### Dettagli tecnici
 <Fornire alcuni dettagli tecnici: strumenti di sviluppo che utilizzerete, organizzazione del lavoro nel team, se pensate di utilizzare algoritmi particolari>
