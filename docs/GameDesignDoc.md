@@ -2,6 +2,7 @@
 # < Logo del gioco >
 ## < Link esterni >
 
+### Storico delle revisioni del documento
 | Versione |  Autori  |   Data   |   Note   |
 | :------: | :------: | :------: | :------: |
 | 1.00     | Pierpaolo Basile | 17/03/2022 | Prima versione del template per GDD |
