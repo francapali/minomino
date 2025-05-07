@@ -16,26 +16,26 @@ Un sommario che spieghi in poche parole il gioco senza aggiungere particolari de
 ### Team
 Informazioni sul team di sviluppo. Le competenze del team dovrebbero convincere il lettore che siete capaci di sviluppare quello che state descrivendo nel documento.
 
-# Indice
-  ### Personaggi
-  ### Storia
-   #### Tema
-  ### Trama
-  ### Gameplay
-   #### Obiettivi
-   #### Abilità del giocatore
-   #### Meccaniche di gioco
-   #### Oggetti e power-ups
-   #### Progressione e sfida
-   #### Sconfitta
-  ### Art Style
-  ### Musica e suono
-  ### Dettagli tecnici
-  ### Mercato
-   #### Target
-   #### Piattaforma e monetizzazione
-   #### Localizzazione
-  ### Idee
+## Indice  
+- [Personaggi](#personaggi)  
+- [Storia](#storia)  
+  - [Tema](#tema)  
+- [Trama](#trama)  
+- [Gameplay](#gameplay)  
+  - [Obiettivi](#obiettivi)  
+  - [Abilità del giocatore](#abilit%C3%A0-del-giocatore)  
+  - [Meccaniche di gioco](#meccaniche-di-gioco)  
+  - [Oggetti e power-ups](#oggetti-e-power-ups)  
+  - [Progressione e sfida](#progressione-e-sfida)  
+  - [Sconfitta](#sconfitta)  
+- [Art Style](#art-style)  
+- [Musica e suono](#musica-e-suono)  
+- [Dettagli tecnici](#dettagli-tecnici)  
+- [Mercato](#mercato)  
+  - [Target](#target)  
+  - [Piattaforma e monetizzazione](#piattaforma-e-monetizzazione)  
+  - [Localizzazione](#localizzazione)  
+- [Idee](#idee)  
 
 **Questo indice non è definitivo, ma può essere modificato in base alla tipologia di gioco o alle necessità. L’importante è che il documento riporti tutti i dettagli relativi al game design del gioco che si intende sviluppare.**
 
