@@ -6,7 +6,7 @@
 | :------: | :------: | :------: | :------: |
 | 1.00     | Pierpaolo Basile | 17/03/2022 | Prima versione del template per GDD |
 | 2.00     | Pierpaolo Basile | 24/03/2022 | Seconda versione del template per GDD |
-|          |          |          |          |
+|   ...    |   ...    |   ...    |   ...    |
 
 ### Descrizione del progetto (elevator pitch)
 Un sommario che spieghi in poche parole il gioco senza aggiungere particolari dettagli sulle meccaniche di gioco o altro. Dovrebbe essere massimo una pagina e serve per attirare l’attenzione di investitori o del pubblico. Se il nome del gioco è disponibile andrebbe menzionato, oppure andrebbero menzionate alcune proposte di nome.
@@ -17,25 +17,25 @@ Un sommario che spieghi in poche parole il gioco senza aggiungere particolari de
 Informazioni sul team di sviluppo. Le competenze del team dovrebbero convincere il lettore che siete capaci di sviluppare quello che state descrivendo nel documento.
 
 # Indice
-   ### Personaggi
-   ### Storia
-      #### Tema
-   ### Trama
-   ### Gameplay
-      #### Obiettivi
-      #### Abilità del giocatore
-      #### Meccaniche di gioco
-      #### Oggetti e power-ups
-      #### Progressione e sfida
-      #### Sconfitta
-   ### Art Style
-   ### Musica e suono
-   ### Dettagli tecnici
-   ### Mercato
-      #### Target
-      #### Piattaforma e monetizzazione
-      #### Localizzazione
-   ### Idee
+  ### Personaggi
+  ### Storia
+   #### Tema
+  ### Trama
+  ### Gameplay
+   #### Obiettivi
+   #### Abilità del giocatore
+   #### Meccaniche di gioco
+   #### Oggetti e power-ups
+   #### Progressione e sfida
+   #### Sconfitta
+  ### Art Style
+  ### Musica e suono
+  ### Dettagli tecnici
+  ### Mercato
+   #### Target
+   #### Piattaforma e monetizzazione
+   #### Localizzazione
+  ### Idee
 
 **Questo indice non è definitivo, ma può essere modificato in base alla tipologia di gioco o alle necessità. L’importante è che il documento riporti tutti i dettagli relativi al game design del gioco che si intende sviluppare.**
 
