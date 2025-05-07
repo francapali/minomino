@@ -1,6 +1,6 @@
-# < Logo del team di sviluppo >
-# < Logo del gioco >
-## < Link esterni >
+# ( Logo del team di sviluppo )
+# ( Logo del gioco )
+## ( Link esterni )
 
 ### Storico delle revisioni del documento
 | Versione |  Autori  |   Data   |   Note   |
@@ -12,7 +12,7 @@
 ### Descrizione del progetto (elevator pitch)
 Un sommario che spieghi in poche parole il gioco senza aggiungere particolari dettagli sulle meccaniche di gioco o altro. Dovrebbe essere massimo una pagina e serve per attirare l’attenzione di investitori o del pubblico. Se il nome del gioco è disponibile andrebbe menzionato, oppure andrebbero menzionate alcune proposte di nome.
 
-*<Esempio testo> Questo documento di game design descrive i dettagli di un gioco per PC di genere platform ambientato in un mondo medioevale. Il gioco permetterà di utilizzare diversi personaggi con caratteristiche distintive, ognuno con una sua storia che influenzerà le meccaniche e l’andamento del gioco. Il nome non è stato ancora definito, ma ci sono alcune proposte: “Medieval Story”, “Gold Sword”, …*
+*(Esempio testo) Questo documento di game design descrive i dettagli di un gioco per PC di genere platform ambientato in un mondo medioevale. Il gioco permetterà di utilizzare diversi personaggi con caratteristiche distintive, ognuno con una sua storia che influenzerà le meccaniche e l’andamento del gioco. Il nome non è stato ancora definito, ma ci sono alcune proposte: “Medieval Story”, “Gold Sword”, …*
 
 ### Team
 Informazioni sul team di sviluppo. Le competenze del team dovrebbero convincere il lettore che siete capaci di sviluppare quello che state descrivendo nel documento.
@@ -43,22 +43,22 @@ Informazioni sul team di sviluppo. Le competenze del team dovrebbero convincere 
 ## Personaggi
 Descrivere i personaggi del gioco prima di descrivere la storia nella prossima sezione. Se il gioco non prevede né personaggi né storia è possibile eliminare queste sezioni. Ogni gioco dovrebbe prevedere una storia, un background per motivare il giocatore e spingerlo a provare il gioco.
 
-*<Esempio testo> Il gioco prevedere tre personaggi ognuno con una sua storia e delle abilità distintive. I personaggi sono: bla bla bla…*
+*(Esempio testo) Il gioco prevedere tre personaggi ognuno con una sua storia e delle abilità distintive. I personaggi sono: bla bla bla…*
 
 ## Storia
 Introdurre la storia facendo riferimento ai personaggi descritti nella sezione precedente. Cercate di coinvolgere il lettore e di fornire dettagli sull'ambientazione del gioco.
 
-*<Esempio testo> Il gioco è ambientato nel medioevo. Le storie dei tre personaggi si intrecciano nel gioco, in particolare…*
+*(Esempio testo) Il gioco è ambientato nel medioevo. Le storie dei tre personaggi si intrecciano nel gioco, in particolare…*
 
 ### Tema
 Descrivere il tema principale della storia.
 
-*<Esempio testo> Il gioco è ambientato nel medioevo e la storia si basa sull’amicizia che lega i tre protagonisti…*
+*(Esempio testo) Il gioco è ambientato nel medioevo e la storia si basa sull’amicizia che lega i tre protagonisti…*
 
 ## Trama
 Questa sezione dovrebbe chiarire come il giocatore avanza nella storia durante il gioco.
 
-*<Esempio testo> Il gioco inizia con una scena in cui i tre personaggi sono in una taverna e discutono delle loro avventure. Dopo dei dialoghi dai quali si intuisce il background di ogni personaggio, il giocatore potrà scegliere con quale personaggio giocare. Dopo la scelta partirà un tutorial che spiega come utilizzare le specifiche abilità del personaggio scelto. Il primo livello è ambientato…*
+*(Esempio testo) Il gioco inizia con una scena in cui i tre personaggi sono in una taverna e discutono delle loro avventure. Dopo dei dialoghi dai quali si intuisce il background di ogni personaggio, il giocatore potrà scegliere con quale personaggio giocare. Dopo la scelta partirà un tutorial che spiega come utilizzare le specifiche abilità del personaggio scelto. Il primo livello è ambientato…*
 
 ## Gameplay
 Questa è la sezione più importante del documento è fornisce tutti i dettagli del sistema di regole previste dal gioco.
@@ -66,12 +66,12 @@ Questa è la sezione più importante del documento è fornisce tutti i dettagli 
 ### Obiettivi
 Specificare in modo chiaro gli obiettivi del gioco. Cosa deve spingere il giocatore a giocare al vostro gioco?
 
-*<Esempio testo> L’obiettivo del gioco è progredire attraverso i vari livelli distruggendo i nemici e raccogliendo particolari oggetti che verranno utilizzati per modificare le abilità del giocare. Alcuni oggetti saranno necessari per sconfiggere i boss di fine livello.*
+*(Esempio testo) L’obiettivo del gioco è progredire attraverso i vari livelli distruggendo i nemici e raccogliendo particolari oggetti che verranno utilizzati per modificare le abilità del giocare. Alcuni oggetti saranno necessari per sconfiggere i boss di fine livello.*
 
 ### Abilità del giocatore
 Quali sono le abilità richieste al giocatore? Come queste variano nel tempo? Come il giocatore acquisisce il controllo sulle meccaniche di gioco?
 
-*<Esempio testo> Ogni personaggio ha le sue abilità che potranno essere potenziate e modificate durante il gioco raccogliendo degli oggetti. In particolare, le abilità di ogni personaggio sono: ….Per poter sconfiggere i boss di fine livello il giocatore dovrà… . Il giocatore potrà saltare, raccogliere oggetti, …*
+*(Esempio testo) Ogni personaggio ha le sue abilità che potranno essere potenziate e modificate durante il gioco raccogliendo degli oggetti. In particolare, le abilità di ogni personaggio sono: …. Per poter sconfiggere i boss di fine livello il giocatore dovrà… . Il giocatore potrà saltare, raccogliere oggetti, …*
 
 ### Meccaniche di gioco
 In questa sezione vanno descritte tutte le meccaniche di gioco anche utilizzando schemi, diagrammi, bozze, oppure prototipi già realizzati che mostrino il funzionamento delle meccaniche. In questa sezione andrebbero specificate le meccaniche di gioco fondamentali (core mechanics). Nelle sezioni successive possiamo riportare le altre meccaniche secondarie. **Utilizzare le tecniche che abbiamo visto a lezione per descrivere le meccaniche.**
@@ -79,12 +79,12 @@ In questa sezione vanno descritte tutte le meccaniche di gioco anche utilizzando
 ### Oggetti e power-up
 In questa sezione vanno descritti gli oggetti che potrà utilizzare il giocatore ed eventuali power-up e come ottenerli.
 
-*<Esempio testo> Durante la progressione nei livelli il giocatore dovrà raccogliere degli oggetti (alcuni nascosti) e dei power-up necessari a poter sconfiggere i boss di fine livello. In particolare, …*
+*(Esempio testo) Durante la progressione nei livelli il giocatore dovrà raccogliere degli oggetti (alcuni nascosti) e dei power-up necessari a poter sconfiggere i boss di fine livello. In particolare, …*
 
 ### Progressione e sfida
 Questa sezione riporta i dettagli su come il giocatore avanza nel gioco e quali sono le sfide che deve affrontare e superare.
 
-*<Esempio testo> L’organizzazione dei livelli è lineare. Ogni livello prevede un boss di fine livello. Il boss del primo livello per essere sconfitto richiede…*
+*(Esempio testo) L’organizzazione dei livelli è lineare. Ogni livello prevede un boss di fine livello. Il boss del primo livello per essere sconfitto richiede…*
 
 ### Sconfitta
 Fornire i dettagli su come il giocatore può giungere al fatidico “Game Over”.
@@ -92,7 +92,7 @@ Fornire i dettagli su come il giocatore può giungere al fatidico “Game Over�
 ## Art Style
 Qui vanno inseriti i dettagli visivi del gioco. Sarebbe utile fornire già alcuni concept art dei personaggi o dei livelli.
 
-*<Esempio testo> Il gioco è un plaform 2D che prevede lo scrolling orizzontale e verticale. I livelli sono caratterizzati da un grafica pixel-art che ricorda i giochi 8/16 bit…*
+*(Esempio testo) Il gioco è un plaform 2D che prevede lo scrolling orizzontale e verticale. I livelli sono caratterizzati da un grafica pixel-art che ricorda i giochi 8/16 bit…*
 
 ## Musica e Suono
 Qui vanno inseriti i dettagli sulla musica e sugli effetti sonori. Questa sezione può contenere varie sotto-sezioni in base alla complessità della musica e dei suoni.
@@ -115,4 +115,4 @@ Inserire dettagli sulle lingue supportate o su qualsiasi cosa che coinvolga la l
 ## Idee
 Inserire altre idee che non si è ancora sicuri di voler sviluppare nel gioco finale.
 
-*<Esempio testo> Si potrebbero implementare dei meccanismi in cui i livelli del gioco cambiano in base ad alcune scelte del giocatore o al personaggio scelto.*
+*(Esempio testo) Si potrebbero implementare dei meccanismi in cui i livelli del gioco cambiano in base ad alcune scelte del giocatore o al personaggio scelto.*
