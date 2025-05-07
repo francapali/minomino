@@ -1,6 +1,6 @@
-# ( Logo del team di sviluppo )
-# ( Logo del gioco )
-## ( Link esterni )
+# < Logo del team di sviluppo >
+# < Logo del gioco >
+## < Link esterni >
 
 ### Storico delle revisioni del documento
 | Versione |  Autori  |   Data   |   Note   |
