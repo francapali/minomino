@@ -1,6 +1,5 @@
 # < NomeGioco >
-## < NomeTeam >
-## Palumbo Francesca, Tateo Yuri
+## < NomeTeam > - Palumbo Francesca, Tateo Yuri
 
 ### Idea
 <Spiegare brevemente l’idea del gioco cercando di citare genere, target, ambientazione>
