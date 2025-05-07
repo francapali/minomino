@@ -1,5 +1,5 @@
-# <NomeGioco>
-## <NomeTeam>
+# < NomeGioco >
+## < NomeTeam >
 ## Palumbo Francesca, Tateo Yuri
 
 ### Idea
