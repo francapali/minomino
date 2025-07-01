@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://63fc17a715fn"]
+
+[ext_resource type="Script" path="res://scripts/home.gd" id="1_ohadq"]
+[ext_resource type="Texture2D" uid="uid://dv4p8ymrr8kcf" path="res://assets/main.png" id="2_1kjly"]
+[ext_resource type="Theme" uid="uid://7cs6hrd37sop" path="res://ui/buttons.tres" id="3_tty88"]
+
+[node name="Home" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ohadq")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 650.0
+texture = ExtResource("2_1kjly")
+expand_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -367.0
+offset_top = 85.0
+offset_right = -222.0
+offset_bottom = -305.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(2, 2)
+alignment = 1
+
+[node name="ButtonPlay" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_tty88")
+text = "Play!"
+
+[node name="ButtonSettings" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_tty88")
+text = "Settings"
+
+[node name="ButtonEsc" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_tty88")
+text = "Quit"
