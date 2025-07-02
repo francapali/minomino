@@ -1,4 +1,11 @@
-[gd_scene format=3 uid="uid://loa2p5ljvs8m"]
+[gd_scene load_steps=6 format=3 uid="uid://loa2p5ljvs8m"]
+
+[ext_resource type="Script" path="res://scripts/character_select.gd" id="1_q3kbm"]
+[ext_resource type="Texture2D" uid="uid://ck3tlsbq0d6o7" path="res://assets/selecthero.png" id="2_til70"]
+[ext_resource type="Texture2D" uid="uid://dpv2ws63pvk7s" path="res://assets/selezionep1.png" id="3_rmn7v"]
+[ext_resource type="Texture2D" uid="uid://bmxp3qk7ssbvo" path="res://assets/selezionep2.png" id="4_qawpe"]
+
+[sub_resource type="Theme" id="Theme_71c04"]
 
 [node name="CharacterSelect" type="Control"]
 layout_mode = 3
@@ -7,42 +14,47 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_q3kbm")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 649.0
+texture = ExtResource("2_til70")
+expand_mode = 1
+
+[node name="CharacterButtons" type="HBoxContainer" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+[node name="TesButton" type="Button" parent="CharacterButtons"]
 layout_mode = 2
+theme = SubResource("Theme_71c04")
+theme_type_variation = &"FlatButton"
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+[node name="MinoButton" type="Button" parent="CharacterButtons"]
 layout_mode = 2
-text = "Player 1"
+theme_type_variation = &"FlatButton"
 
-[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer"]
+[node name="FrameP2" type="TextureRect" parent="."]
 layout_mode = 2
-text = "Teseo"
+offset_left = 417.0
+offset_top = 448.0
+offset_right = 599.0
+offset_bottom = 637.0
+texture = ExtResource("4_qawpe")
+expand_mode = 1
 
-[node name="Button2" type="Button" parent="HBoxContainer/VBoxContainer"]
+[node name="FrameP1" type="TextureRect" parent="."]
 layout_mode = 2
-text = "Minotauro"
+offset_left = 723.0
+offset_top = 368.0
+offset_right = 948.0
+offset_bottom = 651.0
+texture = ExtResource("3_rmn7v")
+expand_mode = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
-layout_mode = 2
+[node name="P1Sprite" type="Sprite2D" parent="."]
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2"]
-layout_mode = 2
-text = "Player 2"
-
-[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer2"]
-layout_mode = 2
-text = "Teseo"
-
-[node name="Button2" type="Button" parent="HBoxContainer/VBoxContainer2"]
-layout_mode = 2
-text = "Minotauro"
-
-[node name="Button" type="Button" parent="HBoxContainer"]
-layout_mode = 2
-text = "Let'z fight!"
+[node name="P2Sprite" type="Sprite2D" parent="."]

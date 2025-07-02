@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4gp4im5nomsx"
-path="res://.godot/imported/taurostd.png-dfb4d2f21a1425a8a7e32021d8327ea1.ctex"
+uid="uid://c0nullwfs4gkp"
+path="res://.godot/imported/tesstd.png-c6667387b42830a1b525400e2c761829.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/taurostd.png"
-dest_files=["res://.godot/imported/taurostd.png-dfb4d2f21a1425a8a7e32021d8327ea1.ctex"]
+source_file="res://assets/tesstd.png"
+dest_files=["res://.godot/imported/tesstd.png-c6667387b42830a1b525400e2c761829.ctex"]
 
 [params]
 

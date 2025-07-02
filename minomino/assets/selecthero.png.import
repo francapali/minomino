@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0nullwfs4gkp"
-path="res://.godot/imported/teseostd.png-d8e7d228453e6f23cde6d3425fbb2b12.ctex"
+uid="uid://ck3tlsbq0d6o7"
+path="res://.godot/imported/selecthero.png-c746af8ec32ec084d80c49aecab7e7d6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/teseostd.png"
-dest_files=["res://.godot/imported/teseostd.png-d8e7d228453e6f23cde6d3425fbb2b12.ctex"]
+source_file="res://assets/selecthero.png"
+dest_files=["res://.godot/imported/selecthero.png-c746af8ec32ec084d80c49aecab7e7d6.ctex"]
 
 [params]
 
