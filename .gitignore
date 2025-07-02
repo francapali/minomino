@@ -1,0 +1,41 @@
+# Godot-specific
+.import/
+export.cfg
+export_presets.cfg
+
+# Godot 4.x specific (se usi Godot 4)
+.godot/
+
+# Script e scene temporanee (opzionale)
+*.translation
+*.tmp
+
+# Sistemi operativi
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor di testo / IDE
+.vscode/
+*.code-workspace
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Build output
+/bin/
+/build/
+/dist/
+
+# Python virtualenv (se usi tool Python)
+venv/
+ENV/
+
+# Logs
+*.log
+
+# MacOS
+__MACOSX/
+
+# Windows
+ehthumbs.db
