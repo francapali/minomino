@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0nullwfs4gkp"
-path="res://.godot/imported/teseostd.png-d8e7d228453e6f23cde6d3425fbb2b12.ctex"
+uid="uid://cqqejwoks2e3k"
+path="res://.godot/imported/numeri.png-57d989ce7151fd6b6d92c73f144e3243.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/teseostd.png"
-dest_files=["res://.godot/imported/teseostd.png-d8e7d228453e6f23cde6d3425fbb2b12.ctex"]
+source_file="res://assets/numeri.png"
+dest_files=["res://.godot/imported/numeri.png-57d989ce7151fd6b6d92c73f144e3243.ctex"]
 
 [params]
 

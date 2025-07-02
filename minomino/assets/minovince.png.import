@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4gp4im5nomsx"
-path="res://.godot/imported/taurostd.png-dfb4d2f21a1425a8a7e32021d8327ea1.ctex"
+uid="uid://cdrq1o20jre17"
+path="res://.godot/imported/minovince.png-da62bbb7b37d8efea7d3ff9f57f1e999.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/taurostd.png"
-dest_files=["res://.godot/imported/taurostd.png-dfb4d2f21a1425a8a7e32021d8327ea1.ctex"]
+source_file="res://assets/minovince.png"
+dest_files=["res://.godot/imported/minovince.png-da62bbb7b37d8efea7d3ff9f57f1e999.ctex"]
 
 [params]
 
