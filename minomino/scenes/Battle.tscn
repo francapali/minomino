@@ -16,6 +16,10 @@ script = ExtResource("1_ml41f")
 
 [node name="PlayerSprite" type="Sprite2D" parent="Player1"]
 
+[node name="Stats" type="Label" parent="Player1"]
+offset_right = 40.0
+offset_bottom = 23.0
+
 [node name="Player2" type="Node2D" parent="."]
 
 [node name="Mosse" type="Node2D" parent="Player2"]
@@ -26,11 +30,18 @@ script = ExtResource("1_ml41f")
 
 [node name="PlayerSprite" type="Sprite2D" parent="Player2"]
 
+[node name="Stats" type="Label" parent="Player2"]
+offset_right = 40.0
+offset_bottom = 23.0
+
 [node name="Timer" type="Timer" parent="."]
 process_callback = 0
 wait_time = 5.0
 
 [node name="Background" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(576, 325)
+scale = Vector2(0.898437, 0.902778)
 texture = ExtResource("2_0axw4")
 
 [node name="Label" type="Label" parent="."]
