@@ -4,8 +4,7 @@
 ### Storico delle revisioni del documento
 | Versione |  Autori  |   Data   |   Note   |
 | :------: | :------: | :------: | :------: |
-| 1.00     | Pierpaolo Basile | 17/03/2022 | Prima versione del template per GDD |
-| 2.00     | Pierpaolo Basile | 24/03/2022 | Seconda versione del template per GDD |
+| 1.00     | Francesca Palumbo | 03/07/2025 | Prima versione della GDD |
 |   ...    |   ...    |   ...    |   ...    |
 
 ### Descrizione del progetto (elevator pitch)
@@ -54,78 +53,133 @@ Per la modalità single player, l’IA è governata da uno script pseudo-strateg
 **Questo indice non è definitivo, ma può essere modificato in base alla tipologia di gioco o alle necessità. L’importante è che il documento riporti tutti i dettagli relativi al game design del gioco che si intende sviluppare.**
 
 ## Personaggi
-Descrivere i personaggi del gioco prima di descrivere la storia nella prossima sezione. Se il gioco non prevede né personaggi né storia è possibile eliminare queste sezioni. Ogni gioco dovrebbe prevedere una storia, un background per motivare il giocatore e spingerlo a provare il gioco.
+**minomino** presenta un cast di personaggi ispirati alla mitologia greca, reinterpretati in chiave pop e teatrale. Ogni personaggio viene rappresentato come un burattino di carta con un design distintivo e uno stile narrativo coerente con la propria leggenda.
 
-*(Esempio testo) Il gioco prevedere tre personaggi ognuno con una sua storia e delle abilità distintive. I personaggi sono: bla bla bla…*
+I personaggi si sbloccano gradualmente e sono organizzati in coppie mitologiche rivali, i primi due giocabili nella demo sono:
+
+- <img src="./img/teseo.png" alt="teseo" width="200"/> Teseo – L'eroe determinato ed abile stratega.
+- <img src="./img/minotauro.png" alt="minotauro" width="200"/> Minotauro – Il “mostro” incompreso, forte ma dotato di grande immaginazione, ignaro del diverso, danza per istinto, attacca per sopravvivenza.
+
+Tra gli altri personaggi sbloccabili nel gioco completo:  
+- <img src="./img/perseo.png" alt="perseo" width="200"/> Perseo – Astuto semidio che con l'ingegno riesce sempre a tirarsi fuori dai guai.
+- <img src="./img/medusa.png" alt="medusa" width="200"/> Medusa – Unica mortale tra le sue sorelle Gorgoni, trasforma in pietra chiunque le guardi.
+- <img src="./img/ulisse.png" alt="ulisse" width="200"/> Ulisse – Avventuroso re di Itaca, con furbizia si destreggia tra le più temerarie difficoltà.
+- <img src="./img/polifemo.png" alt="polifemo" width="200"/> Polifemo – Gigante con un occhio solo. Se diffidente, divora senza pietà chi non conosce.
+
+Ogni burattino ha una personalità distinta che emerge nelle animazioni e nelle azioni che può svolgere in partita.
 
 ## Storia
-Introdurre la storia facendo riferimento ai personaggi descritti nella sezione precedente. Cercate di coinvolgere il lettore e di fornire dettagli sull'ambientazione del gioco.
+Due anziani burattinai mettono in scena spettacoli per i loro giovani nipoti. Per affascinarli, danno vita a rappresentazioni mitologiche reinterpretate con colori accesi, musica coinvolgente e battute leggere. Ogni sfida è un piccolo atto teatrale che racconta, con ironia e stupore, le antiche rivalità della mitologia greca.
 
-*(Esempio testo) Il gioco è ambientato nel medioevo. Le storie dei tre personaggi si intrecciano nel gioco, in particolare…*
+Il palco, con le sue quinte, corde e riflettori, diventa un mondo immaginario in cui la fantasia prende il sopravvento sulla realtà. Ogni match rappresenta un nuovo "spettacolo".
 
 ### Tema
-Descrivere il tema principale della storia.
+Il tema principale è la forza dell'immaginazione: la mitologia greca come patrimonio creativo che può essere reinterpretato per ispirare nuove generazioni.
 
-*(Esempio testo) Il gioco è ambientato nel medioevo e la storia si basa sull’amicizia che lega i tre protagonisti…*
+Il gioco promuove inoltre il valore della narrazione condivisa, della collaborazione familiare e del gioco leggero ma significativo.
 
 ## Trama
-Questa sezione dovrebbe chiarire come il giocatore avanza nella storia durante il gioco.
+Il giocatore segue gli spettacoli teatrali messi in scena dai due burattinai. Ogni "atto" della campagna corrisponde a una rivalità mitologica, e vincere gli scontri consente di sbloccare nuovi personaggi, nuovi atti e contenuti estetici.
 
-*(Esempio testo) Il gioco inizia con una scena in cui i tre personaggi sono in una taverna e discutono delle loro avventure. Dopo dei dialoghi dai quali si intuisce il background di ogni personaggio, il giocatore potrà scegliere con quale personaggio giocare. Dopo la scelta partirà un tutorial che spiega come utilizzare le specifiche abilità del personaggio scelto. Il primo livello è ambientato…*
+La progressione culmina in una fase finale in cui il giocatore crea il proprio burattino personalizzato, mescolando elementi sbloccati durante il gioco.
 
 ## Gameplay
-Questa è la sezione più importante del documento è fornisce tutti i dettagli del sistema di regole previste dal gioco.
+Minomino è un gioco a turni strategico, diviso in round da tre turni, al meglio di 3 o di 5. Il giocatore sceglie, entro 5 secondi, se preferisce difendere o migliorare l'attacco con oggetti consumabili, al quinto secondo deve scegliere a ritmo una delle tre mosse disponibili:
+- Attacco
+- Difesa
+- Mossa bonus
+Un jingle scandisce il ritmo dei turni: "mino, mino, tauro!". Entrambi i giocatori scelgono simultaneamente.
 
 ### Obiettivi
-Specificare in modo chiaro gli obiettivi del gioco. Cosa deve spingere il giocatore a giocare al vostro gioco?
-
-*(Esempio testo) L’obiettivo del gioco è progredire attraverso i vari livelli distruggendo i nemici e raccogliendo particolari oggetti che verranno utilizzati per modificare le abilità del giocare. Alcuni oggetti saranno necessari per sconfiggere i boss di fine livello.*
+In base al tipo di personaggio scelto potrebbero esserci obiettivi diversi. In particolare:
+- Vincere lo scontro abbattendo i punti vita dell'avversario
+- Usare tre volte la mossa bonus con Teseo per vincere lo scontro pacificamente.
+- Sbloccare nuovi personaggi e completare la campagna
+- Personalizzare il proprio burattino finale
 
 ### Abilità del giocatore
-Quali sono le abilità richieste al giocatore? Come queste variano nel tempo? Come il giocatore acquisisce il controllo sulle meccaniche di gioco?
+Il giocatore deve sviluppare capacità decisionali rapide, lettura delle intenzioni dell'avversario, gestione del rischio e comprensione delle peculiarità di ogni personaggio.
 
-*(Esempio testo) Ogni personaggio ha le sue abilità che potranno essere potenziate e modificate durante il gioco raccogliendo degli oggetti. In particolare, le abilità di ogni personaggio sono: …. Per poter sconfiggere i boss di fine livello il giocatore dovrà… . Il giocatore potrà saltare, raccogliere oggetti, …*
+Non sono richiesti riflessi pronti: la sfida è tutta mentale e ritmica.
 
 ### Meccaniche di gioco
-In questa sezione vanno descritte tutte le meccaniche di gioco anche utilizzando schemi, diagrammi, bozze, oppure prototipi già realizzati che mostrino il funzionamento delle meccaniche. In questa sezione andrebbero specificate le meccaniche di gioco fondamentali (core mechanics). Nelle sezioni successive possiamo riportare le altre meccaniche secondarie. **Utilizzare le tecniche che abbiamo visto a lezione per descrivere le meccaniche.**
+- Turni simultanei a tempo (5 secondi per scegliere)
+- Sistema "triade": ogni personaggio ha due mosse base e una bonus
+- Mosse con effetti immediati e leggibili
+- L'accumulo di tre mosse bonus per Teseo come meccanica alternativa di vittoria
+- L'accumulo di due mosse bonus per il Minotauro come meccanica per aumentare il danno dell'attacco
+- Modalità campagna con sblocco progressivo
+- Multiplayer locale competitivo
 
-### Oggetti e power-up
-In questa sezione vanno descritti gli oggetti che potrà utilizzare il giocatore ed eventuali power-up e come ottenerli.
-
-*(Esempio testo) Durante la progressione nei livelli il giocatore dovrà raccogliere degli oggetti (alcuni nascosti) e dei power-up necessari a poter sconfiggere i boss di fine livello. In particolare, …*
+### Oggetti e power-ups
+Successivamente alla scelta del personaggio da schierare sul palcoscenico, il player potrà scegliere uno tra due (per il momento) **Starter Kit** contenenti tre oggetti volti al miglioramento di statistiche quali la barra della salute, l'attacco, la difesa e altri. Nello specifico:
+- **Safety Pack**:
+  - [Nome item] : Cura 5HP
+  - [Nome item] : Cura 10HP
+  - [Nome item] : Previene tutti i danni del prossimo turno
+- **Rage pack**:
+  - [Nome item]: L'attacco ha un boost di 3
+  - [Nome item]: Se vieni attaccato mentre attacchi, recupera 2HP
+  - [Nome item]: L'attacco sfugge alle difese dell'avversario
 
 ### Progressione e sfida
-Questa sezione riporta i dettagli su come il giocatore avanza nel gioco e quali sono le sfide che deve affrontare e superare.
-
-*(Esempio testo) L’organizzazione dei livelli è lineare. Ogni livello prevede un boss di fine livello. Il boss del primo livello per essere sconfitto richiede…*
+La campagna è lineare, suddivisa in 6 atti mitologici (ciascuno con una coppia di personaggi). Superati gli atti, si sblocca la modalità custom.
 
 ### Sconfitta
-Fornire i dettagli su come il giocatore può giungere al fatidico “Game Over”.
+Il giocatore perde se:
+- I propri punti vita arrivano a zero
+- Teseo raccoglie usa tre mosse bonus con successo
 
 ## Art Style
-Qui vanno inseriti i dettagli visivi del gioco. Sarebbe utile fornire già alcuni concept art dei personaggi o dei livelli.
-
-*(Esempio testo) Il gioco è un plaform 2D che prevede lo scrolling orizzontale e verticale. I livelli sono caratterizzati da un grafica pixel-art che ricorda i giochi 8/16 bit…*
+- Stile illustrato: texture disegnate a mano, contorni spessi
+- Animazioni "stop-motion-like"
+- Illuminazione da palcoscenico con tende e luci che mostrino chiaramente l'azione.
 
 ## Musica e Suono
-Qui vanno inseriti i dettagli sulla musica e sugli effetti sonori. Questa sezione può contenere varie sotto-sezioni in base alla complessità della musica e dei suoni.
+- Jingle ritmico per scandire i turni (es. "mino, mino, tauro!")
+- Musica di sottofondo ispirata alla mitologia ma reinterpretata in chiave leggera (archi pizzicati, percussioni giocose)
+- Effetti sonori teatrali (applausi, dissensi dal pubblico, etc.)
 
 ## Dettagli Tecnici
+- Piattaforma: PC (con estendibilità a Steam Deck, console indie-friendly)
+- Motore: Godot Engine v. 4.4.1
+- Produzione agile con sprint settimanali
+- IA: script pseudo-strategico con evoluzione adattiva
+
 Qui vanno inseriti i dettagli tecnici relativi alle piattaforme per le quali verrà sviluppato il gioco e dettagli sui tool che verranno utilizzati. Questa sezione non dovrebbe essere molto dettagliata, ma dovrebbe fornire solo le informazioni più importanti. I dettagli vanno inseriti in un documento separato (Technical Design Document – TDD, non è richiesto per l'esame). Se decidete di utilizzare algoritmi particolari, ad esempio di generazione procedurale dei contenuti, elencate qui le metodologie che intendete utilizzare.
 
 ## Mercato
-Qui vanno inseriti i dettagli relativi al target del tuo gioco. A chi è rivolto questo gioco? A quale tipologia di giocatore? Quanto è grande il mercato al quale vi state rivolgendo? Questo mercato è in crescita negli ultimi anni? Questa sezione dovrebbe anche fornire dettagli su come si intende finanziare lo sviluppo del gioco.
+**minomino** si rivolge a un pubblico casual, familiare e a giocatori sociali in cerca di esperienze accessibili e originali.
 
-### Target
+Il mercato dei party game e giochi turn-based "leggeri" è in crescita, soprattutto su piattaforme come Steam, itch.io e Nintendo Switch. Il gioco ha potenziale sia per il mercato europeo che per il Nord America.
+
+Finanziamento tramite:
+- Fondi per la creatività digitale
+- Programmi indie
+- Eventuale crowdfunding
+### Target  
+- Età: 8+ anni
+- Giocatori casual, famiglie, educatori, creativi
+- Persone attratte da narrazione leggera e stile grafico distintivo
+
+Il gioco offre un'alternativa alle esperienze frenetiche, proponendo un ritmo rilassato ma coinvolgente, con forte appeal estetico e una componente cooperativa/comunitaria.
+
 Descrivere il target/pubblico di riferimento. Cercate di descrivere il vostro giocatore “tipo” e quali aspettative ha. Come il vostro gioco soddisfa le aspettative del vostro target?
-
 ### Piattaforma e monetizzazione
-Dettagli su come si intende pubblicare il gioco su ogni piattaforma prevista. Fornire anche dettagli su eventuali strategie di monetizzazione.
+- PC (Steam) – versione base a pagamento con contenuti completi
+- Valutazione di console (Switch, Xbox Indie Program)
+- Monetizzazione tramite versione full, con eventuali DLC estetici
 
 ### Localizzazione
-Inserire dettagli sulle lingue supportate o su qualsiasi cosa che coinvolga la localizzazione del gioco.
+Lingue previste:
+- Italiano (lingua principale)
+- Inglese
+- Francese
+- Tedesco
+- Spagnolo
+Possibile estensione a giapponese per pubblico amante dell'estetica pop/cartoon.
 
 ## Idee
-Inserire altre idee che non si è ancora sicuri di voler sviluppare nel gioco finale.
-
-*(Esempio testo) Si potrebbero implementare dei meccanismi in cui i livelli del gioco cambiano in base ad alcune scelte del giocatore o al personaggio scelto.*
+- Implementazione di una modalità cooperativa asincrona, in cui più giocatori raccontano una storia teatrale a turni
+- Modalità "crea il tuo atto" per generare match personalizzati
+- Integrazione di un diorama editor per personalizzare lo sfondo del palco
