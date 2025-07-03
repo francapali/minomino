@@ -1,5 +1,4 @@
-# < Logo del team di sviluppo >
-# < Logo del gioco >
+# <img src="./img/bannergioco.png" alt="banner" width="900"/>
 ## < Link esterni >
 
 ### Storico delle revisioni del documento
@@ -10,9 +9,23 @@
 |   ...    |   ...    |   ...    |   ...    |
 
 ### Descrizione del progetto (elevator pitch)
-Un sommario che spieghi in poche parole il gioco senza aggiungere particolari dettagli sulle meccaniche di gioco o altro. Dovrebbe essere massimo una pagina e serve per attirare l’attenzione di investitori o del pubblico. Se il nome del gioco è disponibile andrebbe menzionato, oppure andrebbero menzionate alcune proposte di nome.
+Questo documento di game design descrive i dettagli di **minomino** è un gioco per PC a turni ispirato alla mitologia greca, con un'estetica teatrale e un'anima multiplayer locale. Progettato per un target **casual e famigliare**, combina strategia leggera e storytelling creativo.  
+  
+L'idea include una **campagna per sbloccare nuovi personaggi giocabili** e una modalità multiplayer locale veloce e divertente per sfidare amici e parenti. L’avventura prende vita su un piccolo palco, dove due maestri burattinai, danno forma a eroi e mostri della mitologia greca dimostrando ai propri nipoti chel’immaginazione non ha confini.  
 
-*(Esempio testo) Questo documento di game design descrive i dettagli di un gioco per PC di genere platform ambientato in un mondo medioevale. Il gioco permetterà di utilizzare diversi personaggi con caratteristiche distintive, ognuno con una sua storia che influenzerà le meccaniche e l’andamento del gioco. Il nome non è stato ancora definito, ma ci sono alcune proposte: “Medieval Story”, “Gold Sword”, …*
+Il sipario si apre su scenari ispirati al mito: ogni combattimento è una rappresentazione teatrale. In ogni sfida, il giocatore veste i panni di un personaggio mitologico –come Teseooil Minotauro, protagonisti della demo –per rivivere antiche rivalità... ma in chiave pop e colorata!  
+
+minomino è un gioco a turni strategico: non ci sono combo o riflessi istantanei, ma scelte tattiche con effetti immediati. Ogni personaggio ha tre azioni: attacco, difesa e una mossa bonus per vincere pacificamente accumulando tre "sfere teatrali".  
+
+I turni sono scanditi da 5 secondi e dal jingle “mino, mino, tauro!”, al termine del quale entrambi i giocatori devono aver scelto la loro mossa. Vince chi porta l'avversario a zero punti vita ochi ottiene per primo i tre punti bonus.  
+
+La progressione è lineare, con sblocco graduale di 6 coppie iconiche mitologiche (12 personaggi) e una fase finale di customizzazione, che permette di creare il proprio burattino combinando volti, mosse e stili preferiti.  
+
+Lo stile è fortemente ispirato ai diari illustratie al cartoon low-poly, con texture dipinte a mano e contorni spessi. I burattini hanno animazioni “stop-motion-like” e un’illuminazione soft da palcoscenico, per enfatizzare l’atmosfera teatrale. Mockupe sketch mostrano le quinte, le tende e le icone delle mosse con un design semplice ma distintivo, perfetto per creare un’identità visiva riconoscibile.  
+
+Sarà sviluppato in Godot(v. 4.4.1)efrutto del lavoro di due sviluppatoriche cureranno insieme game design, sviluppo, animazione e UX/UI.
+La produzione seguirà un approccio agile, con sprint settimanalie milestone chiave: prototipo, meccaniche, interfaccia, campagna e polishfinale.
+Per la modalità single player, l’IA è governata da uno script pseudo-strategico, con possibili evoluzioni in pattern adattiviper una sfida sempre più dinamica.
 
 ### Team
 Informazioni sul team di sviluppo. Le competenze del team dovrebbero convincere il lettore che siete capaci di sviluppare quello che state descrivendo nel documento.
