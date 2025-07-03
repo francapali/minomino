@@ -1,4 +1,4 @@
-# <img src="./img/bannergioco.png" alt="banner" width="900"/>
+# <img src="./img/bannergioco.png" alt="banner" width="1000"/>
 ## < Link esterni >
 
 ### Storico delle revisioni del documento
@@ -27,8 +27,8 @@ Sarà sviluppato in Godot(v. 4.4.1)efrutto del lavoro di due sviluppatoriche cur
 La produzione seguirà un approccio agile, con sprint settimanalie milestone chiave: prototipo, meccaniche, interfaccia, campagna e polishfinale.
 Per la modalità single player, l’IA è governata da uno script pseudo-strategico, con possibili evoluzioni in pattern adattiviper una sfida sempre più dinamica.
 
-### Team
-Informazioni sul team di sviluppo. Le competenze del team dovrebbero convincere il lettore che siete capaci di sviluppare quello che state descrivendo nel documento.
+### Il minoteam
+<img src="./img/minoteamfranca.png" alt="banner" width="500"/> <img src="./img/minoteamyuri.png" alt="banner" width="500"/>  
 
 ## Indice  
 - [Personaggi](#personaggi)  
