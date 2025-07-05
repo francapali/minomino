@@ -36,7 +36,7 @@ func use_item(player: Player) -> void:
 			"PhantomBlade":
 				player.attack_can_pierce = true
 		
-		# Dopo il primo utilizzo, l'item non si può più usare
+		# Imposta l'item come usato
 		# THE ICE KEY WAS USED UP
 		# SHE WAS USED UP
 		# YOU WERE USED UP

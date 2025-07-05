@@ -86,9 +86,13 @@ func special_move(enemy: Player, penalty: bool, dmg_reduction: int) -> void:
 	match p_name:
 		
 		# Mossa speciale di Teseo - Gomitolo: Guadagna un punto teatrale. Se l'avversario
-		# attacca, però, non guadagna un punto e dovrà ricaricare il gomitolo
+		# attacca e Teseo non è difeso da Divine Curtain non guadagna un punto e dovrà ricaricare il gomitolo
 		"Teseo":
-			if enemy.move == Move.ATTACK or (enemy.name == "Minotauro" and enemy.can_make_special_move and enemy.move == Move.SPECIAL):
+			var sp_fail: bool = enemy.move == Move.ATTACK
+			sp_fail = sp_fail or (enemy.name == "Minotauro" and enemy.can_make_special_move and enemy.move == Move.SPECIAL)
+			sp_fail = sp_fail and can_take_damage
+	
+			if sp_fail:
 				can_make_special_move = false
 				print("Teseo è stato attaccato mentre faceva la mossa speciale! Ha perso il gomitolo!")
 			elif not penalty:

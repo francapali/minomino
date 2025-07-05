@@ -106,7 +106,7 @@ func _unhandled_input(event) -> void:
 			KEY_O: 
 				p2.move = Move.DEFEND
 				p2.move_selected_time = now
-			KEY_W: 
+			KEY_I: 
 				p2.move = Move.SPECIAL
 				p2.move_selected_time = now
 			KEY_J:
@@ -277,4 +277,3 @@ func _process(delta: float) -> void:
 		$Label.text = str(int($Timer.time_left) + 1)
 		$Player1.get_child(4).text = p1.toString()
 		$Player2.get_child(4).text = p2.toString()
-		
