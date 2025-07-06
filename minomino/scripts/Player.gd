@@ -140,10 +140,17 @@ func reset_stats() -> void:
 		"Teseo":
 			atk = 10
 			def = 10
+			can_make_special_move = true
 		"Minotauro":
 			atk = 10
 			def = 10
+			can_make_special_move = false
 		# Altri personaggi coming soon...
+
+# Riporta i player a metà vita se sono sotto quel treshold di HP, richiamato tra un match e l'altro
+func restore() -> void:
+	if hp < round(max_hp / 2):
+		hp = round(max_hp / 2)
 
 # Restituisce una stringa contenente le statistiche del player (utile più per debugging)
 func toString() -> String:

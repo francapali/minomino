@@ -16,6 +16,10 @@ var cur_turn = 0
 var p1_wins = 0
 var p2_wins = 0
 
+# Booleani per l'uso degli item
+var p1_uses_item: Array[bool] = [false, false, false]
+var p2_uses_item: Array[bool] = [false, false, false]
+
 # Costanti di gioco
 const PENALTY_PERCENTAGE = 0.8
 const TURN_DURATION = 5
@@ -54,6 +58,7 @@ func start_turn() -> void:
 
 # Chiamata quando scade il tempo, notifica i giocatori e passa al processing delle mosse
 func _on_timer_timeout() -> void:
+	$Timer.stop()
 	$Label.text = "TAURO!"
 	$Label2.text = "SELEZIONA LA MOSSA ORA!"
 	await get_tree().create_timer(PERFECT_WINDOW).timeout
@@ -72,11 +77,13 @@ func _on_timer_timeout() -> void:
 
 # Funzione che gestisce e processa gli input dei giocatori durante la partita
 func _unhandled_input(event) -> void:
-	if not event.is_pressed() or processing_turn:
+	# Controlla se l'input è rilevante per il gioco, se non lo è lo ignora
+	if not event.is_pressed() or processing_turn or event is not InputEventKey:
 		return
 		
 	var now = Time.get_ticks_msec() / 1000.0
 	
+	# Input P1
 	if p1.move == Move.NONE:
 		match event.keycode:
 			KEY_Q: 
@@ -88,16 +95,8 @@ func _unhandled_input(event) -> void:
 			KEY_W: 
 				p1.move = Move.SPECIAL
 				p1.move_selected_time = now
-			KEY_A:
-				p1.kit.use_item(p1, 0)
-				print("Teseo usa PotOfCourage!")
-			KEY_S:
-				p1.kit.use_item(p1, 1)
-				print("Teseo usa IgeaInfusion!")
-			KEY_D:
-				p1.kit.use_item(p1, 2)
-				print("Teseo usa DivineCurtain!")
-		
+	
+	# Input P2
 	if p2.move == Move.NONE:
 		match event.keycode:
 			KEY_U:
@@ -109,15 +108,23 @@ func _unhandled_input(event) -> void:
 			KEY_I: 
 				p2.move = Move.SPECIAL
 				p2.move_selected_time = now
-			KEY_J:
-				p2.kit.use_item(p2, 0)
-				print("Minotauro usa AresWrath!")
-			KEY_K:
-				p2.kit.use_item(p2, 1)
-				print("Minotauro usa FearlessHeart!")
-			KEY_L:
-				p2.kit.use_item(p2, 2)
-				print("Minotauro usa PhantomBlade!")
+	
+	# Input degli item, sia per P1 che per P2
+	# Nota: Può essere usato un solo item per turno, quindi verrà preso quello che il player ha
+	# scelto per ultimo. Questo spiega anche le particolari combinazioni degli array uses_item		
+	match event.keycode:
+		KEY_A:
+			p1_uses_item = [true, false, false]
+		KEY_S:
+			p1_uses_item = [false, true, false]
+		KEY_D:
+			p1_uses_item = [false, false, true]
+		KEY_J:
+			p2_uses_item = [true, false, false]
+		KEY_K:
+			p2_uses_item = [false, true, false]
+		KEY_L:
+			p2_uses_item = [false, false, true]
 
 # Chiamata alla fine del turno, effettua le mosse selezionate dai player e aggiorna le statistiche
 func process_moves() -> void:
@@ -129,6 +136,15 @@ func process_moves() -> void:
 	
 	var p1_dmg_reduction = 0
 	var p2_dmg_reduction = 0
+	
+	# Controlla se i player stanno usando item e se sì li usa
+	for i in 3:
+		if p1_uses_item[i]:
+			p1.kit.use_item(p1, i)
+			
+	for i in 3:
+		if p2_uses_item[i]:
+			p2.kit.use_item(p2, i)
 	
 	# Controllo sul giocatore che ripete la stessa mossa
 	if p1.last_move == p1.move and p1.move != Move.NONE:
@@ -226,6 +242,10 @@ func process_moves() -> void:
 	p1.remove_buffs()
 	p2.remove_buffs()
 	
+	# Reimposta gli array di utilizzo degli item a false per il prossimo turno
+	p1_uses_item = [false, false, false]
+	p2_uses_item = [false, false, false]
+	
 	#print("P1 - Mossa: %d - Offset di tempo: %f" % [p1.move, p1_offset])
 	#print("P2 - Mossa: %d - Offset di tempo: %f" % [p2.move, p2_offset])
 
@@ -248,28 +268,80 @@ func end_condition() -> bool:
 # Gestisce la fine del match
 func end_match() -> void:
 	# Vince il player con più HP o che ha raggiunto il numero massimo di TP
-	if p1.hp > p2.hp or p1.cur_theater_points == p1.max_theater_points:
-		print("Vince " + p1.p_name + "!")
-		p1.wins += 1
-	elif p2.hp > p1.hp or p2.cur_theater_points == p2.max_theater_points:
-		print("Vince " + p2.p_name + "!")
-		p2.wins += 2
-	else:
+	# In caso di pareggio, nessun player guadagna un punto
+	if check_parity():
 		print("Abbiamo un pareggio!")
-		p1.wins += 1
-		p2.wins += 2
+	elif winner() == 1:
+		print("Vince " + p1.p_name + "!")
+		p1_wins += 1
+	else:
+		print("Vince " + p2.p_name + "!")
+		p2_wins += 1
 	
-	# Mettere qui il check sul numero di match e la partenza di un nuovo match
-	if p1.wins == 3 and p2.wins == 3:
+	# Al meglio di 5
+	if p1_wins == 3 and p2_wins == 3:
 		print("La partita finisce con un pareggio!")
-	elif p1.wins == 3:
+	elif p1_wins == 3:
 		print ("Il giocatore 1 vince l'intera partita!")
-	elif p2.wins == 3:
+	elif p2_wins == 3:
 		print ("Il giocatore 2 vince l'intera partita!")
 	else:
 		processing_turn = false
+		
+		# Prima di passare al match successivo, ricarica i kit, la vita dei
+		# player, i punti teatro e reimposta il turno a 0
+		p1.restore()
+		p2.restore()
+		
+		p1.kit.recharge_kit()
+		p2.kit.recharge_kit()
+		
+		p1.cur_theater_points = 0
+		p2.cur_theater_points = 0
+		
 		cur_turn = 0
 		start_turn()
+
+# Verifica se i giocatori hanno pareggiato il match. I player pareggiano in queste situazioni:
+# -Arrivano entrambi a 0 HP (indipendentemente dai punti teatrali)
+# -Hanno gli stessi HP ma o non hanno raggiunto i punti teatro entro i 5 turni o li hanno raggiunti entrambi contemp.
+func check_parity() -> bool:
+	if p1.hp == p2.hp:
+		# Primo caso
+		if p1.hp == 0:
+			return true
+			
+		# Secondo caso (non hanno raggiunto i punti teatro)
+		if p1.cur_theater_points != p1.max_theater_points and p2.cur_theater_points != p2.max_theater_points:
+			return true
+		
+		# Secondo caso (hanno raggiunto contemporaneamente i punti teatro)
+		if p1.cur_theater_points == p1.max_theater_points and p2.cur_theater_points == p2.max_theater_points:
+			return true
+	
+	# Non c'è pareggio
+	return false
+
+# Richiamata quando il match finisce, restituisce il numero del player vincitore
+# 1 per il player 1, 2 per il player 2
+# Non vengono fatti controlli sul pareggio perché si assume che sono stati già fatti
+func winner() -> int:
+	# Check sul KO
+	if p1.hp == 0:
+		return 2
+	elif p2.hp == 0:
+		return 1
+	
+	# Controllo sui punti teatro
+	if p1.cur_theater_points == p1.max_theater_points and p2.cur_theater_points != p2.max_theater_points:
+		return 1
+	elif p2.cur_theater_points == p2.max_theater_points and p1.cur_theater_points != p1.max_theater_points:
+		return 2
+	
+	if p1.hp > p2.hp:
+		return 1
+	else:
+		return 2
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

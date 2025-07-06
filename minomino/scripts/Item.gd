@@ -24,16 +24,22 @@ func use_item(player: Player) -> void:
 		# In base all'item l'effetto sarà diverso
 		match item_name:
 			"PotOfCourage":
+				print(player.p_name + " usa PotOfCourage!")
 				player.heal(POT_OF_COURAGE_HEAL)
 			"IgeaInfusion":
+				print(player.p_name + " usa IgeaInfusion!")
 				player.heal(IGEA_INFUSION_HEAL)
 			"DivineCurtain":
+				print(player.p_name + " usa DivineCurtain!")
 				player.can_take_damage = false
 			"AresWrath":
+				print(player.p_name + " usa AresWrath!")
 				player.atk += ARES_WRATH_BONUS
 			"FearlessHeart":
+				print(player.p_name + " usa FearlessHeart!")
 				player.heal_while_attacking = true
 			"PhantomBlade":
+				print(player.p_name + " usa PhantomBlade!")
 				player.attack_can_pierce = true
 		
 		# Imposta l'item come usato
