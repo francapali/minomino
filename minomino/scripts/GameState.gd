@@ -6,6 +6,3 @@ extends Node
 
 var player1 = ""
 var player2 = ""
-
-var kitplayer1 = ""
-var kitplayer2 = ""

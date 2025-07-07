@@ -1,28 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://loa2p5ljvs8m"]
-
-[ext_resource type="Script" path="res://scripts/character_select.gd" id="1_q3kbm"]
-[ext_resource type="Texture2D" uid="uid://ck3tlsbq0d6o7" path="res://assets/selecthero.png" id="2_til70"]
-[ext_resource type="Texture2D" uid="uid://dpv2ws63pvk7s" path="res://assets/selezionep1.png" id="3_rmn7v"]
-[ext_resource type="Texture2D" uid="uid://bmxp3qk7ssbvo" path="res://assets/selezionep2.png" id="4_qawpe"]
-[ext_resource type="AudioStream" uid="uid://cixosehkjnygh" path="res://ost/main theme.mp3" id="5_0tvp1"]
-[ext_resource type="Theme" uid="uid://c3r5vf46bmsjk" path="res://ui/progressbar.tres" id="6_mjovk"]
-[ext_resource type="Texture2D" uid="uid://b7r2ffo0gnty3" path="res://assets/settingsicon.png" id="7_8m0kr"]
-
-[sub_resource type="Theme" id="Theme_71c04"]
-
-[sub_resource type="GDScript" id="GDScript_c3bbw"]
-
-[sub_resource type="GDScript" id="GDScript_hymsj"]
-script/source = "extends Button
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-"
+[gd_scene format=3 uid="uid://loa2p5ljvs8m"]
 
 [node name="CharacterSelect" type="Control"]
 layout_mode = 3
@@ -31,68 +7,42 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_q3kbm")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 1153.0
-offset_bottom = 649.0
-texture = ExtResource("2_til70")
-expand_mode = 1
-
-[node name="CharacterButtons" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TesButton" type="Button" parent="CharacterButtons"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
-theme = SubResource("Theme_71c04")
-theme_type_variation = &"FlatButton"
 
-[node name="MinoButton" type="Button" parent="CharacterButtons"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_type_variation = &"FlatButton"
+text = "Player 1"
 
-[node name="FrameP2" type="TextureRect" parent="."]
+[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
-offset_left = 417.0
-offset_top = 448.0
-offset_right = 599.0
-offset_bottom = 637.0
-texture = ExtResource("4_qawpe")
-expand_mode = 1
+text = "Teseo"
 
-[node name="FrameP1" type="TextureRect" parent="."]
+[node name="Button2" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
-offset_left = 723.0
-offset_top = 368.0
-offset_right = 948.0
-offset_bottom = 651.0
-texture = ExtResource("3_rmn7v")
-expand_mode = 1
+text = "Minotauro"
 
-[node name="P1Sprite" type="Sprite2D" parent="."]
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
 
-[node name="P2Sprite" type="Sprite2D" parent="."]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Player 2"
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_0tvp1")
-autoplay = true
-parameters/looping = false
-script = SubResource("GDScript_c3bbw")
+[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Teseo"
 
-[node name="SettingsButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = -1
-offset_left = -1.0
-offset_top = 556.0
-offset_right = 90.0
-offset_bottom = 657.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme = ExtResource("6_mjovk")
-theme_override_icons/icon = ExtResource("7_8m0kr")
-icon = ExtResource("7_8m0kr")
-expand_icon = true
-script = SubResource("GDScript_hymsj")
+[node name="Button2" type="Button" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Minotauro"
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Let'z fight!"
