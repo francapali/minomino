@@ -9,3 +9,5 @@ var player2 = ""
 
 var kitplayer1 = ""
 var kitplayer2 = ""
+
+var winner: Player = null

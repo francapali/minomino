@@ -45,12 +45,12 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TesButton" type="Button" parent="CharacterButtons"]
+[node name="Thes" type="Button" parent="CharacterButtons"]
 layout_mode = 2
 theme = SubResource("Theme_71c04")
 theme_type_variation = &"FlatButton"
 
-[node name="MinoButton" type="Button" parent="CharacterButtons"]
+[node name="Mino" type="Button" parent="CharacterButtons"]
 layout_mode = 2
 theme_type_variation = &"FlatButton"
 

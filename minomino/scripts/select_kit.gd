@@ -10,7 +10,7 @@ var player2_locked = false
 @onready var safety_button = $SafetyButton
 @onready var frame_p1 = $FrameP1
 @onready var frame_p2 = $FrameP2
-@onready var kits = [rage_button, safety_button]
+@onready var kits = [safety_button, rage_button]
 @onready var settings_button = $SettingsButton
 
 func _ready():

@@ -84,7 +84,6 @@ stream = ExtResource("6_eh0ny")
 autoplay = true
 
 [node name="SettingsButton" type="Button" parent="."]
-anchors_preset = -1
 offset_left = -1.0
 offset_top = 556.0
 offset_right = 90.0

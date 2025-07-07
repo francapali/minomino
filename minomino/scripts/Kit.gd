@@ -14,7 +14,7 @@ func initialize_kit(name: String) -> void:
 	
 	# Assegna gli item relativi al kit specifico selezionato
 	match kit_name:
-		"Safety":
+		"SafetyButton":
 			items[0] = Item.new()
 			items[0].initialize_item("PotOfCourage")
 			items[1] = Item.new()
@@ -22,7 +22,7 @@ func initialize_kit(name: String) -> void:
 			items[2] = Item.new()
 			items[2].initialize_item("DivineCurtain")
 			
-		"Rage":
+		"RageButton":
 			items[0] = Item.new()
 			items[0].initialize_item("AresWrath")
 			items[1] = Item.new()

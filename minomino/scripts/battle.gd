@@ -30,8 +30,8 @@ const HEAL_WHILE_ATTACKING = 3
 # Called when the node enters the scene tree for the first time.
 # Inizializza i parametri dei player e fa cominciare la partita.
 func _ready() -> void:
-	p1.initialize_player("Teseo", "Safety")
-	p2.initialize_player("Minotauro", "Rage")
+	p1.initialize_player(GameState.player1, GameState.kitplayer1)
+	p2.initialize_player(GameState.player2, GameState.kitplayer2)
 	
 	$Player1.get_child(4).position = Vector2(100, 150)
 	$Player2.get_child(4).position = Vector2(500, 150)
@@ -281,10 +281,13 @@ func end_match() -> void:
 	# Al meglio di 5
 	if p1_wins == 3 and p2_wins == 3:
 		print("La partita finisce con un pareggio!")
+		GameState.winner = null
 	elif p1_wins == 3:
 		print ("Il giocatore 1 vince l'intera partita!")
+		GameState.winner = p1
 	elif p2_wins == 3:
 		print ("Il giocatore 2 vince l'intera partita!")
+		GameState.winner = p2
 	else:
 		processing_turn = false
 		

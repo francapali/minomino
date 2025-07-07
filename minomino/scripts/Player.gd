@@ -40,14 +40,14 @@ func initialize_player(name: String, kit_name: String) -> void:
 	
 	# Per ogni personaggio imposta i parametri unici definiti in fase di game design
 	match p_name:
-		"Teseo":
+		"Thes":
 			max_hp = 50
 			atk = 10
 			def = 10
 			max_theater_points = 3
 			can_make_special_move = true
 			can_take_damage = true
-		"Minotauro": 
+		"Mino": 
 			max_hp = 50
 			atk = 10
 			def = 10
@@ -87,7 +87,7 @@ func special_move(enemy: Player, penalty: bool, dmg_reduction: int) -> void:
 		
 		# Mossa speciale di Teseo - Gomitolo: Guadagna un punto teatrale. Se l'avversario
 		# attacca e Teseo non è difeso da Divine Curtain non guadagna un punto e dovrà ricaricare il gomitolo
-		"Teseo":
+		"Thes":
 			var sp_fail: bool = enemy.move == Move.ATTACK
 			sp_fail = sp_fail or (enemy.name == "Minotauro" and enemy.can_make_special_move and enemy.move == Move.SPECIAL)
 			sp_fail = sp_fail and can_take_damage
@@ -106,7 +106,7 @@ func special_move(enemy: Player, penalty: bool, dmg_reduction: int) -> void:
 			
 		# Mossa speciale del Minotauro - Artigli: Attacco potenziato che fa il 50% dei danni in più,
 		# però deve essere caricata per un turno prima di usarla
-		"Minotauro":
+		"Mino":
 			if can_make_special_move == false:
 				if not penalty:
 					can_make_special_move = true
@@ -137,11 +137,11 @@ func remove_buffs() -> void:
 # Metodo che viene richiamato per riportare allo stato naturale le stats del personaggio
 func reset_stats() -> void:
 	match p_name:
-		"Teseo":
+		"Thes":
 			atk = 10
 			def = 10
 			can_make_special_move = true
-		"Minotauro":
+		"Mino":
 			atk = 10
 			def = 10
 			can_make_special_move = false
