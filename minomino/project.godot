@@ -13,7 +13,7 @@ config_version=5
 config/name="minomino"
 run/main_scene="res://scenes/Cutscene.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://assets/minotesta.png"
 
 [autoload]
 
@@ -22,6 +22,8 @@ SceneManager="*res://scripts//SceneManager.gd"
 
 [display]
 
+window/size/viewport_width=1200
+window/size/viewport_height=600
 window/stretch/mode="viewport"
 
 [input]

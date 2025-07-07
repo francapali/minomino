@@ -1,3 +1,57 @@
-[gd_scene format=3 uid="uid://mvj15m4mxxk0"]
+[gd_scene load_steps=3 format=3 uid="uid://mvj15m4mxxk0"]
+
+[ext_resource type="Script" path="res://scripts/battle.gd" id="1_ml41f"]
+[ext_resource type="Texture2D" uid="uid://ck3ehs3yjiwcj" path="res://assets/background.png" id="2_0axw4"]
 
 [node name="Battle" type="Node2D"]
+script = ExtResource("1_ml41f")
+
+[node name="Player1" type="Node2D" parent="."]
+
+[node name="Mosse" type="Node2D" parent="Player1"]
+
+[node name="StartingKit" type="Node2D" parent="Player1"]
+
+[node name="Statistiche" type="Node2D" parent="Player1"]
+
+[node name="PlayerSprite" type="Sprite2D" parent="Player1"]
+
+[node name="Stats" type="Label" parent="Player1"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Player2" type="Node2D" parent="."]
+
+[node name="Mosse" type="Node2D" parent="Player2"]
+
+[node name="StartingKit" type="Node2D" parent="Player2"]
+
+[node name="Statistiche" type="Node2D" parent="Player2"]
+
+[node name="PlayerSprite" type="Sprite2D" parent="Player2"]
+
+[node name="Stats" type="Label" parent="Player2"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 5.0
+
+[node name="Background" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(576, 325)
+scale = Vector2(0.898437, 0.902778)
+texture = ExtResource("2_0axw4")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
