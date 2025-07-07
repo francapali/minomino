@@ -5,9 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://dpv2ws63pvk7s" path="res://assets/selezionep1.png" id="3_rmn7v"]
 [ext_resource type="Texture2D" uid="uid://bmxp3qk7ssbvo" path="res://assets/selezionep2.png" id="4_qawpe"]
 [ext_resource type="AudioStream" uid="uid://cixosehkjnygh" path="res://ost/main theme.mp3" id="5_0tvp1"]
-[ext_resource type="Script" path="res://scripts/audio_stream_player_2d.gd" id="6_5ylur"]
 
 [sub_resource type="Theme" id="Theme_71c04"]
+
+[sub_resource type="GDScript" id="GDScript_c3bbw"]
 
 [node name="CharacterSelect" type="Control"]
 layout_mode = 3
@@ -65,4 +66,4 @@ expand_mode = 1
 stream = ExtResource("5_0tvp1")
 autoplay = true
 parameters/looping = false
-script = ExtResource("6_5ylur")
+script = SubResource("GDScript_c3bbw")
