@@ -16,6 +16,7 @@ var minotauro_texture = preload("res://assets/minostd.png")
 
 func _ready():
 	update_frames()
+	$AudioStreamPlayer2D.play(40.0)
 
 func _unhandled_input(event):
 	if not player1_locked:
