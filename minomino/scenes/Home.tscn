@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://63fc17a715fn"]
+[gd_scene load_steps=5 format=3 uid="uid://63fc17a715fn"]
 
 [ext_resource type="Script" path="res://scripts/home.gd" id="1_ohadq"]
 [ext_resource type="Texture2D" uid="uid://dv4p8ymrr8kcf" path="res://assets/main.png" id="2_1kjly"]
 [ext_resource type="Theme" uid="uid://7cs6hrd37sop" path="res://ui/buttons.tres" id="3_tty88"]
+[ext_resource type="AudioStream" uid="uid://cixosehkjnygh" path="res://ost/main theme.mp3" id="4_mkbpn"]
 
 [node name="Home" type="Control"]
 layout_mode = 3
@@ -49,3 +50,7 @@ text = "Settings"
 layout_mode = 2
 theme = ExtResource("3_tty88")
 text = "Quit"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_mkbpn")
+autoplay = true
