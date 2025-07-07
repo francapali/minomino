@@ -10,12 +10,15 @@ var player2_locked = false
 @onready var frame_p2 = $FrameP2
 @onready var p1_sprite = $P1Sprite
 @onready var p2_sprite = $P2Sprite
+@onready var settings_button = $SettingsButton
+
 var teseo_texture = preload("res://assets/tesstd.png")
 var minotauro_texture = preload("res://assets/minostd.png")
 
 
 func _ready():
 	update_frames()
+	settings_button.pressed.connect(_on_settings_pressed)
 	$AudioStreamPlayer2D.play(40.0)
 
 func _unhandled_input(event):
@@ -82,3 +85,6 @@ func update_frames():
 		p2_sprite.global_position = Vector2(928, 195)
 		p2_sprite.scale = Vector2(0.313, 0.302)
 		p2_sprite.flip_h = false
+
+func _on_settings_pressed():
+	SceneManager.go_to_settings()

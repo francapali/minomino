@@ -3,6 +3,10 @@ extends Control
 @onready var volume_bar = $VBoxContainer/ProgressBar
 @onready var volume_up_button = $VBoxContainer/HBoxContainer/VolumeUpButton
 @onready var volume_down_button = $VBoxContainer/HBoxContainer/VolumeDownButton
+@onready var return_button = $HBoxContainer/ReturnButton
+@onready var main_menu_button = $HBoxContainer/MainMenuButton
+@onready var quit_button = $HBoxContainer/QuitButton
+
 
 var volume_step_db := 2.0
 var bus_name := "Master"
@@ -11,6 +15,10 @@ func _ready():
 	volume_up_button.pressed.connect(_on_volume_up)
 	volume_down_button.pressed.connect(_on_volume_down)
 	update_volume_bar()
+	return_button.pressed.connect(_on_return_pressed)
+	main_menu_button.pressed.connect(_on_main_menu_pressed)
+	quit_button.pressed.connect(_on_quit_pressed)
+
 
 func _on_volume_up():
 	var bus_idx = AudioServer.get_bus_index(bus_name)
@@ -37,3 +45,18 @@ func db_to_percent(db: float) -> float:
 	# volume lineare = 10^(db/20)
 	# moltiplichiamo per 100 per percentuale
 	return clamp(pow(10, db / 20) * 100, 0, 100)
+
+# Torna alla scena precedente (quella che ha aperto i settings)
+func _on_return_pressed():
+	if SceneManager.last_scene_path != "":
+		get_tree().change_scene_to_file(SceneManager.last_scene_path)
+	else:
+		print("Nessuna scena precedente salvata.")
+
+# Va alla schermata principale (Home.tscn)
+func _on_main_menu_pressed():
+	get_tree().change_scene_to_file("res://scenes/Home.tscn")
+
+# Esce dal gioco
+func _on_quit_pressed():
+	get_tree().quit()
