@@ -18,6 +18,7 @@ texture = ExtResource("1_lbv35")
 expand_mode = 1
 
 [node name="RagePack" type="TextureRect" parent="TextureRect"]
+layout_mode = 0
 offset_left = 557.0
 offset_top = 282.0
 offset_right = 1134.0
@@ -26,6 +27,7 @@ texture = ExtResource("2_7rrvi")
 expand_mode = 1
 
 [node name="SafetyPack" type="TextureRect" parent="TextureRect"]
+layout_mode = 0
 offset_left = 40.0
 offset_top = 286.0
 offset_right = 617.0
