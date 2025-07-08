@@ -154,9 +154,12 @@ func _on_timer_timeout() -> void:
 # Funzione che gestisce e processa gli input dei giocatori durante la partita
 func _unhandled_input(event) -> void:
 	# Controlla se l'input è rilevante per il gioco, se non lo è lo ignora
-	if not event.is_pressed() or processing_turn or event is not InputEventKey:
+	if not event.is_pressed() or processing_turn:
 		return
-	
+		
+	if not (event is InputEventKey or event is InputEventJoypadButton or event is InputEventJoypadMotion):
+		return
+		
 	# Input P1
 	if p1.move == Move.NONE:
 		if Input.is_action_just_pressed("P1_ingame_left"):
