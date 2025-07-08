@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://cmencif5vxphs"]
 
-[ext_resource type="Script" path="res://scripts/select_kit.gd" id="1_b23q3"]
+[ext_resource type="Script" path="res://scripts/SelectKitScript.gd" id="1_b23q3"]
 [ext_resource type="Texture2D" uid="uid://dm3kgxfgg4b8n" path="res://assets/starterkit.png" id="1_lbv35"]
 [ext_resource type="Texture2D" uid="uid://bhtg6fh7lgjvj" path="res://assets/RagePack.png" id="2_7rrvi"]
 [ext_resource type="Texture2D" uid="uid://clk61igu7f585" path="res://assets/SafetyPack.png" id="3_qge3p"]

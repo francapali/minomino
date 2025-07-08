@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://c72grt0xj2g30"]
 
-[ext_resource type="Script" path="res://scripts/settings.gd" id="1_y7uk1"]
+[ext_resource type="Script" path="res://scripts/Settings.gd" id="1_y7uk1"]
 [ext_resource type="Texture2D" uid="uid://dasnpbvv4te3p" path="res://assets/settings.png" id="2_41idn"]
 [ext_resource type="Texture2D" uid="uid://dqa0k2kaeq6e" path="res://assets/volume.png" id="3_ocg2i"]
 [ext_resource type="Theme" uid="uid://c3r5vf46bmsjk" path="res://ui/progressbar.tres" id="4_4vabb"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bxoog2mst5jwg" path="res://assets/volumedown.png" id="5_5peos"]
 [ext_resource type="AudioStream" uid="uid://cixosehkjnygh" path="res://ost/main theme.mp3" id="6_xhc4e"]
 [ext_resource type="Theme" uid="uid://7cs6hrd37sop" path="res://ui/buttons.tres" id="8_ubwx0"]
+
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btngi"]
 bg_color = Color(0.643137, 0.25098, 0.145098, 1)
