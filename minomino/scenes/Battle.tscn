@@ -1,61 +1,97 @@
-[gd_scene load_steps=4 format=3 uid="uid://mvj15m4mxxk0"]
+[gd_scene load_steps=9 format=3 uid="uid://mvj15m4mxxk0"]
 
 [ext_resource type="Script" path="res://scripts/battle.gd" id="1_ml41f"]
 [ext_resource type="Texture2D" uid="uid://ck3ehs3yjiwcj" path="res://assets/background.png" id="2_0axw4"]
-[ext_resource type="Texture2D" uid="uid://cqqejwoks2e3k" path="res://assets/numeri.png" id="2_vfde0"]
+[ext_resource type="Texture2D" uid="uid://c0nullwfs4gkp" path="res://assets/tesstd.png" id="3_80bsi"]
+[ext_resource type="Texture2D" uid="uid://b4gp4im5nomsx" path="res://assets/minostd.png" id="4_unhpj"]
+[ext_resource type="Texture2D" uid="uid://wf08d5q2w24s" path="res://assets/MosseMino.png" id="5_7ggpb"]
+[ext_resource type="Texture2D" uid="uid://pb8jahyun3jy" path="res://assets/MosseThes.png" id="6_nq00l"]
+[ext_resource type="AudioStream" uid="uid://bbb17yvjhrk8y" path="res://ost/battle theme.mp3" id="7_cdaro"]
+[ext_resource type="Texture2D" uid="uid://dtq1tbse43kqa" path="res://assets/RageItems.png" id="8_1pfyn"]
 
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_ml41f")
-
-[node name="Background" type="Sprite2D" parent="."]
-position = Vector2(576, 325)
-scale = Vector2(0.898437, 0.902778)
-texture = ExtResource("2_0axw4")
 
 [node name="TimerDisplay" type="Sprite2D" parent="."]
 position = Vector2(554, 150)
 scale = Vector2(0.35, 0.367)
 texture = ExtResource("2_vfde0")
 
-[node name="Player1" type="Node2D" parent="."]
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 1156.0
+offset_bottom = 646.0
+texture = ExtResource("2_0axw4")
+expand_mode = 1
 
-[node name="Mosse" type="Node2D" parent="Player1"]
+[node name="P2Sprite" type="Sprite2D" parent="."]
+position = Vector2(792, 423)
+scale = Vector2(0.334875, 0.33)
+texture = ExtResource("3_80bsi")
 
-[node name="StartingKit" type="Node2D" parent="Player1"]
-
-[node name="Statistiche" type="Node2D" parent="Player1"]
-
-[node name="PlayerSprite" type="Sprite2D" parent="Player1"]
-
-[node name="Stats" type="Label" parent="Player1"]
-offset_right = 40.0
-offset_bottom = 23.0
-
-[node name="Player2" type="Node2D" parent="."]
-
-[node name="Mosse" type="Node2D" parent="Player2"]
-
-[node name="StartingKit" type="Node2D" parent="Player2"]
-
-[node name="Statistiche" type="Node2D" parent="Player2"]
-
-[node name="PlayerSprite" type="Sprite2D" parent="Player2"]
-
-[node name="Stats" type="Label" parent="Player2"]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="P1Sprite" type="Sprite2D" parent="."]
+position = Vector2(382, 422)
+scale = Vector2(0.359583, 0.350417)
+texture = ExtResource("4_unhpj")
+flip_h = true
 
 [node name="Timer" type="Timer" parent="."]
 process_callback = 0
 wait_time = 5.0
 
 [node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 334.0
+offset_top = 252.0
+offset_right = 374.0
+offset_bottom = 275.0
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="."]
+offset_left = 286.0
+offset_top = 204.0
+offset_right = 326.0
+offset_bottom = 227.0
+
+[node name="MosseP1" type="TextureRect" parent="."]
+offset_left = 72.0
+offset_top = 229.0
+offset_right = 277.0
+offset_bottom = 623.0
+texture = ExtResource("5_7ggpb")
+expand_mode = 1
+
+[node name="MosseP2" type="TextureRect" parent="."]
+offset_left = 872.0
+offset_top = 224.0
+offset_right = 1083.0
+offset_bottom = 631.0
+texture = ExtResource("6_nq00l")
+expand_mode = 1
+flip_h = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_cdaro")
+autoplay = true
+
+[node name="KitP1" type="Sprite2D" parent="."]
+position = Vector2(800, 596)
+scale = Vector2(0.242188, 0.242361)
+texture = ExtResource("8_1pfyn")
+
+[node name="KitP2" type="Sprite2D" parent="."]
+position = Vector2(360, 596)
+scale = Vector2(0.242, 0.242)
+texture = ExtResource("8_1pfyn")
+
+[node name="Label3" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Label4" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Label5" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
 
