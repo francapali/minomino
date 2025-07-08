@@ -63,17 +63,17 @@ func _ready() -> void:
 	p1.initialize_player(GameState.player1, GameState.kitplayer1)
 	p2.initialize_player(GameState.player2, GameState.kitplayer2)
 	
-	timer_display.region_enabled = true
+	update_frames()
 	
 	await countdown()
-	
-	update_frames()
 	
 	start_turn()
 
 # Gestisce il countdown prima della partenza della partita
 func countdown():
 	# Mostra il numero 3 e fa passare un secondo
+	timer_display.region_enabled = true
+	timer_display.scale = Vector2(0.381, 0.4)
 	timer_display.texture = texture_numeri
 	timer_display.position = Vector2(576, 200)
 	timer_display.region_rect = regions[2]
@@ -407,15 +407,17 @@ func winner() -> int:
 func _process(delta: float) -> void:
 	if start:
 		if not $Timer.is_stopped():
-			timer_display.region_enabled = true
-			timer_display.scale = Vector2(0.381, 0.4)
-			timer_display.texture = texture_numeri
-			
 			var index = int($Timer.time_left)
 			
 			if index >= 4:
+				timer_display.region_enabled = true
+				timer_display.scale = Vector2(0.381, 0.4)
+				timer_display.texture = texture_numeri
 				timer_display.region_rect = regions[4]
 			elif index < 4 and index > 1:
+				timer_display.region_enabled = true
+				timer_display.scale = Vector2(0.381, 0.4)
+				timer_display.texture = texture_numeri
 				timer_display.region_rect = regions[index]
 			elif index == 1:
 				timer_display.region_enabled = false
@@ -425,9 +427,6 @@ func _process(delta: float) -> void:
 				timer_display.region_enabled = false
 				timer_display.scale = Vector2(0.35, 0.367)
 				timer_display.texture = texture_minomino_exclamation
-				
-			$Player1.get_child(4).text = p1.toString()
-			$Player2.get_child(4).text = p2.toString()
 		else:
 			timer_display.region_enabled = false
 			timer_display.scale = Vector2(0.35, 0.367)

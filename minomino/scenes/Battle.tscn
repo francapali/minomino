@@ -12,16 +12,14 @@
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_ml41f")
 
-[node name="TimerDisplay" type="Sprite2D" parent="."]
-position = Vector2(554, 150)
-scale = Vector2(0.35, 0.367)
-texture = ExtResource("2_vfde0")
-
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 1156.0
 offset_bottom = 646.0
 texture = ExtResource("2_0axw4")
 expand_mode = 1
+
+[node name="TimerDisplay" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
 
 [node name="P2Sprite" type="Sprite2D" parent="."]
 position = Vector2(792, 423)
