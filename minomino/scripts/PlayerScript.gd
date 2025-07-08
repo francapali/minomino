@@ -21,6 +21,11 @@ var can_take_damage: bool
 var heal_while_attacking: bool
 var attack_can_pierce: bool
 
+# Definizione dei comandi del personaggio
+var command_attack: String
+var command_defense: String
+var command_special: String
+
 # Attributi per la gestione delle mosse nel turno
 var move: Move
 var last_move: Move
