@@ -134,6 +134,17 @@ func restore() -> void:
 	if hp < round(max_hp / 2):
 		hp = round(max_hp / 2)
 
+# Assegna il tempismo e la mossa che il personaggio sta effettuando in base all'input ricevuto
+func process_input(input: String) -> void:
+	# Imposta il tempismo
+	move_selected_time = Time.get_ticks_msec() / 1000.0
+	
+	# Compara l'input con i comandi del personaggio per scegliere la mossa da fare
+	match input:
+		command_attack: move = Move.ATTACK
+		command_defense: move = Move.DEFEND
+		command_special: move = Move.SPECIAL
+
 # Restituisce una stringa contenente le statistiche del player (utile più per debugging)
 func toString() -> String:
 	return "Nome: %s, HP: %d, Punti teatro: %d" % [p_name, hp, cur_theater_points]
