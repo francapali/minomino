@@ -22,12 +22,19 @@ var regions = [
 var p1 = Player.new()
 var p2 = Player.new()
 
+#Gestione UI P1
 @onready var p1_sprite = $P1Sprite
-@onready var p2_sprite = $P2Sprite
+@onready var p1_nome = $NomeP1
 @onready var p1_mosse = $MosseP1
-@onready var p2_mosse = $MosseP2
 @onready var p1_kit = $KitP1
+@onready var p1_HPbar = $HP_P1
+
+#Gestione UI P2
+@onready var p2_sprite = $P2Sprite
+@onready var p2_nome = $NomeP2
+@onready var p2_mosse = $MosseP2
 @onready var p2_kit = $KitP2
+@onready var p2_HPbar = $HP_P2
 
 var teseo_texture = preload("res://assets/tesstd.png")
 var mosse_thes = preload("res://assets/MosseThes.png")
@@ -435,6 +442,7 @@ func _process(delta: float) -> void:
 func update_frames():
 	# P1 sprite
 	if p1.p_name == "Thes":  # Teseo
+		p1_nome.text = "Theseus"
 		p1_sprite.texture = teseo_texture
 		p1_sprite.global_position = Vector2(367, 430)
 		p1_sprite.scale = Vector2(0.335, 0.33)
@@ -447,6 +455,7 @@ func update_frames():
 		p1_sprite.flip_h = true
 		
 	elif p1.p_name == "Mino":  # Minotauro
+		p1_nome.text = "Minotaur"
 		p1_sprite.texture = minotauro_texture
 		p1_sprite.global_position = Vector2(382, 422)
 		p1_sprite.scale = Vector2(0.36, 0.35)
@@ -460,6 +469,7 @@ func update_frames():
 
 	# P2 sprite
 	if p2.p_name == "Thes":  # Teseo
+		p2_nome.text = "Theseus"
 		p2_sprite.texture = teseo_texture
 		p2_sprite.global_position = Vector2(792, 423)
 		p2_sprite.scale = Vector2(0.335, 0.33)
@@ -472,6 +482,7 @@ func update_frames():
 		p2_mosse.flip_h = true
 		
 	elif p2.p_name == "Mino":  # Minotauro
+		p2_nome.text = "Minotaur"
 		p2_sprite.texture = minotauro_texture
 		p2_sprite.global_position = Vector2(792, 418)
 		p2_sprite.scale = Vector2(0.36, 0.35)

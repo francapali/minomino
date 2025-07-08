@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://mvj15m4mxxk0"]
+[gd_scene load_steps=11 format=3 uid="uid://mvj15m4mxxk0"]
 
 [ext_resource type="Script" path="res://scripts/BattleScript.gd" id="1_ml41f"]
 [ext_resource type="Texture2D" uid="uid://ck3ehs3yjiwcj" path="res://assets/background.png" id="2_0axw4"]
@@ -8,6 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://pb8jahyun3jy" path="res://assets/MosseThes.png" id="6_nq00l"]
 [ext_resource type="AudioStream" uid="uid://bbb17yvjhrk8y" path="res://ost/battle theme.mp3" id="7_cdaro"]
 [ext_resource type="Texture2D" uid="uid://dtq1tbse43kqa" path="res://assets/RageItems.png" id="8_1pfyn"]
+[ext_resource type="Texture2D" uid="uid://drsv55ains5hg" path="res://assets/MaxHP.png" id="9_f3mbx"]
+
+[sub_resource type="SystemFont" id="SystemFont_4dn5n"]
+font_names = PackedStringArray("Bauhaus 93")
 
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_ml41f")
@@ -81,16 +85,57 @@ position = Vector2(360, 596)
 scale = Vector2(0.242, 0.242)
 texture = ExtResource("8_1pfyn")
 
-[node name="Label3" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="InputP1" type="Label" parent="."]
+offset_left = 220.0
+offset_top = 584.0
+offset_right = 492.0
+offset_bottom = 607.0
+theme_override_colors/font_color = Color(0.643137, 0.25098, 0.145098, 1)
+text = "X                     A	                    	B"
 
-[node name="Label4" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="InputP2" type="Label" parent="."]
+offset_left = 660.0
+offset_top = 584.0
+offset_right = 932.0
+offset_bottom = 607.0
+theme_override_colors/font_color = Color(0.643137, 0.25098, 0.145098, 1)
+text = "X                     A	                    	B"
 
-[node name="Label5" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="NomeP2" type="Label" parent="."]
+offset_left = 728.0
+offset_top = 184.0
+offset_right = 957.0
+offset_bottom = 240.0
+theme_override_colors/font_color = Color(0.65098, 0.227451, 0.0352941, 1)
+theme_override_fonts/font = SubResource("SystemFont_4dn5n")
+theme_override_font_sizes/font_size = 48
+text = "MINOTAUR"
+horizontal_alignment = 2
+
+[node name="NomeP1" type="Label" parent="."]
+offset_left = 199.0
+offset_top = 185.0
+offset_right = 428.0
+offset_bottom = 241.0
+theme_override_colors/font_color = Color(0.65098, 0.227451, 0.0352941, 1)
+theme_override_fonts/font = SubResource("SystemFont_4dn5n")
+theme_override_font_sizes/font_size = 48
+text = "MINOTAUR"
+
+[node name="HP_P1" type="TextureRect" parent="."]
+offset_left = 198.0
+offset_top = 236.0
+offset_right = 435.0
+offset_bottom = 268.0
+texture = ExtResource("9_f3mbx")
+expand_mode = 1
+
+[node name="HP_P2" type="TextureRect" parent="."]
+offset_left = 727.0
+offset_top = 237.0
+offset_right = 964.0
+offset_bottom = 269.0
+texture = ExtResource("9_f3mbx")
+expand_mode = 1
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
