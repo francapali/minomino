@@ -80,6 +80,8 @@ func _ready() -> void:
 		p1.flip = true
 	if p2.p_name == "Thes":
 		p2.flip = true
+		
+	update_health_bar()
 	
 	update_frames()
 	
@@ -298,6 +300,10 @@ func process_moves() -> void:
 	if p2.move == Move.SPECIAL:
 		p2.special_move(p1, p2_offset > PERFECT_WINDOW, p1_dmg_reduction)
 	
+	# Aggiorna la barra della vita dei player graficamente,
+	# mettendola in linea con gli HP correnti dei player
+	update_health_bar()
+	
 	# Rimuove i buff dei player e imposta la mossa corrente alla mossa successiva
 	p1.last_move = p1.move
 	p2.last_move = p2.move
@@ -312,6 +318,16 @@ func process_moves() -> void:
 	
 	#print("P1 - Mossa: %d - Offset di tempo: %f" % [p1.move, p1_offset])
 	#print("P2 - Mossa: %d - Offset di tempo: %f" % [p2.move, p2_offset])
+
+# Aggiorna graficamente la barra della vita di entrambi i giocatori
+func update_health_bar():
+	p1_HPbar.get_child(1).value = (float(p1.hp) / float(p1.max_hp)) * 100 
+	p2_HPbar.get_child(1).value = (float(p2.hp) / float(p2.max_hp)) * 100 
+	
+	print(p1_HPbar.get_child(1).value)
+	print(p2_HPbar.get_child(1).value)
+	print((p1.hp / 100) * p1.max_hp)
+	print((p2.hp / 100) * p2.max_hp)
 
 # Chiamata alla fine di ogni turno, verifica se il match è terminato o meno
 func end_condition() -> bool:
@@ -359,7 +375,7 @@ func end_match() -> void:
 		processing_turn = false
 		
 		# Prima di passare al match successivo, ricarica i kit, la vita dei
-		# player, i punti teatro e reimposta il turno a 0
+		# player, i punti teatro e reimposta il turno a 0, per poi aggiornare la grafica
 		p1.restore()
 		p2.restore()
 		
@@ -368,6 +384,9 @@ func end_match() -> void:
 		
 		p1.cur_theater_points = 0
 		p2.cur_theater_points = 0
+		
+		update_health_bar()
+		update_frames()
 		
 		cur_turn = 0
 		start_turn()

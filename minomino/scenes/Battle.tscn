@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://mvj15m4mxxk0"]
+[gd_scene load_steps=12 format=3 uid="uid://mvj15m4mxxk0"]
 
 [ext_resource type="Script" path="res://scripts/BattleScript.gd" id="1_ml41f"]
 [ext_resource type="Texture2D" uid="uid://ck3ehs3yjiwcj" path="res://assets/background.png" id="2_0axw4"]
@@ -8,10 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://pb8jahyun3jy" path="res://assets/MosseThes.png" id="6_nq00l"]
 [ext_resource type="AudioStream" uid="uid://bbb17yvjhrk8y" path="res://ost/battle theme.mp3" id="7_cdaro"]
 [ext_resource type="Texture2D" uid="uid://dtq1tbse43kqa" path="res://assets/RageItems.png" id="8_1pfyn"]
-[ext_resource type="Texture2D" uid="uid://drsv55ains5hg" path="res://assets/MaxHP.png" id="9_f3mbx"]
+[ext_resource type="Texture2D" uid="uid://bs084lxnk0v48" path="res://assets/zeroHP.png" id="9_hcivf"]
+[ext_resource type="Texture2D" uid="uid://bn7wxoe5aervx" path="res://assets/progressHP.png" id="11_ky3gp"]
 
 [sub_resource type="SystemFont" id="SystemFont_4dn5n"]
 font_names = PackedStringArray("Bauhaus 93")
+subpixel_positioning = 0
 
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_ml41f")
@@ -122,20 +124,36 @@ theme_override_fonts/font = SubResource("SystemFont_4dn5n")
 theme_override_font_sizes/font_size = 48
 text = "MINOTAUR"
 
-[node name="HP_P1" type="TextureRect" parent="."]
+[node name="HP_P1" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="HP_P1"]
+offset_right = 4.0
+offset_bottom = 27.0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HP_P1"]
 offset_left = 198.0
 offset_top = 236.0
-offset_right = 435.0
-offset_bottom = 268.0
-texture = ExtResource("9_f3mbx")
-expand_mode = 1
+offset_right = 619.0
+offset_bottom = 291.0
+scale = Vector2(0.56, 0.56)
+texture_under = ExtResource("9_hcivf")
+texture_progress = ExtResource("11_ky3gp")
+texture_progress_offset = Vector2(13, 15)
 
-[node name="HP_P2" type="TextureRect" parent="."]
+[node name="HP_P2" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="HP_P2"]
+offset_right = 4.0
+offset_bottom = 27.0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HP_P2"]
 offset_left = 727.0
-offset_top = 237.0
-offset_right = 964.0
-offset_bottom = 269.0
-texture = ExtResource("9_f3mbx")
-expand_mode = 1
+offset_top = 236.0
+offset_right = 1148.0
+offset_bottom = 291.0
+scale = Vector2(0.56, 0.56)
+texture_under = ExtResource("9_hcivf")
+texture_progress = ExtResource("11_ky3gp")
+texture_progress_offset = Vector2(13, 15)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
