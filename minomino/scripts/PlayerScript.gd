@@ -43,12 +43,18 @@ func initialize_player(name: String, kit_name: String) -> void:
 			def = 10
 			max_theater_points = 3
 			can_take_damage = true
+			command_attack = "RIGHT"
+			command_defense = "DOWN"
+			command_defense = "LEFT"
 		"Mino": 
 			max_hp = 50
 			atk = 10
 			def = 10
 			max_theater_points = 2
 			can_take_damage = true
+			command_attack = "LEFT"
+			command_defense = "RIGHT"
+			command_defense = "DOWN"
 		# Altri personaggi coming soon...
 	hp = max_hp
 
