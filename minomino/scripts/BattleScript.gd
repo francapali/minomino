@@ -144,51 +144,40 @@ func _unhandled_input(event) -> void:
 	# Controlla se l'input è rilevante per il gioco, se non lo è lo ignora
 	if not event.is_pressed() or processing_turn or event is not InputEventKey:
 		return
-		
-	var now = Time.get_ticks_msec() / 1000.0
 	
 	# Input P1
 	if p1.move == Move.NONE:
-		match event.keycode:
-			KEY_Q: 
-				p1.move = Move.ATTACK
-				p1.move_selected_time = now
-			KEY_E: 
-				p1.move = Move.DEFEND
-				p1.move_selected_time = now
-			KEY_W: 
-				p1.move = Move.SPECIAL
-				p1.move_selected_time = now
+		if Input.is_action_just_pressed("P1_ingame_left"):
+			p1.process_input("LEFT")
+		elif Input.is_action_just_pressed("P1_ingame_right"):
+			p1.process_input("RIGHT")
+		elif Input.is_action_just_pressed("P1_ingame_down"):
+			p1.process_input("DOWN")
 	
 	# Input P2
 	if p2.move == Move.NONE:
-		match event.keycode:
-			KEY_U:
-				p2.move = Move.ATTACK
-				p2.move_selected_time = now
-			KEY_O: 
-				p2.move = Move.DEFEND
-				p2.move_selected_time = now
-			KEY_I: 
-				p2.move = Move.SPECIAL
-				p2.move_selected_time = now
+		if Input.is_action_just_pressed("P2_ingame_left"):
+			p2.process_input("LEFT")
+		elif Input.is_action_just_pressed("P2_ingame_right"):
+			p2.process_input("RIGHT")
+		elif Input.is_action_just_pressed("P2_ingame_down"):
+			p2.process_input("DOWN")
 	
 	# Input degli item, sia per P1 che per P2
 	# Nota: Può essere usato un solo item per turno, quindi verrà preso quello che il player ha
 	# scelto per ultimo. Questo spiega anche le particolari combinazioni degli array uses_item		
-	match event.keycode:
-		KEY_A:
-			p1_uses_item = [true, false, false]
-		KEY_S:
-			p1_uses_item = [false, true, false]
-		KEY_D:
-			p1_uses_item = [false, false, true]
-		KEY_J:
-			p2_uses_item = [true, false, false]
-		KEY_K:
-			p2_uses_item = [false, true, false]
-		KEY_L:
-			p2_uses_item = [false, false, true]
+	if Input.is_action_just_pressed("P1_ingame_item_l"):
+		p1_uses_item = [true, false, false]
+	elif Input.is_action_just_pressed("P1_ingame_item_x"):
+		p1_uses_item = [false, true, false]
+	elif Input.is_action_just_pressed("P1_ingame_item_r"):
+		p1_uses_item = [false, false, true]
+	elif Input.is_action_just_pressed("P2_ingame_item_l"):
+		p2_uses_item = [true, false, false]
+	elif Input.is_action_just_pressed("P2_ingame_item_x"):
+		p2_uses_item = [false, true, false]
+	elif Input.is_action_just_pressed("P2_ingame_item_r"):
+		p2_uses_item = [false, false, true]
 
 # Chiamata alla fine del turno, effettua le mosse selezionate dai player e aggiorna le statistiche
 func process_moves() -> void:
