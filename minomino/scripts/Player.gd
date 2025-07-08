@@ -16,7 +16,7 @@ var max_theater_points: int
 var cur_theater_points: int
 var kit: Kit
 
-# Attributi per i buff/debuff del personaggio (Francesca perché mi odi)
+# Attributi per i buff/debuff del personaggio
 var can_take_damage: bool
 var heal_while_attacking: bool
 var attack_can_pierce: bool

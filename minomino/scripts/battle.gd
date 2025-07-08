@@ -3,14 +3,30 @@ extends Node2D
 # Definizione di enum per le tipologie di mosse
 enum Move {NONE, ATTACK, DEFEND, SPECIAL}
 
+# Variabili onready o di utilità per l'UI
+@onready var timer_display = $TimerDisplay
+@onready var texture_numeri = preload("res://assets/numeri.png")
+@onready var texture_tauro_exclamation = preload("res://assets/tauro_exclamation.png")
+@onready var texture_mino_exclamation = preload("res://assets/minoballoon.png")
+@onready var texture_minomino_exclamation = preload("res://assets/minomino.png")
+
+var regions = [
+	Rect2(1024, 0, 256, 720),  # 1
+	Rect2(785, 0, 239, 720),   # 2
+	Rect2(512, 0, 256, 720),   # 3
+	Rect2(256, 0, 256, 720),   # 4
+	Rect2(0, 0, 256, 720),     # 5
+]
+
 # Istanze dei giocatori
 var p1 = Player.new()
 var p2 = Player.new()
 
 # Variabili per la gestione dei turni
-var processing_turn = false
+var processing_turn = true
 var turn_start_time = 0
 var cur_turn = 0
+var start = false
 
 # Variabili per il conteggio dei match vinti dai player
 var p1_wins = 0
@@ -33,13 +49,39 @@ func _ready() -> void:
 	p1.initialize_player(GameState.player1, GameState.kitplayer1)
 	p2.initialize_player(GameState.player2, GameState.kitplayer2)
 	
-	$Player1.get_child(4).position = Vector2(100, 150)
-	$Player2.get_child(4).position = Vector2(500, 150)
+	print(p1.kit.kit_name)
+	print(p2.kit.kit_name)
 	
-	$Label.position = Vector2(100, 100)
-	$Label2.position = Vector2(500, 100)
+	timer_display.region_enabled = true
+	
+	await countdown()
 	
 	start_turn()
+
+# Gestisce il countdown prima della partenza della partita
+func countdown():
+	# Mostra il numero 3 e fa passare un secondo
+	timer_display.texture = texture_numeri
+	timer_display.position = Vector2(576, 200)
+	timer_display.region_rect = regions[2]
+	await get_tree().create_timer(1).timeout
+	
+	# Mostra il numero 2 e fa passare un secondo
+	timer_display.region_rect = regions[1]
+	await get_tree().create_timer(1).timeout
+	
+	# Mostra il numero 1 e fa passare un secondo
+	timer_display.region_rect = regions[0]
+	await get_tree().create_timer(1).timeout
+	
+	# Mostra "Tauro!", fa passare un secondo e fa partire il gioco
+	timer_display.region_enabled = false
+	timer_display.texture = texture_tauro_exclamation
+	timer_display.scale = Vector2(0.35, 0.367)
+	timer_display.position = Vector2(576, 200)
+	await get_tree().create_timer(1).timeout
+	
+	start = true
 
 # Chiamata all'inizio di un turno per inizializzare i valori e far partire il timer
 func start_turn() -> void:
@@ -54,25 +96,26 @@ func start_turn() -> void:
 	p2.move_selected_time = -1.0
 	
 	turn_start_time = Time.get_ticks_msec() / 1000.0
+	
+	processing_turn = false
 	$Timer.start(TURN_DURATION)
 
 # Chiamata quando scade il tempo, notifica i giocatori e passa al processing delle mosse
 func _on_timer_timeout() -> void:
 	$Timer.stop()
-	$Label.text = "TAURO!"
-	$Label2.text = "SELEZIONA LA MOSSA ORA!"
+	#$Label.text = "TAURO!"
+	#$Label2.text = "SELEZIONA LA MOSSA ORA!"
 	await get_tree().create_timer(PERFECT_WINDOW).timeout
-	$Label2.text = "TEMPO SCADUTO!"
+	#$Label2.text = "TEMPO SCADUTO!"
 	await get_tree().create_timer(1 - PERFECT_WINDOW).timeout
 	processing_turn = true
 	await get_tree().create_timer(3).timeout
-	$Label2.text = "Preparati..."
+	#$Label2.text = "Preparati..."
 	process_moves()
 	
 	if end_condition():
 		end_match()
 	else:
-		processing_turn = false
 		start_turn();
 
 # Funzione che gestisce e processa gli input dei giocatori durante la partita
@@ -149,18 +192,18 @@ func process_moves() -> void:
 	# Controllo sul giocatore che ripete la stessa mossa
 	if p1.last_move == p1.move and p1.move != Move.NONE:
 		p1.move = Move.NONE
-		print("Teseo ripete la stessa mossa!")
+		print(p1.p_name + " ripete la stessa mossa!")
 		
 	if p2.last_move == p2.move and p2.move != Move.NONE:
 		p2.move = Move.NONE
-		print("Minotauro ripete la stessa mossa!")
+		print(p2.p_name + " ripete la stessa mossa!")
 	
 	# Controllo sul giocatore che non ha scelto una mossa
 	if p1.move == Move.NONE:
-		print("Teseo non fa nulla!")
+		print(p1.p_name + " non fa nulla!")
 		
 	if p2.move == Move.NONE:
-		print("Minotauro non fa nulla!")
+		print(p2.p_name + " non fa nulla!")
 	
 	# Controlla se un player sta usando Divine Curtain e l'altro Phantom Sword (i due item si annullano a vicenda)
 	if (not p1.can_take_damage and p2.attack_can_pierce):
@@ -348,7 +391,30 @@ func winner() -> int:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if not $Timer.is_stopped():
-		$Label.text = str(int($Timer.time_left) + 1)
-		$Player1.get_child(4).text = p1.toString()
-		$Player2.get_child(4).text = p2.toString()
+	if start:
+		if not $Timer.is_stopped():
+			timer_display.region_enabled = true
+			timer_display.scale = Vector2(0.381, 0.4)
+			timer_display.texture = texture_numeri
+			
+			var index = int($Timer.time_left)
+			
+			if index >= 4:
+				timer_display.region_rect = regions[4]
+			elif index < 4 and index > 1:
+				timer_display.region_rect = regions[index]
+			elif index == 1:
+				timer_display.region_enabled = false
+				timer_display.scale = Vector2(0.35, 0.367)
+				timer_display.texture = texture_mino_exclamation
+			elif index == 0:
+				timer_display.region_enabled = false
+				timer_display.scale = Vector2(0.35, 0.367)
+				timer_display.texture = texture_minomino_exclamation
+				
+			$Player1.get_child(4).text = p1.toString()
+			$Player2.get_child(4).text = p2.toString()
+		else:
+			timer_display.region_enabled = false
+			timer_display.scale = Vector2(0.35, 0.367)
+			timer_display.texture = texture_tauro_exclamation

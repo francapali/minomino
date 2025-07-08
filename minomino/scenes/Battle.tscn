@@ -1,10 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://mvj15m4mxxk0"]
+[gd_scene load_steps=4 format=3 uid="uid://mvj15m4mxxk0"]
 
 [ext_resource type="Script" path="res://scripts/battle.gd" id="1_ml41f"]
 [ext_resource type="Texture2D" uid="uid://ck3ehs3yjiwcj" path="res://assets/background.png" id="2_0axw4"]
+[ext_resource type="Texture2D" uid="uid://cqqejwoks2e3k" path="res://assets/numeri.png" id="2_vfde0"]
 
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_ml41f")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(576, 325)
+scale = Vector2(0.898437, 0.902778)
+texture = ExtResource("2_0axw4")
+
+[node name="TimerDisplay" type="Sprite2D" parent="."]
+position = Vector2(554, 150)
+scale = Vector2(0.35, 0.367)
+texture = ExtResource("2_vfde0")
 
 [node name="Player1" type="Node2D" parent="."]
 
@@ -37,12 +48,6 @@ offset_bottom = 23.0
 [node name="Timer" type="Timer" parent="."]
 process_callback = 0
 wait_time = 5.0
-
-[node name="Background" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(576, 325)
-scale = Vector2(0.898437, 0.902778)
-texture = ExtResource("2_0axw4")
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
