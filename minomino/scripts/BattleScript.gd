@@ -147,6 +147,7 @@ func _on_timer_timeout() -> void:
 	
 	if end_condition():
 		end_match()
+		get_tree().change_scene_to_file("res://scenes/Final.tscn")
 	else:
 		start_turn();
 

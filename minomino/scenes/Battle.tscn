@@ -12,6 +12,7 @@
 
 [sub_resource type="SystemFont" id="SystemFont_4dn5n"]
 font_names = PackedStringArray("Bauhaus 93")
+subpixel_positioning = 0
 
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_ml41f")

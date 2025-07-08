@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://cv28wiq7rhan3"]
+
+[ext_resource type="Script" path="res://scripts/FinalScript.gd" id="1_2n562"]
+[ext_resource type="Texture2D" uid="uid://hnrvgx6e38te" path="res://assets/endingbackground.png" id="1_s4onn"]
+[ext_resource type="Texture2D" uid="uid://0qu64vn0vhku" path="res://assets/tesvince.png" id="3_ogtsl"]
+
+[sub_resource type="SystemFont" id="SystemFont_tdvaj"]
+font_names = PackedStringArray("Bauhaus 93")
+
+[node name="Final" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2n562")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 648.0
+texture = ExtResource("1_s4onn")
+expand_mode = 1
+
+[node name="Winner" type="Label" parent="."]
+layout_mode = 0
+offset_left = 455.0
+offset_top = 570.0
+offset_right = 682.0
+offset_bottom = 636.0
+theme_override_fonts/font = SubResource("SystemFont_tdvaj")
+theme_override_font_sizes/font_size = 57
+text = "Minotaur"
+horizontal_alignment = 1
+
+[node name="WinnerSprite" type="Sprite2D" parent="."]
+position = Vector2(579, 421)
+scale = Vector2(0.336719, 0.33418)
+texture = ExtResource("3_ogtsl")
