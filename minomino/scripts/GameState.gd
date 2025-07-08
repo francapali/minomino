@@ -11,3 +11,4 @@ var kitplayer1 = ""
 var kitplayer2 = ""
 
 var winner: Player = null
+var winner_number: int = 0

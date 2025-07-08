@@ -346,12 +346,15 @@ func end_match() -> void:
 	if p1_wins == 3 and p2_wins == 3:
 		print("La partita finisce con un pareggio!")
 		GameState.winner = null
+		GameState.winner_number = 0
 	elif p1_wins == 3:
 		print ("Il giocatore 1 vince l'intera partita!")
 		GameState.winner = p1
+		GameState.winner_number = 1
 	elif p2_wins == 3:
 		print ("Il giocatore 2 vince l'intera partita!")
 		GameState.winner = p2
+		GameState.winner_number = 2
 	else:
 		processing_turn = false
 		
