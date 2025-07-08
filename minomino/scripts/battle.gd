@@ -7,6 +7,20 @@ enum Move {NONE, ATTACK, DEFEND, SPECIAL}
 var p1 = Player.new()
 var p2 = Player.new()
 
+@onready var p1_sprite = $P1Sprite
+@onready var p2_sprite = $P2Sprite
+@onready var p1_mosse = $MosseP1
+@onready var p2_mosse = $MosseP2
+@onready var p1_kit = $KitP1
+@onready var p2_kit = $KitP2
+
+var teseo_texture = preload("res://assets/tesstd.png")
+var mosse_thes = preload("res://assets/MosseThes.png")
+var minotauro_texture = preload("res://assets/minostd.png")
+var mosse_mino = preload("res://assets/MosseMino.png")
+var safety_texture = preload("res://assets/SafetyItems.png")
+var rage_texture = preload("res://assets/RageItems.png")
+
 # Variabili per la gestione dei turni
 var processing_turn = false
 var turn_start_time = 0
@@ -33,17 +47,17 @@ func _ready() -> void:
 	p1.initialize_player(GameState.player1, GameState.kitplayer1)
 	p2.initialize_player(GameState.player2, GameState.kitplayer2)
 	
-	$Player1.get_child(4).position = Vector2(100, 150)
-	$Player2.get_child(4).position = Vector2(500, 150)
-	
 	$Label.position = Vector2(100, 100)
 	$Label2.position = Vector2(500, 100)
+	
+	update_frames()
 	
 	start_turn()
 
 # Chiamata all'inizio di un turno per inizializzare i valori e far partire il timer
 func start_turn() -> void:
 	cur_turn += 1;
+	update_frames()
 	print("Turno %d" % cur_turn)
 	$Label2.text = "Preparati..."
 	
@@ -350,5 +364,75 @@ func winner() -> int:
 func _process(delta: float) -> void:
 	if not $Timer.is_stopped():
 		$Label.text = str(int($Timer.time_left) + 1)
-		$Player1.get_child(4).text = p1.toString()
-		$Player2.get_child(4).text = p2.toString()
+		
+func update_frames():
+	# P1 sprite
+	if p1.p_name == "Thes":  # Teseo
+		p1_sprite.texture = teseo_texture
+		p1_sprite.global_position = Vector2(367, 430)
+		p1_sprite.scale = Vector2(0.335, 0.33)
+		p1_sprite.flip_h = true
+		
+		p1_mosse.texture = mosse_thes
+		p1_mosse.global_position = Vector2(70, 224)
+		p1_mosse.size = Vector2(211, 407)
+		p1_mosse.scale = Vector2(1, 1)
+		p1_sprite.flip_h = true
+		
+	elif p1.p_name == "Mino":  # Minotauro
+		p1_sprite.texture = minotauro_texture
+		p1_sprite.global_position = Vector2(382, 422)
+		p1_sprite.scale = Vector2(0.36, 0.35)
+		p1_sprite.flip_h = true
+		
+		p1_mosse.texture = mosse_mino
+		p1_mosse.global_position = Vector2(72, 225)
+		p1_mosse.size = Vector2(205, 394)
+		p1_mosse.scale = Vector2(1, 1)
+		p1_mosse.flip_h = true
+
+	# P2 sprite
+	if p2.p_name == "Thes":  # Teseo
+		p2_sprite.texture = teseo_texture
+		p2_sprite.global_position = Vector2(792, 423)
+		p2_sprite.scale = Vector2(0.335, 0.33)
+		p2_sprite.flip_h = false
+		
+		p2_mosse.texture = mosse_thes
+		p2_mosse.global_position = Vector2(872, 224)
+		p2_mosse.size = Vector2(211, 407)
+		p2_mosse.scale = Vector2(1, 1)
+		p2_mosse.flip_h = true
+		
+	elif p2.p_name == "Mino":  # Minotauro
+		p2_sprite.texture = minotauro_texture
+		p2_sprite.global_position = Vector2(792, 418)
+		p2_sprite.scale = Vector2(0.36, 0.35)
+		p2_sprite.flip_h = false
+		
+		p2_mosse.texture = mosse_mino
+		p2_mosse.global_position = Vector2(875, 229)
+		p2_mosse.size = Vector2(205, 394)
+		p2_mosse.scale = Vector2(1, 1)
+		p2_mosse.flip_h = false
+		
+	# P1 Infografica Kit
+	if p1.kit.kit_name == "SafetyButton":
+		p1_kit.texture = safety_texture
+	elif p1.kit.kit_name == "RageButton":
+		p1_kit.texture = rage_texture
+
+	p1_kit.visible = true
+	p1_kit.modulate = Color(1,1,1,1)
+	p1_kit.global_position = Vector2(360, 596)
+	p1_kit.scale = Vector2(0.242, 0.242)
+		
+# P2 Infografica Kit
+	if p2.kit.kit_name == "SafetyButton":
+		p2_kit.texture = safety_texture
+	elif p2.kit.kit_name == "RageButton":
+		p2_kit.texture = rage_texture
+	p2_kit.visible = true
+	p2_kit.modulate = Color(1,1,1,1)
+	p2_kit.global_position = Vector2(800, 596)
+	p2_kit.scale = Vector2(0.242, 0.242)
