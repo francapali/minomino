@@ -26,6 +26,9 @@ var command_attack: String
 var command_defense: String
 var command_special: String
 
+# Booleano che indica se lo sprite delle mosse è stato specchiato (se il personaggio è P2)
+var flip = false
+
 # Attributi per la gestione delle mosse nel turno
 var move: Move
 var last_move: Move
@@ -50,7 +53,7 @@ func initialize_player(name: String, kit_name: String) -> void:
 			can_take_damage = true
 			command_attack = "RIGHT"
 			command_defense = "DOWN"
-			command_defense = "LEFT"
+			command_special = "LEFT"
 		"Mino": 
 			max_hp = 50
 			atk = 10
@@ -59,7 +62,7 @@ func initialize_player(name: String, kit_name: String) -> void:
 			can_take_damage = true
 			command_attack = "LEFT"
 			command_defense = "RIGHT"
-			command_defense = "DOWN"
+			command_special = "DOWN"
 		# Altri personaggi coming soon...
 	hp = max_hp
 
@@ -149,6 +152,13 @@ func restore() -> void:
 func process_input(input: String) -> void:
 	# Imposta il tempismo
 	move_selected_time = Time.get_ticks_msec() / 1000.0
+	
+	# Inverte destra e sinistra se il personaggio è flippato
+	if flip:
+		if input == "RIGHT":
+			input = "LEFT"
+		elif input == "LEFT":
+			input = "RIGHT"
 	
 	# Compara l'input con i comandi del personaggio per scegliere la mossa da fare
 	match input:

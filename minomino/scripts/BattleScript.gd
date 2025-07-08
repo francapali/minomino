@@ -67,8 +67,19 @@ const HEAL_WHILE_ATTACKING = 3
 # Called when the node enters the scene tree for the first time.
 # Inizializza i parametri dei player e fa cominciare la partita.
 func _ready() -> void:
+	# Inizializza i player sulla base dei personaggi e il kit che hanno scelto
 	p1.initialize_player(GameState.player1, GameState.kitplayer1)
 	p2.initialize_player(GameState.player2, GameState.kitplayer2)
+	
+	# Imposta i valori di flip, necessario per il mirroring delle mosse, nello specifico:
+	# - Teseo P1: Non flippato
+	# - Teseo P2: Flippato
+	# - Minotauro P1: Flippato
+	# - Minotauro P2: Non flippato
+	if p1.p_name == "Mino":
+		p1.flip = true
+	if p2.p_name == "Thes":
+		p2.flip = true
 	
 	update_frames()
 	
@@ -494,11 +505,12 @@ func update_frames():
 	p1_kit.global_position = Vector2(360, 596)
 	p1_kit.scale = Vector2(0.242, 0.242)
 		
-# P2 Infografica Kit
+	# P2 Infografica Kit
 	if p2.kit.kit_name == "SafetyButton":
 		p2_kit.texture = safety_texture
 	elif p2.kit.kit_name == "RageButton":
 		p2_kit.texture = rage_texture
+
 	p2_kit.visible = true
 	p2_kit.modulate = Color(1,1,1,1)
 	p2_kit.global_position = Vector2(800, 596)
