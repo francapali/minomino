@@ -26,9 +26,6 @@ var move: Move
 var last_move: Move
 var move_selected_time: float
 
-# Booleano che indica se la mossa speciale può essere eseguita
-var can_make_special_move: bool
-
 # Imposta i parametri del giocatore in base al personaggio che ha selezionato
 func initialize_player(name: String, kit_name: String) -> void:
 	p_name = name
@@ -45,14 +42,12 @@ func initialize_player(name: String, kit_name: String) -> void:
 			atk = 10
 			def = 10
 			max_theater_points = 3
-			can_make_special_move = true
 			can_take_damage = true
 		"Mino": 
 			max_hp = 50
 			atk = 10
 			def = 10
 			max_theater_points = 2
-			can_make_special_move = false
 			can_take_damage = true
 		# Altri personaggi coming soon...
 	hp = max_hp
@@ -89,27 +84,22 @@ func special_move(enemy: Player, penalty: bool, dmg_reduction: int) -> void:
 		# attacca e Teseo non è difeso da Divine Curtain non guadagna un punto e dovrà ricaricare il gomitolo
 		"Thes":
 			var sp_fail: bool = enemy.move == Move.ATTACK
-			sp_fail = sp_fail or (enemy.name == "Minotauro" and enemy.can_make_special_move and enemy.move == Move.SPECIAL)
+			sp_fail = sp_fail or (enemy.p_name == "Mino" and enemy.can_make_special_move and enemy.move == Move.SPECIAL)
 			sp_fail = sp_fail and can_take_damage
 	
 			if sp_fail:
-				can_make_special_move = false
 				print("Teseo è stato attaccato mentre faceva la mossa speciale! Ha perso il gomitolo!")
 			elif not penalty:
-				if can_make_special_move == false:
-					can_make_special_move = true
-					print("Teseo ha ripreso il gomitolo!")
-				else:
-					cur_theater_points += 1
-					print("Teseo riavvolge il gomitolo! Guadagna 1 punto teatro!")
+				cur_theater_points += 1
+				print("Teseo riavvolge il gomitolo! Guadagna 1 punto teatro!")
 				
 			
 		# Mossa speciale del Minotauro - Artigli: Attacco potenziato che fa il 50% dei danni in più,
 		# però deve essere caricata per un turno prima di usarla
 		"Mino":
-			if can_make_special_move == false:
+			if cur_theater_points == 0:
 				if not penalty:
-					can_make_special_move = true
+					cur_theater_points = 1
 					print("Il minotauro carica la mossa speciale...")
 			else:
 				if not penalty:
@@ -118,13 +108,7 @@ func special_move(enemy: Player, penalty: bool, dmg_reduction: int) -> void:
 				else:
 					enemy.take_damage(atk - dmg_reduction)
 					print("Penalità: Il minotauro attacca con l'artiglio! Teseo prende %d danni!" % (atk - dmg_reduction))
-				can_make_special_move = false
-				
-				# Non so se fare che il minotauro effettua l'attacco ma non guadagna TP se viene ucciso???
-				# Da chiedere a #lovestobug ma per ora faccio che non guadagna il TP (theater point)
-				if hp > 0:
-					cur_theater_points += 1
-					print("Il minotauro guadagna un punto teatro!")
+				cur_theater_points = 0
 
 # Metodo che rimuove i buff del player, generalmente viene richiamato a fine turno
 func remove_buffs() -> void:
@@ -140,11 +124,9 @@ func reset_stats() -> void:
 		"Thes":
 			atk = 10
 			def = 10
-			can_make_special_move = true
 		"Mino":
 			atk = 10
 			def = 10
-			can_make_special_move = false
 		# Altri personaggi coming soon...
 
 # Riporta i player a metà vita se sono sotto quel treshold di HP, richiamato tra un match e l'altro
