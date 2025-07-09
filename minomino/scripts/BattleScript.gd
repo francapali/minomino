@@ -7,16 +7,16 @@ enum Move {NONE, ATTACK, DEFEND, SPECIAL}
 var p1 = Player.new()
 var p2 = Player.new()
 
-# Variabili onready o di utilità per l'UI
+# Variabili di utilità per l'UI
 # Texture varie (il gioco è molto leggero, ci possiamo permettere di tenerle caricate per facilità d'accesso)
-@onready var texture_stars = [
+var texture_stars = [
 	preload("res://assets/zerostars.png"),    # 0 Punti per Teseo
 	preload("res://assets/onestar.png"),      # 1 Punto per Teseo
 	preload("res://assets/twostars.png"),     # 2 Punti per Teseo
 	preload("res://assets/threestars.png"),   # 3 Punti per Teseo
 ]
 
-@onready var texture_circles = [
+var texture_circles = [
 	preload("res://assets/circle_empty.png"), # 0 Punti per Minotauro
 	preload("res://assets/circle_full.png"),  # 1 Punto per Minotauro
 ]
@@ -29,10 +29,10 @@ var regions = [
 	Rect2(0, 0, 256, 720),     # 5
 ]
 	
-@onready var texture_numeri = preload("res://assets/numeri.png")
-@onready var texture_tauro_exclamation = preload("res://assets/tauro_exclamation.png")
-@onready var texture_mino_exclamation = preload("res://assets/minoballoon.png")
-@onready var texture_minomino_exclamation = preload("res://assets/minomino.png")
+var texture_numeri = preload("res://assets/numeri.png")
+var texture_tauro_exclamation = preload("res://assets/tauro_exclamation.png")
+var texture_mino_exclamation = preload("res://assets/minoballoon.png")
+var texture_minomino_exclamation = preload("res://assets/minomino.png")
 var teseo_texture = preload("res://assets/tesstd.png")
 var mosse_thes = preload("res://assets/MosseThes.png")
 var minotauro_texture = preload("res://assets/minostd.png")
