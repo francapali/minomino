@@ -17,6 +17,7 @@ subpixel_positioning = 0
 
 [sub_resource type="SystemFont" id="SystemFont_6g6f2"]
 font_names = PackedStringArray("Monospace")
+subpixel_positioning = 0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gf8i5"]
 bg_color = Color(0, 0, 0, 1)
@@ -85,6 +86,7 @@ flip_h = true
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_cdaro")
 autoplay = true
+parameters/looping = true
 
 [node name="KitP1" type="Sprite2D" parent="."]
 position = Vector2(800, 596)
