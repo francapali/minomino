@@ -29,19 +29,26 @@ var regions = [
 	Rect2(0, 0, 256, 720),     # 5
 ]
 	
-var texture_numeri = preload("res://assets/numeri.png")
-var texture_tauro_exclamation = preload("res://assets/tauro_exclamation.png")
-var texture_mino_exclamation = preload("res://assets/minoballoon.png")
-var texture_minomino_exclamation = preload("res://assets/minomino.png")
-var teseo_texture = preload("res://assets/tesstd.png")
-var mosse_thes = preload("res://assets/MosseThes.png")
-var minotauro_texture = preload("res://assets/minostd.png")
-var mosse_mino = preload("res://assets/MosseMino.png")
-var safety_texture = preload("res://assets/SafetyItems.png")
-var rage_texture = preload("res://assets/RageItems.png")
+@onready var texture_numeri = preload("res://assets/numeri.png")
+@onready var texture_tauro_exclamation = preload("res://assets/tauro_exclamation.png")
+@onready var texture_mino_exclamation = preload("res://assets/minoballoon.png")
+@onready var texture_minomino_exclamation = preload("res://assets/minomino.png")
+@onready var teseo_texture = preload("res://assets/tesstd.png")
+@onready var mosse_thes = preload("res://assets/MosseThes.png")
+@onready var minotauro_texture = preload("res://assets/minostd.png")
+@onready var mosse_mino = preload("res://assets/MosseMino.png")
+@onready var safety_texture = preload("res://assets/SafetyItems.png")
+@onready var rage_texture = preload("res://assets/RageItems.png")
 
-# Timer
+# Sound effects
+@onready var attack_sfx = preload("res://sfx/Attack.wav")
+@onready var defense_sfx = preload("res://sfx/Defense.mp3")
+@onready var special_sfx = preload("res://sfx/Special.mp3")
+@onready var item_sfx = preload("res://sfx/Item.mp3")
+
+# Timer ed effetti sonori
 @onready var timer_display = $TimerDisplay
+@onready var sound_effects = $SoundEffects
 
 #Gestione UI P1
 @onready var p1_sprite = $P1Sprite
@@ -50,6 +57,7 @@ var rage_texture = preload("res://assets/RageItems.png")
 @onready var p1_kit = $KitP1
 @onready var p1_HPbar = $HP_P1
 @onready var P1_points = $P1Points
+@onready var animation_p1 = $P1Sprite/AnimationPlayer
 
 #Gestione UI P2
 @onready var p2_sprite = $P2Sprite
@@ -58,6 +66,7 @@ var rage_texture = preload("res://assets/RageItems.png")
 @onready var p2_kit = $KitP2
 @onready var p2_HPbar = $HP_P2
 @onready var P2_points = $P2Points
+@onready var animation_p2 = $P2Sprite/AnimationPlayer
 
 # Variabili per la gestione dei turni
 var processing_turn = true
@@ -103,6 +112,8 @@ func _ready() -> void:
 	update_health_bar()
 	
 	update_frames()
+	
+	await countdown()
 	
 	# Comincia la partita
 	start_turn()
@@ -289,9 +300,11 @@ func process_moves() -> void:
 		
 		if p1_offset <= PERFECT_WINDOW:
 			p2.take_damage(p1.atk - p2_dmg_reduction)
+			animation_p2.play("damage")
 		else:
 			# Penalità: Riduce il danno inflitto del 20%
 			p2.take_damage(round(p1.atk * PENALTY_PERCENTAGE) - p2_dmg_reduction)
+			animation_p2.play("damage")
 		
 		# Controlla se Fearless Heart è attivo
 		if p1.heal_while_attacking and p2.move == Move.ATTACK:
@@ -305,9 +318,11 @@ func process_moves() -> void:
 		
 		if p2_offset <= PERFECT_WINDOW:
 			p1.take_damage(p2.atk - p1_dmg_reduction)
+			animation_p1.play("damage")
 		else:
 			# Penalità: Riduce il danno inflitto del 20%
 			p1.take_damage(round(p2.atk * PENALTY_PERCENTAGE) - p1_dmg_reduction)
+			animation_p1.play("damage")
 			
 		# Controlla se Fearless Heart è attivo
 		if p2.heal_while_attacking and p1.move == Move.ATTACK:
@@ -316,10 +331,16 @@ func process_moves() -> void:
 	# Per le mosse speciali i check sono fatti nel metodo stesso
 	# Mossa speciale P1 - Sarà gestita dal metodo apposito
 	if p1.move == Move.SPECIAL:
+		if p1.p_name == "Mino" and p1.cur_theater_points == 1:
+			animation_p2.play("damage")
+			
 		p1.special_move(p2, p1_offset > PERFECT_WINDOW, p2_dmg_reduction)
 		
 	# Mossa speciale P2 - Sarà gestita dal metodo apposito
 	if p2.move == Move.SPECIAL:
+		if p2.p_name == "Mino" and p2.cur_theater_points == 1:
+			animation_p1.play("damage")
+			
 		p2.special_move(p1, p2_offset > PERFECT_WINDOW, p1_dmg_reduction)
 	
 	# Aggiorna la barra dei punti dei player graficamente,
@@ -329,6 +350,21 @@ func process_moves() -> void:
 	# Aggiorna la barra della vita dei player graficamente,
 	# mettendola in linea con gli HP correnti dei player
 	update_health_bar()
+	
+	# Suona i sound effects appropriati
+	# Viene riprodotto un solo sound effect per l'intero turno, così da non generare caos.
+	# Gli item hanno la proprità, poi le mosse speciali, a seguito della difesa, infine l'attacco.
+	# Se un player ha usato un item, riproduci il sound effect appropriato
+	if p1_uses_item.has(true) or p2_uses_item.has(true):
+		sound_effects.stream = item_sfx
+		sound_effects.play()
+	else:
+		if p1.move == Move.SPECIAL or p2.move == Move.SPECIAL:
+			play_sound(Move.SPECIAL)
+		elif p1.move == Move.DEFEND or p2.move == Move.DEFEND:
+			play_sound(Move.DEFEND)
+		elif p1.move == Move.ATTACK or p2.move == Move.ATTACK:
+			play_sound(Move.ATTACK)
 	
 	# Rimuove i buff dei player e imposta la mossa corrente alla mossa successiva
 	p1.last_move = p1.move
@@ -591,3 +627,16 @@ func update_frames():
 	p2_kit.modulate = Color(1,1,1,1)
 	p2_kit.global_position = Vector2(800, 596)
 	p2_kit.scale = Vector2(0.242, 0.242)
+
+func play_sound(move: Move) -> void:
+	match move:
+		Move.ATTACK:
+			sound_effects.stream = attack_sfx
+			sound_effects.play()
+		Move.DEFEND:
+			sound_effects.stream = defense_sfx
+			sound_effects.play()
+		Move.SPECIAL:
+			sound_effects.stream = special_sfx
+			sound_effects.play()
+	pass

@@ -98,7 +98,7 @@ func special_move(enemy: Player, penalty: bool, dmg_reduction: int) -> void:
 		# attacca e Teseo non è difeso da Divine Curtain non guadagna un punto e dovrà ricaricare il gomitolo
 		"Thes":
 			var sp_fail: bool = enemy.move == Move.ATTACK
-			sp_fail = sp_fail or (enemy.p_name == "Mino" and enemy.can_make_special_move and enemy.move == Move.SPECIAL)
+			sp_fail = sp_fail or (enemy.p_name == "Mino" and enemy.cur_theater_points == 1 and enemy.move == Move.SPECIAL)
 			sp_fail = sp_fail and can_take_damage
 	
 			if sp_fail:
