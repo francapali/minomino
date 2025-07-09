@@ -71,14 +71,14 @@ func take_damage(damage: int) -> void:
 	# Se il personaggio è protetto da un buff non prende danni
 	if not can_take_damage:
 		damage = 0
-		print(p_name + " prende %d danni!" % damage)
+		#log_action(p_name + " takes %d damage!" % damage)
 	else:
 		if hp > damage:
 			hp -= damage
-			print(p_name + " prende %d danni!" % damage)
+			#log_action(p_name + " takes %d damage!" % damage)
 		else:
 			hp = 0
-			print(p_name + " è a terra!")
+			#log_action(p_name + " is lying on the floor!")
 
 # Funzione che imposta gli HP del personaggio quando si cura
 func heal(recover: int) -> void:
@@ -102,10 +102,11 @@ func special_move(enemy: Player, penalty: bool, dmg_reduction: int) -> void:
 			sp_fail = sp_fail and can_take_damage
 	
 			if sp_fail:
-				print("Teseo è stato attaccato mentre faceva la mossa speciale! Ha perso il gomitolo!")
+				print("ciao debug")
+				#log_action("Theseus was attacked during his special move! He lost his thread!")
 			elif not penalty:
 				cur_theater_points += 1
-				print("Teseo riavvolge il gomitolo! Guadagna 1 punto teatro!")
+				#log_action("Theseus rewinds the ball of yarn! He gains one bonus star!")
 				
 			
 		# Mossa speciale del Minotauro - Artigli: Attacco potenziato che fa il 50% dei danni in più,
@@ -114,14 +115,14 @@ func special_move(enemy: Player, penalty: bool, dmg_reduction: int) -> void:
 			if cur_theater_points == 0:
 				if not penalty:
 					cur_theater_points = 1
-					print("Il minotauro carica la mossa speciale...")
+					#log_action("Minotaur recharges his special move...")
 			else:
 				if not penalty:
 					enemy.take_damage(round(atk * 1.5) - dmg_reduction)
-					print("Il minotauro attacca con l'artiglio! Teseo prende %d danni!" % (round(atk * 1.5) - dmg_reduction))
+					#log_action("Minotaur attacks with his claws! Theseus takes %d damage!" % (round(atk * 1.5) - dmg_reduction))
 				else:
 					enemy.take_damage(atk - dmg_reduction)
-					print("Penalità: Il minotauro attacca con l'artiglio! Teseo prende %d danni!" % (atk - dmg_reduction))
+					#log_action("Time Penalty: Minotaur attacks with his claws! Theseus takes %d damage!" % (atk - dmg_reduction))
 				cur_theater_points = 0
 
 # Metodo che rimuove i buff del player, generalmente viene richiamato a fine turno

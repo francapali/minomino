@@ -10,6 +10,9 @@ enum Move {NONE, ATTACK, DEFEND, SPECIAL}
 @onready var texture_mino_exclamation = preload("res://assets/minoballoon.png")
 @onready var texture_minomino_exclamation = preload("res://assets/minomino.png")
 
+@onready var action_log = $ActionLog
+var log_entries := []
+
 var regions = [
 	Rect2(1024, 0, 256, 720),  # 1
 	Rect2(785, 0, 239, 720),   # 2
@@ -80,7 +83,8 @@ func _ready() -> void:
 		p1.flip = true
 	if p2.p_name == "Thes":
 		p2.flip = true
-	
+		
+	action_log.text = ""
 	update_frames()
 	
 	await countdown()
@@ -118,8 +122,7 @@ func countdown():
 func start_turn() -> void:
 	cur_turn += 1;
 	update_frames()
-	print("Turno %d" % cur_turn)
-	$Label2.text = "Preparati..."
+	log_action("Turn: %d" % cur_turn)
 	
 	p1.move = Move.NONE
 	p2.move = Move.NONE
@@ -209,57 +212,59 @@ func process_moves() -> void:
 	for i in 3:
 		if p1_uses_item[i]:
 			p1.kit.use_item(p1, i)
+			log_action("P1: " + p1.p_name + " takes" + p1.kit.items[i].item_name + "!")
 			
 	for i in 3:
 		if p2_uses_item[i]:
 			p2.kit.use_item(p2, i)
+			log_action("P2: " + p2.p_name + " takes" + p2.kit.items[i].item_name + "!")
 	
 	# Controllo sul giocatore che ripete la stessa mossa
 	if p1.last_move == p1.move and p1.move != Move.NONE:
 		p1.move = Move.NONE
-		print(p1.p_name + " ripete la stessa mossa!")
+		log_action("P1: " + p1.p_name + "!" + " You can't choose the same move two times in a row!")
 		
 	if p2.last_move == p2.move and p2.move != Move.NONE:
 		p2.move = Move.NONE
-		print(p2.p_name + " ripete la stessa mossa!")
+		log_action("P2: " + p2.p_name + "!" + " You can't choose the same move two times in a row!")
 	
 	# Controllo sul giocatore che non ha scelto una mossa
 	if p1.move == Move.NONE:
-		print(p1.p_name + " non fa nulla!")
+		log_action("P1: " + p1.p_name + " What were you trying to do?!")
 		
 	if p2.move == Move.NONE:
-		print(p2.p_name + " non fa nulla!")
+		log_action("P2: " + p2.p_name + " What were you trying to do?!")
 	
 	# Controlla se un player sta usando Divine Curtain e l'altro Phantom Sword (i due item si annullano a vicenda)
 	if (not p1.can_take_damage and p2.attack_can_pierce):
 		p1.can_take_damage = true
 		p2.attack_can_pierce = false
-		print("I due item si annullano!")
+		log_action("No way: the items you used have cancelled each other out!")
 		
 	if (not p2.can_take_damage and p1.attack_can_pierce):
 		p2.can_take_damage = true
 		p1.attack_can_pierce = false
-		print("I due item si annullano!")
+		log_action("No way: the items you used have cancelled each other out!")
 	
 	# Se P1 si difende guadagna una riduzione danni in base al tempismo
 	if p1.move == Move.DEFEND:
 		if p1_offset <= PERFECT_WINDOW:
 			p1_dmg_reduction = p1.def
-			print("Teseo riduce i danni di %d HP!" % p1_dmg_reduction)
+			log_action("Theseus reduces damage by %d HP!" % p1_dmg_reduction)
 		else:
 			# Penalità: Riduce la riduzione danni del 20%
 			p1_dmg_reduction = round(p2.def * PENALTY_PERCENTAGE)
-			print("Penalità: Teseo riduce i danni di %d HP!" % p1_dmg_reduction)
+			log_action("Time Penalty: Theseus reduces damage by %d HP!" % p1_dmg_reduction)
 			
 	# Se P2 si difende guadagna una riduzione danni in base al tempismo
 	if p2.move == Move.DEFEND:
 		if p2_offset <= PERFECT_WINDOW:
 			p2_dmg_reduction = p1.def
-			print("Minotauro riduce i danni di %d HP!" % p1_dmg_reduction)
+			log_action(" Minotaur reduces damage by %d HP!" % p1_dmg_reduction)
 		else:
 			# Penalità: Riduce la riduzione danni del 20%
 			p2_dmg_reduction = round(p2.def * PENALTY_PERCENTAGE)
-			print("Penalità: Minotauro riduce i danni di %d HP!" % p1_dmg_reduction)
+			log_action("Time Penalty: Minotaur reduces damage by %d HP!" % p1_dmg_reduction)
 			
 	# Attacco P1 - Toglie danni a P2 pari all'attacco di P1 meno la riduzione danni di P2
 	if p1.move == Move.ATTACK:
@@ -338,25 +343,22 @@ func end_match() -> void:
 	# Vince il player con più HP o che ha raggiunto il numero massimo di TP
 	# In caso di pareggio, nessun player guadagna un punto
 	if check_parity():
-		print("Abbiamo un pareggio!")
+		log_action("Incredible!!! That's TIE!")
 	elif winner() == 1:
-		print("Vince " + p1.p_name + "!")
+		log_action("P1: " + p1.p_name + " WINS!")
 		p1_wins += 1
 	else:
-		print("Vince " + p2.p_name + "!")
+		log_action("P2: " + p2.p_name + " WINS!")
 		p2_wins += 1
 	
 	# Al meglio di 5
 	if p1_wins == 3 and p2_wins == 3:
-		print("La partita finisce con un pareggio!")
 		GameState.winner = null
 		GameState.winner_number = 0
 	elif p1_wins == 3:
-		print ("Il giocatore 1 vince l'intera partita!")
 		GameState.winner = p1
 		GameState.winner_number = 1
 	elif p2_wins == 3:
-		print ("Il giocatore 2 vince l'intera partita!")
 		GameState.winner = p2
 		GameState.winner_number = 2
 	else:
@@ -522,3 +524,11 @@ func update_frames():
 	p2_kit.modulate = Color(1,1,1,1)
 	p2_kit.global_position = Vector2(800, 596)
 	p2_kit.scale = Vector2(0.242, 0.242)
+
+func log_action(message: String) -> void:
+	log_entries.append(message)
+	if log_entries.size() > 5:
+			log_entries.pop_front()
+	action_log.text = ""
+	for entry in log_entries:
+		action_log.text += entry + "\n"

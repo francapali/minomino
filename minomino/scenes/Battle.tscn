@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://mvj15m4mxxk0"]
+[gd_scene load_steps=15 format=3 uid="uid://mvj15m4mxxk0"]
 
 [ext_resource type="Script" path="res://scripts/BattleScript.gd" id="1_ml41f"]
 [ext_resource type="Texture2D" uid="uid://ck3ehs3yjiwcj" path="res://assets/background.png" id="2_0axw4"]
@@ -9,10 +9,20 @@
 [ext_resource type="AudioStream" uid="uid://bbb17yvjhrk8y" path="res://ost/battle theme.mp3" id="7_cdaro"]
 [ext_resource type="Texture2D" uid="uid://dtq1tbse43kqa" path="res://assets/RageItems.png" id="8_1pfyn"]
 [ext_resource type="Texture2D" uid="uid://drsv55ains5hg" path="res://assets/MaxHP.png" id="9_f3mbx"]
+[ext_resource type="Script" path="res://scripts/action_log.gd" id="10_omkf6"]
 
 [sub_resource type="SystemFont" id="SystemFont_4dn5n"]
 font_names = PackedStringArray("Bauhaus 93")
 subpixel_positioning = 0
+
+[sub_resource type="SystemFont" id="SystemFont_6g6f2"]
+font_names = PackedStringArray("Monospace")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gf8i5"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2kdea"]
+bg_color = Color(0, 0, 0, 1)
 
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_ml41f")
@@ -138,5 +148,23 @@ offset_right = 964.0
 offset_bottom = 269.0
 texture = ExtResource("9_f3mbx")
 expand_mode = 1
+
+[node name="ActionLog" type="RichTextLabel" parent="."]
+offset_right = 1154.0
+offset_bottom = 52.0
+theme_override_colors/table_border = Color(0, 0, 0, 1)
+theme_override_colors/table_even_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/table_odd_row_bg = Color(0, 0, 0, 1)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = SubResource("SystemFont_6g6f2")
+theme_override_styles/fill = SubResource("StyleBoxFlat_gf8i5")
+theme_override_styles/background = SubResource("StyleBoxFlat_2kdea")
+bbcode_enabled = true
+text = "-"
+scroll_following = true
+script = ExtResource("10_omkf6")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
