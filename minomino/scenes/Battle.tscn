@@ -156,4 +156,9 @@ texture_under = ExtResource("9_hcivf")
 texture_progress = ExtResource("11_ky3gp")
 texture_progress_offset = Vector2(13, 15)
 
+[node name="P1Points" type="Sprite2D" parent="."]
+position = Vector2(265, 285)
+
+[node name="P2Points" type="Sprite2D" parent="."]
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
