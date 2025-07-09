@@ -67,18 +67,22 @@ func initialize_player(name: String, kit_name: String) -> void:
 	hp = max_hp
 
 # Funzione che imposta gli HP del personaggio quando prende danno
-func take_damage(damage: int) -> void:
+func take_damage(damage: int) -> String:
 	# Se il personaggio è protetto da un buff non prende danni
+	var output = ""
+	
 	if not can_take_damage:
 		damage = 0
-		#log_action(p_name + " takes %d damage!" % damage)
+		output = p_name + " takes %d damage!" % damage
 	else:
 		if hp > damage:
 			hp -= damage
-			#log_action(p_name + " takes %d damage!" % damage)
+			output = p_name + " takes %d damage!" % damage
 		else:
 			hp = 0
-			#log_action(p_name + " is lying on the floor!")
+			output = p_name + " is lying on the floor!"
+			
+	return output
 
 # Funzione che imposta gli HP del personaggio quando si cura
 func heal(recover: int) -> void:
@@ -91,7 +95,9 @@ func heal(recover: int) -> void:
 # Effettua la mossa speciale del personaggio.  La mossa speciale varia in base al personaggio scelto.
 # Prende come parametro il nemico e qualche sua info che può essere utile in base all'attacco,
 # oltre a un booleano che indica se il giocatore ha azzeccato il tempismo o meno.
-func special_move(enemy: Player, penalty: bool, dmg_reduction: int) -> void:
+func special_move(enemy: Player, penalty: bool, dmg_reduction: int) -> String:
+	var output = ""
+	
 	match p_name:
 		
 		# Mossa speciale di Teseo - Gomitolo: Guadagna un punto teatrale. Se l'avversario
@@ -102,11 +108,10 @@ func special_move(enemy: Player, penalty: bool, dmg_reduction: int) -> void:
 			sp_fail = sp_fail and can_take_damage
 	
 			if sp_fail:
-				print("ciao debug")
-				#log_action("Theseus was attacked during his special move! He lost his thread!")
+				output = "Theseus was attacked during his special move! He lost his thread!"
 			elif not penalty:
 				cur_theater_points += 1
-				#log_action("Theseus rewinds the ball of yarn! He gains one bonus star!")
+				output = "Theseus rewinds the ball of yarn! He gains one bonus star!"
 				
 			
 		# Mossa speciale del Minotauro - Artigli: Attacco potenziato che fa il 50% dei danni in più,
@@ -115,15 +120,17 @@ func special_move(enemy: Player, penalty: bool, dmg_reduction: int) -> void:
 			if cur_theater_points == 0:
 				if not penalty:
 					cur_theater_points = 1
-					#log_action("Minotaur recharges his special move...")
+					output = "Minotaur recharges his special move..."
 			else:
 				if not penalty:
 					enemy.take_damage(round(atk * 1.5) - dmg_reduction)
-					#log_action("Minotaur attacks with his claws! Theseus takes %d damage!" % (round(atk * 1.5) - dmg_reduction))
+					output = "Minotaur attacks with his claws! Theseus takes %d damage!" % (round(atk * 1.5) - dmg_reduction)
 				else:
 					enemy.take_damage(atk - dmg_reduction)
-					#log_action("Time Penalty: Minotaur attacks with his claws! Theseus takes %d damage!" % (atk - dmg_reduction))
+					output = "Time Penalty: Minotaur attacks with his claws! Theseus takes %d damage!" % (atk - dmg_reduction)
 				cur_theater_points = 0
+
+	return output
 
 # Metodo che rimuove i buff del player, generalmente viene richiamato a fine turno
 func remove_buffs() -> void:
