@@ -94,7 +94,7 @@ const PENALTY_PERCENTAGE = 0.8
 const TURN_DURATION = 5
 const MAX_TURN = 5
 const PERFECT_WINDOW = 0.2
-const HEAL_WHILE_ATTACKING = 3
+const HEAL_WHILE_ATTACKING = 2
 
 # Called when the node enters the scene tree for the first time.
 # Inizializza i parametri dei player e fa cominciare la partita.
