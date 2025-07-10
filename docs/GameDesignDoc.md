@@ -70,12 +70,15 @@ Ogni personaggio ha una personalità distinta che emerge nelle animazioni e nell
 | Minotauro   | + 10    | + 10   | 50  | Doppio Attacco (50% in più)        |
 Per la demo le statistiche dei due personaggi sono uguali per semplicità di gameplay, nel gioco completo saranno diversificate per garantire profondità del gameplay e varietà nei personaggi.
 ## Storia
-[Cutscene Iniziale]()
+[Cutscene Iniziale](./movies/cutscene_iniziale.mp4)
 Una bambina, ormai diventata adulta, riporta alla mente i ricordi della sua estate 2006. Ha trascorso le vacanze estive con suo fratello a casa dei nonni con i quali avevano un bellissimo rapporto. Tra le attività che amavano fare insieme per trascorrere le calde giornate, la preferita era quella di disegnare insieme e di dare vita a storie e personaggi di cui immaginavano le sembianze, i colori e le narrazioni.
 
 In un pomeriggio non poi diverso dagli altri, l'allora bambina mostrò ai suoi nonni l'ultimo disegno realizzato con il fratello: Teseo e il Minotauro.
 
-(immagine disegno)
+<img src="./img/1.png" alt="nonni" width="200"/>
+<img src="./img/2.png" alt="nonni2" width="200"/>
+<img src="./img/3.png" alt="disegno" width="200"/>
+<img src="./img/4.png" alt="disegno2" width="200"/>
 
 L'anziana coppia, affascinata dall'amore dei bambini per l'immaginazione e l'emozione per l'avventura, decisero di dar vita a rappresentazioni mitologiche mediante un teatrino di legno e burattini di carta dai colori accesi.
 
@@ -109,8 +112,13 @@ Durante ogni turno, al player è affidata la gestione di 5 secondi, per cui:
 	- Mossa bonus*
 \*_Ogni eroe giocabile ha una mossa bonus su misura che gli permette di movimentare il match (p.e. il Minotauro può caricare (primo utilizzo della mossa bonus) e sferrare (secondo utilizzo) un attacco più forte utilizzando due volte la mossa bonus. Teseo, invece, scegliendo e usando con successo per tre volte la sua mossa bonus, riavvolgendo il filo d'Arianna, vince la partita pacificamente_.
 
-Un jingle visivo (non musicale per il momento, vedi [Idee](#idee)) scandisce il ritmo dei turni: "mino", "mino", "tauro!". Entrambi i giocatori scelgono in contemporanea la loro azione. Il player non può scegliere per due volte consecutive la stessa.
-(immagini mino mino tauro)
+<img src=".img/mosse.png" alt="mosse" width="200"/>
+
+Un jingle visivo (non musicale per il momento, vedi [Idee](#idee)) scandisce il ritmo dei turni: "mino", "mino", "tauro!". Entrambi i giocatori scelgono in contemporanea la loro azione. Il player non può scegliere per due volte consecutive la stessa.  
+
+  <img src="./img/5.png" alt="mino" width="200"/>
+  <img src="./img/6.png" alt="mino2" width="200"/>
+  <img src="./img/7.png" alt="tauro" width="200"/>
 
 Nel caso in cui si dovesse scegliere troppo presto o troppo tardi l'azione per il proprio eroe, quest'ultima subirà una penalità lieve. Per il nostro gioco, una mossa è considerata a ritmo se il player la sceglie entro 0.2 secondi dallo scadere del quinto secondo. Sceglierla poco prima o poco dopo questa finestra di input risulterà in una penalità lieve, mentre sceglierla 
 
@@ -154,12 +162,12 @@ Nello specifico:
   - Pot of Courage: Cura 5HP
   - Igea's Infusion: Cura 10HP
   - Divine Curtain: Previene tutti i danni del prossimo turno
-[Safety Pack img]()
+[Safety Pack img](./img/SafetyPack.png)
 - **Rage pack**:
   - Ares' Wrath: L'attacco ha un boost di 3
   - Fearless Heart: Se vieni attaccato mentre attacchi, recupera 2HP
   - Phantom Blade: L'attacco ignora le difese dell'avversario
-[Rage Pack img]()
+[Rage Pack img](./img/RagePack.png)
 
 *(N.B. in quanto Divine Curtain e Phantom Sword si oppongono direttamente come effetti, i due item si annullano a vicenda se vengono utilizzati da due player diversi nello stesso turno.)*
 ### Progressione e sfida
@@ -188,9 +196,9 @@ primitiva illustrazione di mino
 - Jingle ritmico per scandire i turni (es. "mino, mino, tauro!")
   _(Non implementato nella demo)_
 - Tema musicale delle schermate: menu, scelta dei personaggi, scelta del kit.
-  (allegare la traccia)
+  [MainTheme](./audio/MainTheme.mp3)
 - Tema musicale per gli scontri
-  (allegare la traccia)
+  [MainTheme](./audio/BattleTheme.mp3)
 - Effetti sonori per utilizzo degli item, attacco, difesa e mossa speciale, oltre a un jingle per la schermata che annuncia il vincitore della partita.
   _(N.B. Per evitare confusioni durante i turni, dal momento che sono istantanei, viene riprodotto un solo sound effect per ogni turno, di conseguenza è stata definita una gerarchia di priorità per la loro riproduzione: Item -> Speciali -> Difesa -> Attacco)_
 ## Dettagli Tecnici
