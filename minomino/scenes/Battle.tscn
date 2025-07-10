@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://mvj15m4mxxk0"]
+[gd_scene load_steps=16 format=3 uid="uid://mvj15m4mxxk0"]
 
 [ext_resource type="Script" path="res://scripts/BattleScript.gd" id="1_ml41f"]
 [ext_resource type="Texture2D" uid="uid://ck3ehs3yjiwcj" path="res://assets/background.png" id="2_0axw4"]
@@ -10,20 +10,27 @@
 [ext_resource type="Texture2D" uid="uid://dtq1tbse43kqa" path="res://assets/RageItems.png" id="8_1pfyn"]
 [ext_resource type="Texture2D" uid="uid://drsv55ains5hg" path="res://assets/MaxHP.png" id="9_f3mbx"]
 [ext_resource type="Script" path="res://scripts/action_log.gd" id="10_omkf6"]
+[ext_resource type="Theme" uid="uid://c3r5vf46bmsjk" path="res://ui/orange_theme.tres" id="11_e3j7k"]
+[ext_resource type="Texture2D" uid="uid://b7r2ffo0gnty3" path="res://assets/settingsicon.png" id="12_46kja"]
 
 [sub_resource type="SystemFont" id="SystemFont_4dn5n"]
 font_names = PackedStringArray("Bauhaus 93")
 subpixel_positioning = 0
 
-[sub_resource type="SystemFont" id="SystemFont_6g6f2"]
+[sub_resource type="SystemFont" id="SystemFont_83ooc"]
 font_names = PackedStringArray("Monospace")
-subpixel_positioning = 0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gf8i5"]
-bg_color = Color(0, 0, 0, 1)
+[sub_resource type="GDScript" id="GDScript_y2qfe"]
+script/source = "extends Button
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2kdea"]
-bg_color = Color(0, 0, 0, 1)
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_ml41f")
@@ -152,21 +159,34 @@ texture = ExtResource("9_f3mbx")
 expand_mode = 1
 
 [node name="ActionLog" type="RichTextLabel" parent="."]
-offset_right = 1154.0
-offset_bottom = 52.0
-theme_override_colors/table_border = Color(0, 0, 0, 1)
-theme_override_colors/table_even_row_bg = Color(0, 0, 0, 1)
-theme_override_colors/table_odd_row_bg = Color(0, 0, 0, 1)
-theme_override_colors/default_color = Color(1, 1, 1, 1)
-theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
-theme_override_colors/selection_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = SubResource("SystemFont_6g6f2")
-theme_override_styles/fill = SubResource("StyleBoxFlat_gf8i5")
-theme_override_styles/background = SubResource("StyleBoxFlat_2kdea")
-bbcode_enabled = true
-text = "-"
+offset_right = 191.0
+offset_bottom = 213.0
+theme_override_fonts/normal_font = SubResource("SystemFont_83ooc")
 scroll_following = true
 script = ExtResource("10_omkf6")
+
+[node name="ActionLog2" type="RichTextLabel" parent="."]
+offset_left = 968.0
+offset_top = -1.0
+offset_right = 1152.0
+offset_bottom = 212.0
+theme_override_fonts/normal_font = SubResource("SystemFont_83ooc")
+scroll_following = true
+script = ExtResource("10_omkf6")
+
+[node name="SettingsButton" type="Button" parent="."]
+anchors_preset = -1
+offset_left = 527.0
+offset_top = 542.0
+offset_right = 618.0
+offset_bottom = 643.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("11_e3j7k")
+theme_override_icons/icon = ExtResource("12_46kja")
+icon = ExtResource("12_46kja")
+flat = true
+expand_icon = true
+script = SubResource("GDScript_y2qfe")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

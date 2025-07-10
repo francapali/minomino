@@ -2,6 +2,9 @@ extends Control
 
 @onready var winner_name = $Winner
 @onready var winner_sprite = $WinnerSprite
+@onready var hero_button = $HeroButton
+@onready var main_menu_button = $MainMenuButton
+@onready var quit_button = $QuitButton
 
 var minowins_texture = preload("res://assets/minovince.png")
 var theswins_texture = preload("res://assets/tesvince.png")
@@ -12,6 +15,9 @@ var winners_texture = preload("res://assets/winners.png")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	update_frame()
+	hero_button.pressed.connect(_on_hero_pressed)
+	main_menu_button.pressed.connect(_on_main_menu_pressed)
+	quit_button.pressed.connect(_on_quit_pressed)
 	
 
 func update_frame():
@@ -57,3 +63,18 @@ func update_frame():
 			winner_sprite.global_position = Vector2(565, 421)
 			winner_sprite.scale = Vector2(0.337, 0.334)
 		winner_name.text = "TIE!"
+
+
+func _on_hero_pressed():
+	if SceneManager.last_scene_path != "":
+		get_tree().change_scene_to_file("res://scenes/CharacterSelect.tscn")
+	else:
+		print("Nessuna scena precedente salvata.")
+
+# Va alla schermata principale (Home.tscn)
+func _on_main_menu_pressed():
+	get_tree().change_scene_to_file("res://scenes/Home.tscn")
+
+# Esce dal gioco
+func _on_quit_pressed():
+	get_tree().quit()
