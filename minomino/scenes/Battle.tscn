@@ -1,9 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://mvj15m4mxxk0"]
+[gd_scene load_steps=22 format=3 uid="uid://mvj15m4mxxk0"]
 
 [ext_resource type="Script" path="res://scripts/BattleScript.gd" id="1_ml41f"]
 [ext_resource type="Texture2D" uid="uid://ck3ehs3yjiwcj" path="res://assets/background.png" id="2_0axw4"]
 [ext_resource type="Texture2D" uid="uid://c0nullwfs4gkp" path="res://assets/tesstd.png" id="3_80bsi"]
+[ext_resource type="Shader" path="res://shader/Battle.gdshader" id="3_slvsf"]
 [ext_resource type="Texture2D" uid="uid://b4gp4im5nomsx" path="res://assets/minostd.png" id="4_unhpj"]
+[ext_resource type="Shader" path="res://shader/Battle2.gdshader" id="5_2h8g2"]
 [ext_resource type="Texture2D" uid="uid://wf08d5q2w24s" path="res://assets/MosseMino.png" id="5_7ggpb"]
 [ext_resource type="Texture2D" uid="uid://pb8jahyun3jy" path="res://assets/MosseThes.png" id="6_nq00l"]
 [ext_resource type="AudioStream" uid="uid://bbb17yvjhrk8y" path="res://ost/battle theme.mp3" id="7_cdaro"]
@@ -12,6 +14,90 @@
 [ext_resource type="Script" path="res://scripts/action_log.gd" id="10_omkf6"]
 [ext_resource type="Theme" uid="uid://c3r5vf46bmsjk" path="res://ui/orange_theme.tres" id="11_e3j7k"]
 [ext_resource type="Texture2D" uid="uid://b7r2ffo0gnty3" path="res://assets/settingsicon.png" id="12_46kja"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t30gj"]
+shader = ExtResource("3_slvsf")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
+
+[sub_resource type="Animation" id="Animation_hiabb"]
+resource_name = "damage"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_musot"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2take"]
+_data = {
+"RESET": SubResource("Animation_musot"),
+"damage": SubResource("Animation_hiabb")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ae0ld"]
+shader = ExtResource("5_2h8g2")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
+
+[sub_resource type="Animation" id="Animation_wnwt6"]
+resource_name = "damage"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_pfu0l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wewqc"]
+_data = {
+"RESET": SubResource("Animation_pfu0l"),
+"damage": SubResource("Animation_wnwt6")
+}
 
 [sub_resource type="SystemFont" id="SystemFont_4dn5n"]
 font_names = PackedStringArray("Bauhaus 93")
@@ -45,15 +131,28 @@ expand_mode = 1
 scale = Vector2(0.4, 0.4)
 
 [node name="P2Sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_t30gj")
 position = Vector2(792, 423)
 scale = Vector2(0.334875, 0.33)
 texture = ExtResource("3_80bsi")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="P2Sprite"]
+libraries = {
+"": SubResource("AnimationLibrary_2take")
+}
+movie_quit_on_finish = true
+
 [node name="P1Sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ae0ld")
 position = Vector2(382, 422)
 scale = Vector2(0.359583, 0.350417)
 texture = ExtResource("4_unhpj")
 flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="P1Sprite"]
+libraries = {
+"": SubResource("AnimationLibrary_wewqc")
+}
 
 [node name="Timer" type="Timer" parent="."]
 process_callback = 0
@@ -188,5 +287,12 @@ icon = ExtResource("12_46kja")
 flat = true
 expand_icon = true
 script = SubResource("GDScript_y2qfe")
+
+[node name="P1Points" type="Sprite2D" parent="."]
+position = Vector2(265, 285)
+
+[node name="P2Points" type="Sprite2D" parent="."]
+
+[node name="SoundEffects" type="AudioStreamPlayer" parent="."]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

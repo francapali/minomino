@@ -3,12 +3,23 @@ extends Node2D
 # Definizione di enum per le tipologie di mosse
 enum Move {NONE, ATTACK, DEFEND, SPECIAL}
 
-# Variabili onready o di utilità per l'UI
-@onready var timer_display = $TimerDisplay
-@onready var texture_numeri = preload("res://assets/numeri.png")
-@onready var texture_tauro_exclamation = preload("res://assets/tauro_exclamation.png")
-@onready var texture_mino_exclamation = preload("res://assets/minoballoon.png")
-@onready var texture_minomino_exclamation = preload("res://assets/minomino.png")
+# Istanze dei giocatori
+var p1 = Player.new()
+var p2 = Player.new()
+
+# Variabili di utilità per l'UI
+# Texture varie (il gioco è molto leggero, ci possiamo permettere di tenerle caricate per facilità d'accesso)
+var texture_stars = [
+	preload("res://assets/zerostars.png"),    # 0 Punti per Teseo
+	preload("res://assets/onestar.png"),      # 1 Punto per Teseo
+	preload("res://assets/twostars.png"),     # 2 Punti per Teseo
+	preload("res://assets/threestars.png"),   # 3 Punti per Teseo
+]
+
+var texture_circles = [
+	preload("res://assets/circle_empty.png"), # 0 Punti per Minotauro
+	preload("res://assets/circle_full.png"),  # 1 Punto per Minotauro
+]
 
 @onready var settings_button = $SettingsButton
 
@@ -24,10 +35,27 @@ var regions = [
 	Rect2(256, 0, 256, 720),   # 4
 	Rect2(0, 0, 256, 720),     # 5
 ]
+	
+@onready var texture_numeri = preload("res://assets/numeri.png")
+@onready var texture_tauro_exclamation = preload("res://assets/tauro_exclamation.png")
+@onready var texture_mino_exclamation = preload("res://assets/minoballoon.png")
+@onready var texture_minomino_exclamation = preload("res://assets/minomino.png")
+@onready var teseo_texture = preload("res://assets/tesstd.png")
+@onready var mosse_thes = preload("res://assets/MosseThes.png")
+@onready var minotauro_texture = preload("res://assets/minostd.png")
+@onready var mosse_mino = preload("res://assets/MosseMino.png")
+@onready var safety_texture = preload("res://assets/SafetyItems.png")
+@onready var rage_texture = preload("res://assets/RageItems.png")
 
-# Istanze dei giocatori
-var p1 = Player.new()
-var p2 = Player.new()
+# Sound effects
+@onready var attack_sfx = preload("res://sfx/Attack.wav")
+@onready var defense_sfx = preload("res://sfx/Defense.mp3")
+@onready var special_sfx = preload("res://sfx/Special.mp3")
+@onready var item_sfx = preload("res://sfx/Item.mp3")
+
+# Timer ed effetti sonori
+@onready var timer_display = $TimerDisplay
+@onready var sound_effects = $SoundEffects
 
 #Gestione UI P1
 @onready var p1_sprite = $P1Sprite
@@ -35,6 +63,8 @@ var p2 = Player.new()
 @onready var p1_mosse = $MosseP1
 @onready var p1_kit = $KitP1
 @onready var p1_HPbar = $HP_P1
+@onready var P1_points = $P1Points
+@onready var animation_p1 = $P1Sprite/AnimationPlayer
 
 #Gestione UI P2
 @onready var p2_sprite = $P2Sprite
@@ -42,13 +72,8 @@ var p2 = Player.new()
 @onready var p2_mosse = $MosseP2
 @onready var p2_kit = $KitP2
 @onready var p2_HPbar = $HP_P2
-
-var teseo_texture = preload("res://assets/tesstd.png")
-var mosse_thes = preload("res://assets/MosseThes.png")
-var minotauro_texture = preload("res://assets/minostd.png")
-var mosse_mino = preload("res://assets/MosseMino.png")
-var safety_texture = preload("res://assets/SafetyItems.png")
-var rage_texture = preload("res://assets/RageItems.png")
+@onready var P2_points = $P2Points
+@onready var animation_p2 = $P2Sprite/AnimationPlayer
 
 # Variabili per la gestione dei turni
 var processing_turn = true
@@ -91,14 +116,22 @@ func _ready() -> void:
 		
 	action_log_p1.text = ""
 	action_log_p2.text = ""
+	
+	# Inizializza la grafica e fa partire il countdown
+	update_points_bar()	
+	update_health_bar()
+	
 	update_frames()
 	
 	await countdown()
 	
+	# Comincia la partita
 	start_turn()
 
 # Gestisce il countdown prima della partenza della partita
 func countdown():
+	start = false
+	
 	# Mostra il numero 3 e fa passare un secondo
 	timer_display.region_enabled = true
 	timer_display.scale = Vector2(0.381, 0.4)
@@ -128,6 +161,7 @@ func countdown():
 func start_turn() -> void:
 	cur_turn += 1;
 	update_frames()
+  
 	log_action_p1("Turn: %d" % cur_turn)
 	log_action_p2("Turn: %d" % cur_turn)
 	
@@ -145,14 +179,13 @@ func start_turn() -> void:
 # Chiamata quando scade il tempo, notifica i giocatori e passa al processing delle mosse
 func _on_timer_timeout() -> void:
 	$Timer.stop()
-	#$Label.text = "TAURO!"
-	#$Label2.text = "SELEZIONA LA MOSSA ORA!"
-	await get_tree().create_timer(PERFECT_WINDOW).timeout
-	#$Label2.text = "TEMPO SCADUTO!"
-	await get_tree().create_timer(1 - PERFECT_WINDOW).timeout
+	
+	await get_tree().create_timer(1).timeout
+	
 	processing_turn = true
+	
 	await get_tree().create_timer(3).timeout
-	#$Label2.text = "Preparati..."
+	
 	process_moves()
 	
 	if end_condition():
@@ -285,10 +318,17 @@ func process_moves() -> void:
 		if p1_offset <= PERFECT_WINDOW:
 			p2.take_damage(p1.atk - p2_dmg_reduction)
 			log_action_p2(p2.take_damage(round(p1.atk * PENALTY_PERCENTAGE) - p1_dmg_reduction))
+      
 		else:
 			# Penalità: Riduce il danno inflitto del 20%
 			p2.take_damage(round(p1.atk * PENALTY_PERCENTAGE) - p2_dmg_reduction)
 			log_action_p2(p2.take_damage(round(p1.atk * PENALTY_PERCENTAGE) - p1_dmg_reduction))
+			animation_p2.play("damage")
+      
+		else:
+			# Penalità: Riduce il danno inflitto del 20%
+			p2.take_damage(round(p1.atk * PENALTY_PERCENTAGE) - p2_dmg_reduction)
+			animation_p2.play("damage")
 		
 		# Controlla se Fearless Heart è attivo
 		if p1.heal_while_attacking and p2.move == Move.ATTACK:
@@ -303,10 +343,13 @@ func process_moves() -> void:
 		if p2_offset <= PERFECT_WINDOW:
 			p1.take_damage(p2.atk - p1_dmg_reduction)
 			log_action_p1(p1.take_damage(round(p2.atk * PENALTY_PERCENTAGE) - p2_dmg_reduction))
+      animation_p1.play("damage")
 		else:
 			# Penalità: Riduce il danno inflitto del 20%
 			p1.take_damage(round(p2.atk * PENALTY_PERCENTAGE) - p1_dmg_reduction)
 			log_action_p1(p1.take_damage(round(p2.atk * PENALTY_PERCENTAGE) - p2_dmg_reduction))
+      animation_p1.play("damage")
+
 			
 		# Controlla se Fearless Heart è attivo
 		if p2.heal_while_attacking and p1.move == Move.ATTACK:
@@ -315,15 +358,42 @@ func process_moves() -> void:
 	# Per le mosse speciali i check sono fatti nel metodo stesso
 	# Mossa speciale P1 - Sarà gestita dal metodo apposito
 	if p1.move == Move.SPECIAL:
+    if p1.p_name == "Mino" and p1.cur_theater_points == 1:
+      animation_p2.play("damage"
 		var special_move_p1 = p1.special_move(p2, p1_offset > PERFECT_WINDOW, p2_dmg_reduction)
 		log_action_p1(special_move_p1)
 		log_action_p2(special_move_p1)
 		
 	# Mossa speciale P2 - Sarà gestita dal metodo apposito
 	if p2.move == Move.SPECIAL:
+    if p2.p_name == "Mino" and p2.cur_theater_points == 1:
+      animation_p1.play("damage")
 		var special_move_p2 = p2.special_move(p1, p2_offset > PERFECT_WINDOW, p1_dmg_reduction)
 		log_action_p1(special_move_p2)
 		log_action_p2(special_move_p2)
+
+	# Aggiorna la barra dei punti dei player graficamente,
+	# mettendola in linea con gli HP correnti dei player
+	update_points_bar()
+	
+	# Aggiorna la barra della vita dei player graficamente,
+	# mettendola in linea con gli HP correnti dei player
+	update_health_bar()
+	
+	# Suona i sound effects appropriati
+	# Viene riprodotto un solo sound effect per l'intero turno, così da non generare caos.
+	# Gli item hanno la proprità, poi le mosse speciali, a seguito della difesa, infine l'attacco.
+	# Se un player ha usato un item, riproduci il sound effect appropriato
+	if p1_uses_item.has(true) or p2_uses_item.has(true):
+		sound_effects.stream = item_sfx
+		sound_effects.play()
+	else:
+		if p1.move == Move.SPECIAL or p2.move == Move.SPECIAL:
+			play_sound(Move.SPECIAL)
+		elif p1.move == Move.DEFEND or p2.move == Move.DEFEND:
+			play_sound(Move.DEFEND)
+		elif p1.move == Move.ATTACK or p2.move == Move.ATTACK:
+			play_sound(Move.ATTACK)
 	
 	# Rimuove i buff dei player e imposta la mossa corrente alla mossa successiva
 	p1.last_move = p1.move
@@ -340,6 +410,35 @@ func process_moves() -> void:
 	#print("P1 - Mossa: %d - Offset di tempo: %f" % [p1.move, p1_offset])
 	#print("P2 - Mossa: %d - Offset di tempo: %f" % [p2.move, p2_offset])
 
+# Aggiorna graficamente la barra della vita di entrambi i giocatori
+func update_health_bar():
+	p1_HPbar.get_child(1).value = (float(p1.hp) / float(p1.max_hp)) * 100 
+	p2_HPbar.get_child(1).value = (float(p2.hp) / float(p2.max_hp)) * 100
+	
+# Aggiorna graficamente la barra dei punti teatro di entrambi i giocatori
+func update_points_bar():
+	if p1.p_name == "Thes":
+		P1_points.flip_h = true
+		P1_points.scale = Vector2(0.13, 0.13)
+		P1_points.position = Vector2(265, 285)
+		P1_points.texture = texture_stars[p1.cur_theater_points]
+	else:
+		P1_points.flip_h = true
+		P1_points.scale = Vector2(0.36, 0.36)
+		P1_points.position = Vector2(218, 285)
+		P1_points.texture = texture_circles[p1.cur_theater_points]
+		
+	if p2.p_name == "Thes":
+		P2_points.flip_h = false
+		P2_points.scale = Vector2(0.13, 0.13)
+		P2_points.position = Vector2(896, 285)
+		P2_points.texture = texture_stars[p2.cur_theater_points]
+	else:
+		P2_points.flip_h = false
+		P2_points.scale = Vector2(0.36, 0.36)
+		P2_points.position = Vector2(943, 285)
+		P2_points.texture = texture_circles[p2.cur_theater_points]
+    
 # Chiamata alla fine di ogni turno, verifica se il match è terminato o meno
 func end_condition() -> bool:
 	# Uno dei due player è arrivato a 0 di vita
@@ -369,6 +468,8 @@ func end_match() -> void:
 	else:
 		log_action_p2("P2: " + p2.p_name + " WINS!")
 		p2_wins += 1
+		
+	await get_tree().create_timer(0.5).timeout
 	
 	# Al meglio di 5
 	if p1_wins == 3 and p2_wins == 3:
@@ -389,6 +490,8 @@ func end_match() -> void:
 	else:
 		processing_turn = false
 		
+		await countdown()
+		
 		# Prima di passare al match successivo, ricarica i kit, la vita dei
 		# player, i punti teatro e reimposta il turno a 0
 		p1.restore()
@@ -399,6 +502,13 @@ func end_match() -> void:
 		
 		p1.cur_theater_points = 0
 		p2.cur_theater_points = 0
+
+		p1.last_move = Move.NONE
+		p2.last_move = Move.NONE
+		
+		update_points_bar()
+		update_health_bar()
+		update_frames()
 		
 		cur_turn = 0
 		start_turn()
@@ -567,3 +677,16 @@ func log_action_p2(message: String) -> void:
 		action_log_p2.text += entry + "\n"
 func _on_settings_pressed():
 	SceneManager.go_to_settings()
+
+func play_sound(move: Move) -> void:
+	match move:
+		Move.ATTACK:
+			sound_effects.stream = attack_sfx
+			sound_effects.play()
+		Move.DEFEND:
+			sound_effects.stream = defense_sfx
+			sound_effects.play()
+		Move.SPECIAL:
+			sound_effects.stream = special_sfx
+			sound_effects.play()
+	pass
