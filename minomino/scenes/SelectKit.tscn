@@ -82,6 +82,7 @@ expand_mode = 1
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_eh0ny")
 autoplay = true
+parameters/looping = true
 
 [node name="SettingsButton" type="Button" parent="."]
 offset_left = -1.0

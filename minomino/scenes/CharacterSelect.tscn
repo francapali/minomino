@@ -79,7 +79,7 @@ expand_mode = 1
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_0tvp1")
 autoplay = true
-parameters/looping = false
+parameters/looping = true
 script = SubResource("GDScript_c3bbw")
 
 [node name="SettingsButton" type="Button" parent="."]
