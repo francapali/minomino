@@ -472,7 +472,7 @@ func end_match() -> void:
 		GameState.winner_number = 0
 		log_action_p1("E il vincitore della partita è...")
 		log_action_p2("E il vincitore della partita è...")
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(2).timeout
 		get_tree().change_scene_to_file("res://scenes/Final.tscn")
 
 	elif p1_wins == 3:
@@ -480,7 +480,7 @@ func end_match() -> void:
 		GameState.winner_number = 1
 		log_action_p1("E il vincitore della partita è...")
 		log_action_p2("E il vincitore della partita è...")
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(2).timeout
 		get_tree().change_scene_to_file("res://scenes/Final.tscn")
 
 	elif p2_wins == 3:
@@ -488,7 +488,7 @@ func end_match() -> void:
 		GameState.winner_number = 2
 		log_action_p1("E il vincitore della partita è...")
 		log_action_p2("E il vincitore della partita è...")
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(2).timeout
 		get_tree().change_scene_to_file("res://scenes/Final.tscn")
 
 	else:
