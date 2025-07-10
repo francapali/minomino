@@ -303,7 +303,7 @@ Idee modalità di gioco future:
 	  Esattamente come nella modalità descritta al punto precedente, il player giocherà scontri contro burattini governati dall'AI.
 - Modalità "crea il tuo atto" per generare match personalizzati
 
-Nuovi item e starter kit con effetti particolari, tra cui assorbimento e repulsione del danno avversario, incrementi delle proprie statistiche, item potenti che richiedono di spendere punti bonus e così via
+Nuovi item e starter kit con effetti particolari, tra cui assorbimento e repulsione del danno avversario (Manipulator's Pack), incrementi delle proprie statistiche (Mathematician's Pack), item potenti che richiedono di spendere punti bonus (Aristocrat's Pack), item che causano effetti di stato che permangono per più di un turno e item per curare i suddetti effetti (Alchemist's Pack)
 
 Integrazione di:
 - Diorama editor per personalizzare lo sfondo del palco e utilizzarlo in Modalità Libera e Modalità Multiplayer Locale.
