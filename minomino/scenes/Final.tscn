@@ -72,6 +72,6 @@ size_flags_horizontal = 3
 theme = ExtResource("4_en86b")
 text = "Quit"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
