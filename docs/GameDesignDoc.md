@@ -6,6 +6,7 @@
 | :------: | :----------------------------: | :--------: | :-------------------------------------------------------------------------------------------------------: |
 |   1.00   |       Francesca Palumbo        | 03/07/2025 |                                         Prima versione della GDD                                          |
 |   2.00   | Yuri Tateo e Francesca Palumbo | 10/07/2025 | Seconda versione della GDD a demo completata, con ampliamento di tutti i campi rispetto la prima versione |
+|   ...    |              ...               |    ...     |                                                    ...                                                    |
 
 ### Descrizione del progetto (elevator pitch)
 Questo documento di game design descrive i dettagli di **minomino**: un gioco a turni ispirato alla mitologia greca, con un'estetica teatrale e un'anima multiplayer locale. Progettato per un target **casual e famigliare**, combina strategia leggera e storytelling creativo.  
@@ -111,7 +112,7 @@ Durante ogni turno, al player è affidata la gestione di 5 secondi, per cui:
 Un jingle visivo (non musicale per il momento, vedi [Idee](#idee)) scandisce il ritmo dei turni: "mino", "mino", "tauro!". Entrambi i giocatori scelgono in contemporanea la loro azione. Il player non può scegliere per due volte consecutive la stessa.
 (immagini mino mino tauro)
 
-Nel caso in cui si dovesse scegliere troppo presto o troppo tardi l'azione per il proprio eroe, quest'ultima subirà una penalità lieve.
+Nel caso in cui si dovesse scegliere troppo presto o troppo tardi l'azione per il proprio eroe, quest'ultima subirà una penalità lieve. Per il nostro gioco, una mossa è considerata a ritmo se il player la sceglie entro 0.2 secondi dallo scadere del quinto secondo. Sceglierla poco prima o poco dopo questa finestra di input risulterà in una penalità lieve, mentre sceglierla 
 
 Le azioni svolte dai due eroi sono percepibili tramite:
 - brevi animazioni (per l'attacco),
@@ -157,8 +158,10 @@ Nello specifico:
 - **Rage pack**:
   - Ares' Wrath: L'attacco ha un boost di 3
   - Fearless Heart: Se vieni attaccato mentre attacchi, recupera 2HP
-  - Phantom Blade: L'attacco sfugge alle difese dell'avversario
+  - Phantom Blade: L'attacco ignora le difese dell'avversario
 [Rage Pack img]()
+
+*(N.B. in quanto Divine Curtain e Phantom Sword si oppongono direttamente come effetti, i due item si annullano a vicenda se vengono utilizzati da due player diversi nello stesso turno.)*
 ### Progressione e sfida
 La progressione della Modalità Single Player (campagna) è lineare e suddivisa in 6 "atti" (ciascuno caratterizzato da una coppia di eroi). Al superamento di ogni "atto" la difficoltà degli scontri aumenterà grazie ad un sistema di gestione della CPU implementata in seguito (vedi [Idee](#idee)).
 
@@ -173,6 +176,8 @@ Il player si considera sconfitto in un match se:
 - Se ha meno HP dell'avversario
 Il player si considera sconfitto in uno scontro se:
 - Ha perso tre match
+
+Nel caso in cui i player scendano sotto il 50% della vita del loro personaggio, alla fine del match gli HP del personaggio verranno riportati al 50%. Questo è per impedire che un player che perde troppa vita in un match non abbia più possibilità di recuperare nei match successivi.
 ## Art Style
 - Stile illustrato: texture disegnate a mano, contorni spessi
 - Animazioni "stop-motion-like"
@@ -186,7 +191,7 @@ primitiva illustrazione di mino
   (allegare la traccia)
 - Tema musicale per gli scontri
   (allegare la traccia)
-- Effetti sonori per utilizzo degli item, attacco, difesa e mossa speciale.
+- Effetti sonori per utilizzo degli item, attacco, difesa e mossa speciale, oltre a un jingle per la schermata che annuncia il vincitore della partita.
   _(N.B. Per evitare confusioni durante i turni, dal momento che sono istantanei, viene riprodotto un solo sound effect per ogni turno, di conseguenza è stata definita una gerarchia di priorità per la loro riproduzione: Item -> Speciali -> Difesa -> Attacco)_
 ## Dettagli Tecnici
 Le piattaforme prioritarie nell'implementazione sono:
