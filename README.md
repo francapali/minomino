@@ -7,5 +7,5 @@
 2. Dove siamo ora:
 [Documento di Game Design](docs/GameDesignDoc.md)
 3. Dove TU sei ora:  
-![DoveSeiOra](https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjhud20zM3M4aGM2eG55YmRscGU0YXdnazMzOGs2aWdhOXZocHR6OSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7WTAkv7Ze17SWMOQ/giphy.gif)
+![DoveSeiOra](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeDE3eXlsZ3Izejh4azdzNXUyMmN6d2t2M2FqMHkxM3d3dWswMTJzMiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/NytMLKyiaIh6VH9SPm/giphy.gif)
 
