@@ -124,7 +124,7 @@ Durante ogni turno, al player è affidata la gestione di 5 secondi, per cui:
 
 Un jingle visivo (non musicale per il momento, vedi [Idee](#idee)) scandisce il ritmo dei turni: "mino", "mino", "tauro!". Entrambi i giocatori scelgono in contemporanea la loro azione. Il player non può scegliere per due volte consecutive la stessa.  
 
-  <img src="./img/5.png" alt="mino" width="200"/> <img src="./img/6.png" alt="mino2" width="200"/> <img src="./img/7.png" alt="tauro" width="200"/>
+<img src="./img/5.png" alt="mino" width="200"/> <img src="./img/6.png" alt="mino2" width="200"/> <img src="./img/7.png" alt="tauro" width="200"/>
 
 Nel caso in cui si dovesse scegliere troppo presto o troppo tardi l'azione per il proprio eroe, quest'ultima subirà una penalità lieve. Per il nostro gioco, una mossa è considerata a ritmo se il player la sceglie entro 0.2 secondi dallo scadere del quinto secondo. Sceglierla poco prima o poco dopo questa finestra di input risulterà in una penalità lieve, mentre sceglierla 
 
@@ -209,15 +209,13 @@ Il player si considera sconfitto in uno scontro se:
 Nel caso in cui i player scendano sotto il 50% della vita del loro personaggio, alla fine del match gli HP del personaggio verranno riportati al 50%. Questo è per impedire che un player che perde troppa vita in un match non abbia più possibilità di recuperare nei match successivi.  
 
 ![Banner](./img/banner/ArtStyle.png)  
-
 ## Art Style
 - Stile illustrato: texture disegnate a mano, contorni spessi
 - Animazioni "stop-motion-like"
-- Illuminazione da palcoscenico con tende e luci che mostrino chiaramente l'azione.
-primitiva illustrazione di mino
+- Illuminazione da palcoscenico con tende e luci che mostrino chiaramente l'azione.  
+<img src="./img/MinoEvolution/mino0.jpg" alt="mino0" width="200"/> <img src="./img/MinoEvolution/mino1.jpg" alt="mino1" width="200"/> <img src="./img/MinoEvolution/mino2.png" alt="mino2" width="200"/> <img src="./img/MinoEvolution/mino3.png" alt="mino3" width="200"/> 
 
 ![Banner](./img/banner/MusicaeSuono.png)  
-
 ## Musica e Suono
 - Jingle ritmico per scandire i turni (es. "mino, mino, tauro!")
   _(Non implementato nella demo)_
@@ -229,7 +227,6 @@ primitiva illustrazione di mino
   _(N.B. Per evitare confusioni durante i turni, dal momento che sono istantanei, viene riprodotto un solo sound effect per ogni turno, di conseguenza è stata definita una gerarchia di priorità per la loro riproduzione: Item -> Speciali -> Difesa -> Attacco)_
 
 ![Banner](./img/banner/DettagliTecnici.png)  
-
 ## Dettagli Tecnici
 Le piattaforme prioritarie nell'implementazione sono:
 - PC, Steam 
@@ -244,7 +241,6 @@ Le piattaforme prioritarie nell'implementazione sono:
   _Non implementato nella demo_
 
 ![Banner](./img/banner/Mercato.png)  
-
 ## Mercato
 **minomino** si rivolge a un pubblico casual, familiare e a giocatori sociali in cerca di esperienze accessibili e originali.
 
@@ -283,7 +279,6 @@ La lingua di gioco utilizzata è l'inglese, si prevede l'inserimento successivo 
 Possibile estensione a giapponese per pubblico amante dell'estetica pop/cartoon.
 
 ![Banner](./img/banner/Idee.png)  
-
 ## Idee
 Idee modalità di gioco future:
 - Modalità Multiplayer Online:
