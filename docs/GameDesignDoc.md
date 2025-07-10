@@ -5,7 +5,7 @@
 | :------: | :----------------------------: | :--------: | :-------------------------------------------------------------------------------------------------------: |
 |   1.00   |       Francesca Palumbo        | 03/07/2025 |                                         Prima versione della GDD                                          |
 |   2.00   | Yuri Tateo e Francesca Palumbo | 10/07/2025 | Seconda versione della GDD a demo completata, con ampliamento di tutti i campi rispetto la prima versione |
-|   ...    |              ...               |    ...     |                                                    ...                                                    |
+|   3.00   | Yuri Tateo e Francesca Palumbo | 10/07/2025 | Aggiunta delle immaginidi gioco, dell'artstyle, concept art e comandi di gioco, ulteriori dettagli finali |
 
 ### Descrizione del progetto ([elevator pitch](PitchMinoMino.pdf))
 Questo documento di game design descrive i dettagli di **minomino**: un gioco a turni ispirato alla mitologia greca, con un'estetica teatrale e un'anima multiplayer locale. Progettato per un target **casual e famigliare**, combina strategia leggera e storytelling creativo.  
