@@ -28,24 +28,26 @@ Sarà sviluppato in Godot (v. 4.3-stable) e frutto del lavoro di due sviluppator
 <img src="./img/minoteamfranca.png" alt="banner" width="500"/> <img src="./img/minoteamyuri.png" alt="banner" width="500"/>  
 
 ## Indice  
-- [Personaggi](#personaggi)  
-- [Storia](#storia)  
-  - [Tema](#tema)  
-- [Trama](#trama)  
-- [Gameplay](#gameplay)  
-  - [Obiettivi](#obiettivi)  
-  - [Abilità del giocatore](#abilit%C3%A0-del-giocatore)  
-  - [Meccaniche di gioco](#meccaniche-di-gioco)  
-  - [Oggetti e power-ups](#oggetti-e-power-ups)  
-  - [Progressione e sfida](#progressione-e-sfida)  
-  - [Sconfitta](#sconfitta)  
-- [Art Style](#art-style)  
-- [Musica e suono](#musica-e-suono)  
-- [Dettagli tecnici](#dettagli-tecnici)  
-- [Mercato](#mercato)  
-  - [Target](#target)  
-  - [Piattaforma e monetizzazione](#piattaforma-e-monetizzazione)  
-  - [Localizzazione](#localizzazione)  
+- [Indice](#indice)
+- [Personaggi](#personaggi)
+- [Storia](#storia)
+  - [Tema](#tema)
+- [Trama](#trama)
+- [Gameplay](#gameplay)
+    - [Comandi](#comandi)
+  - [Obiettivi](#obiettivi)
+  - [Abilità del giocatore](#abilità-del-giocatore)
+  - [Meccaniche di gioco](#meccaniche-di-gioco)
+  - [Oggetti e power-ups](#oggetti-e-power-ups)
+  - [Progressione e sfida](#progressione-e-sfida)
+  - [Sconfitta](#sconfitta)
+- [Art Style](#art-style)
+- [Musica e Suono](#musica-e-suono)
+- [Dettagli Tecnici](#dettagli-tecnici)
+- [Mercato](#mercato)
+  - [Target](#target)
+  - [Piattaforma e monetizzazione](#piattaforma-e-monetizzazione)
+  - [Localizzazione](#localizzazione)
 - [Idee](#idee)
 
 ![Banner](./img/banner/Personaggi.png)  
@@ -57,7 +59,7 @@ I personaggi si sbloccano gradualmente e sono organizzati in coppie mitologiche 
 - Teseo – L'eroe determinato ed abile stratega.
 - Minotauro – Il “mostro” incompreso, forte ma dotato di grande immaginazione, ignaro del diverso, danza per istinto, attacca per sopravvivenza.
 
-<img src="./img/teseo.png" alt="teseo" width="200"/> <img src="./img/minotauro.png" alt="minotauro" width="200"/>  
+<img src="./img/Heroes/teseo.png" alt="teseo" width="200"/> <img src="./img/Heroes/minotauro.png" alt="minotauro" width="200"/>  
 
 Tra gli altri personaggi sbloccabili nel gioco completo:  
 - Perseo – Astuto semidio che con l'ingegno riesce sempre a tirarsi fuori dai guai.
@@ -65,8 +67,8 @@ Tra gli altri personaggi sbloccabili nel gioco completo:
 - Ulisse – Avventuroso re di Itaca, con furbizia si destreggia tra le più temerarie difficoltà.
 - Polifemo – Gigante con un occhio solo. Se diffidente, divora senza pietà chi non conosce.
 
-<img src="./img/perseo.png" alt="perseo" width="200"/> <img src="./img/medusa.png" alt="medusa" width="200"/>
-<img src="./img/ulisse.png" alt="ulisse" width="200"/> <img src="./img/polifemo.png" alt="polifemo" width="200"/>
+<img src="./img/Heroes/perseo.png" alt="perseo" width="200"/> <img src="./img/Heroes/medusa.png" alt="medusa" width="200"/>
+<img src="./img/Heroes/ulisse.png" alt="ulisse" width="200"/> <img src="./img/Heroes/polifemo.png" alt="polifemo" width="200"/>
 
 Ogni personaggio ha una personalità distinta che emerge nelle animazioni e nelle azioni che può svolgere in partita. I personaggi dispongono di mosse speciali ad hoc e statistiche che rispecchiano la loro personalità.
 
@@ -84,7 +86,7 @@ Una bambina, ormai diventata adulta, riporta alla mente i ricordi della sua esta
 
 In un pomeriggio non poi diverso dagli altri, l'allora bambina mostrò ai suoi nonni l'ultimo disegno realizzato con il fratello: Teseo e il Minotauro.
 
-<img src="./img/1.png" alt="nonni" width="200"/> <img src="./img/2.png" alt="nonni2" width="200"/> <img src="./img/3.png" alt="disegno" width="200"/> <img src="./img/4.png" alt="disegno2" width="200"/>
+<img src="./img/family/1.png" alt="nonni" width="200"/> <img src="./img/family/2.png" alt="nonni2" width="200"/> <img src="./img/family/3.png" alt="disegno" width="200"/> <img src="./img/family/4.png" alt="disegno2" width="200"/>
 
 L'anziana coppia, affascinata dall'amore dei bambini per l'immaginazione e l'emozione per l'avventura, decisero di dar vita a rappresentazioni mitologiche mediante un teatrino di legno e burattini di carta dai colori accesi.
 
@@ -120,11 +122,11 @@ Durante ogni turno, al player è affidata la gestione di 5 secondi, per cui:
 	- Mossa bonus*
 \*_Ogni eroe giocabile ha una mossa bonus su misura che gli permette di movimentare il match (p.e. il Minotauro può caricare (primo utilizzo della mossa bonus) e sferrare (secondo utilizzo) un attacco più forte utilizzando due volte la mossa bonus. Teseo, invece, scegliendo e usando con successo per tre volte la sua mossa bonus, riavvolgendo il filo d'Arianna, vince la partita pacificamente_.
 
-<img src="img/mosse.png" alt="mosse" width="200"/>
+<img src="img/gui/mosse.png" alt="mosse" width="350"/>
 
 Un jingle visivo (non musicale per il momento, vedi [Idee](#idee)) scandisce il ritmo dei turni: "mino", "mino", "tauro!". Entrambi i giocatori scelgono in contemporanea la loro azione. Il player non può scegliere per due volte consecutive la stessa.  
 
-<img src="./img/5.png" alt="mino" width="200"/> <img src="./img/6.png" alt="mino2" width="200"/> <img src="./img/7.png" alt="tauro" width="200"/>
+<img src="./img/gui/5.png" alt="mino" width="350"/> <img src="./img/gui/6.png" alt="mino2" width="350"/> <img src="./img/gui/7.png" alt="tauro" width="350"/>
 
 Nel caso in cui si dovesse scegliere troppo presto o troppo tardi l'azione per il proprio eroe, quest'ultima subirà una penalità lieve. Per il nostro gioco, una mossa è considerata a ritmo se il player la sceglie entro 0.2 secondi dallo scadere del quinto secondo. Sceglierla poco prima o poco dopo questa finestra di input risulterà in una penalità lieve, mentre sceglierla 
 
@@ -188,7 +190,7 @@ Nello specifico:
   - Ares' Wrath: L'attacco ha un boost di 3
   - Fearless Heart: Se vieni attaccato mentre attacchi, recupera 2HP
   - Phantom Blade: L'attacco ignora le difese dell'avversario  
-<img src="./img/SafetyPack.png" alt="SP" width="200"/> <img src="./img/RagePack.png" alt="RP" width="200"/>
+<img src="./img/gui/SafetyPack.png" alt="SP" width="350"/> <img src="./img/gui/RagePack.png" alt="RP" width="350"/>
 
 *(N.B. in quanto Divine Curtain e Phantom Sword si oppongono direttamente come effetti, i due item si annullano a vicenda se vengono utilizzati da due player diversi nello stesso turno.)*
 ### Progressione e sfida
@@ -213,19 +215,20 @@ Nel caso in cui i player scendano sotto il 50% della vita del loro personaggio, 
 - Stile illustrato: texture disegnate a mano, contorni spessi
 - Animazioni "stop-motion-like"
 - Illuminazione da palcoscenico con tende e luci che mostrino chiaramente l'azione.  
-<img src="./img/MinoEvolution/mino0.jpg" alt="mino0" width="200"/> <img src="./img/MinoEvolution/mino1.jpg" alt="mino1" width="200"/> <img src="./img/MinoEvolution/mino2.png" alt="mino2" width="200"/> <img src="./img/MinoEvolution/mino3.png" alt="mino3" width="200"/> 
+<img src="./img/MinoEvolution/mino0.jpg" alt="mino0" width="200"/> <img src="./img/MinoEvolution/mino1.jpg" alt="mino1" width="200"/> <img src="./img/MinoEvolution/mino2.png" alt="mino2" width="200"/> <img src="./img/MinoEvolution/mino3.png" alt="mino3" width="200"/>  
+![FirstMockup](img/FirstMockup.png)  
 
 ![Banner](./img/banner/MusicaeSuono.png)  
 ## Musica e Suono
 - Jingle ritmico per scandire i turni (es. "mino, mino, tauro!")
   _(Non implementato nella demo)_
-- Tema musicale delle schermate: menu, scelta dei personaggi, scelta del kit.
-  [MainTheme](./audio/MainTheme.mp3)
-- Tema musicale per gli scontri
-  [MainTheme](./audio/BattleTheme.mp3)
+- Tema musicale delle schermate: menu, scelta dei personaggi, scelta del kit.  
+  [Main Theme](./audio/MainTheme.mp3)
+- Tema musicale per gli scontri  
+  [Battle Theme](./audio/BattleTheme.mp3)
 - Effetti sonori per utilizzo degli item, attacco, difesa e mossa speciale, oltre a un jingle per la schermata che annuncia il vincitore della partita.
-  _(N.B. Per evitare confusioni durante i turni, dal momento che sono istantanei, viene riprodotto un solo sound effect per ogni turno, di conseguenza è stata definita una gerarchia di priorità per la loro riproduzione: Item -> Speciali -> Difesa -> Attacco)_
-
+  _(N.B. Per evitare confusioni durante i turni, dal momento che sono istantanei, viene riprodotto un solo sound effect per ogni turno, di conseguenza è stata definita una gerarchia di priorità per la loro riproduzione: Item -> Speciali -> Difesa -> Attacco)_  
+  
 ![Banner](./img/banner/DettagliTecnici.png)  
 ## Dettagli Tecnici
 Le piattaforme prioritarie nell'implementazione sono:
