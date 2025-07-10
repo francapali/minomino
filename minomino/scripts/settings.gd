@@ -7,7 +7,6 @@ extends Control
 @onready var main_menu_button = $HBoxContainer/MainMenuButton
 @onready var quit_button = $HBoxContainer/QuitButton
 
-
 var volume_step_db := 2.0
 var bus_name := "Master"
 

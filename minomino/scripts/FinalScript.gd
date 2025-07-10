@@ -5,20 +5,32 @@ extends Control
 @onready var hero_button = $HeroButton
 @onready var main_menu_button = $MainMenuButton
 @onready var quit_button = $QuitButton
+@onready var sound_player = $AudioStreamPlayer
 
 var minowins_texture = preload("res://assets/minovince.png")
 var theswins_texture = preload("res://assets/tesvince.png")
 var twomino_texture = preload("res://assets/twomino.png")
 var twothes_texture = preload("res://assets/twothes.png")
 var winners_texture = preload("res://assets/winners.png")
+var victory_jingle = preload("res://sfx/Victory.mp3")
+var main_music = preload("res://ost/main theme.mp3")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	update_frame()
+	
+	# Suona il jingle di vittoria
+	sound_player.stream = victory_jingle
+	sound_player.play()
+
 	hero_button.pressed.connect(_on_hero_pressed)
 	main_menu_button.pressed.connect(_on_main_menu_pressed)
 	quit_button.pressed.connect(_on_quit_pressed)
-	
+
+# Passa alla musica di selezione quando il jingle finisce
+func _on_audio_stream_player_finished() -> void:
+	sound_player.stream = main_music
+	sound_player.play(40.0)
 
 func update_frame():
 	if GameState.winner_number == 1:

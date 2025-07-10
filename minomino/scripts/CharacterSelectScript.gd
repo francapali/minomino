@@ -15,7 +15,6 @@ var player2_locked = false
 var teseo_texture = preload("res://assets/tesstd.png")
 var minotauro_texture = preload("res://assets/minostd.png")
 
-
 func _ready():
 	update_frames()
 	settings_button.pressed.connect(_on_settings_pressed)

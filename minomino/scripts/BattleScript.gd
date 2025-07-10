@@ -159,6 +159,9 @@ func countdown():
 
 # Chiamata all'inizio di un turno per inizializzare i valori e far partire il timer
 func start_turn() -> void:
+	log_action_p1("")
+	log_action_p2("")
+	
 	cur_turn += 1;
 	update_frames()
   
@@ -253,12 +256,12 @@ func process_moves() -> void:
 	for i in 3:
 		if p1_uses_item[i]:
 			p1.kit.use_item(p1, i)
-			log_action_p1("P1: " + p1.p_name + " takes" + p1.kit.items[i].item_name + "!")
+			log_action_p1("P1: " + p1.p_name + " uses " + p1.kit.items[i].item_name + "!")
 			
 	for i in 3:
 		if p2_uses_item[i]:
 			p2.kit.use_item(p2, i)
-			log_action_p2("P2: " + p2.p_name + " takes" + p2.kit.items[i].item_name + "!")
+			log_action_p2("P2: " + p2.p_name + " uses " + p2.kit.items[i].item_name + "!")
 	
 	# Controllo sul giocatore che ripete la stessa mossa
 	if p1.last_move == p1.move and p1.move != Move.NONE:
@@ -467,19 +470,25 @@ func end_match() -> void:
 	if p1_wins == 3 and p2_wins == 3:
 		GameState.winner = null
 		GameState.winner_number = 0
-		await get_tree().create_timer(0.5).timeout
+		log_action_p1("E il vincitore della partita è...")
+		log_action_p2("E il vincitore della partita è...")
+		await get_tree().create_timer(1).timeout
 		get_tree().change_scene_to_file("res://scenes/Final.tscn")
 
 	elif p1_wins == 3:
 		GameState.winner = p1
 		GameState.winner_number = 1
-		await get_tree().create_timer(0.5).timeout
+		log_action_p1("E il vincitore della partita è...")
+		log_action_p2("E il vincitore della partita è...")
+		await get_tree().create_timer(1).timeout
 		get_tree().change_scene_to_file("res://scenes/Final.tscn")
 
 	elif p2_wins == 3:
 		GameState.winner = p2
 		GameState.winner_number = 2
-		await get_tree().create_timer(0.5).timeout
+		log_action_p1("E il vincitore della partita è...")
+		log_action_p2("E il vincitore della partita è...")
+		await get_tree().create_timer(1).timeout
 		get_tree().change_scene_to_file("res://scenes/Final.tscn")
 
 	else:
@@ -491,6 +500,11 @@ func end_match() -> void:
 		# player, i punti teatro e reimposta il turno a 0
 		p1.restore()
 		p2.restore()
+		
+		log_action_p1("")
+		log_action_p1("--------------")
+		log_action_p2("")
+		log_action_p2("--------------")
 		
 		p1.kit.recharge_kit()
 		p2.kit.recharge_kit()

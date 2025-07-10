@@ -10,7 +10,7 @@ func _on_gioca_pressed():
 	get_tree().change_scene_to_file("res://scenes/CharacterSelect.tscn")
 
 func _on_opzioni_pressed():
-	get_tree().change_scene_to_file("res://scenes/Settings.tscn")
+	SceneManager.go_to_settings()
 
 func _on_esci_pressed():
 	get_tree().quit()
