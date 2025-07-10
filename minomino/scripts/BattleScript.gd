@@ -347,7 +347,6 @@ func process_moves() -> void:
 			log_action_p2("Time Penalty: " + p2.p_name + " attacks!")
 			log_action_p1(p1.take_damage(round(p2.atk * PENALTY_PERCENTAGE) - p2_dmg_reduction))
 			animation_p1.play("damage")
-
 			
 		# Controlla se Fearless Heart è attivo
 		if p2.heal_while_attacking and p1.move == Move.ATTACK:

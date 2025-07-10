@@ -26,7 +26,7 @@ func initialize_kit(name: String) -> void:
 			items[0] = Item.new()
 			items[0].initialize_item("AresWrath")
 			items[1] = Item.new()
-			items[1].initialize_item("FearljuessHeart")
+			items[1].initialize_item("FearlessHeart")
 			items[2] = Item.new()
 			items[2].initialize_item("PhantomBlade")
 
