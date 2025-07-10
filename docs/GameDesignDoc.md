@@ -68,6 +68,7 @@ Ogni personaggio ha una personalità distinta che emerge nelle animazioni e nell
 | ----------- | ------- | ------ | --- | ---------------------------------- |
 | Teseo       | + 10    | + 10   | 50  | Filo d'Arianna (vittoria pacifica) |
 | Minotauro   | + 10    | + 10   | 50  | Doppio Attacco (50% in più)        |
+
 Per la demo le statistiche dei due personaggi sono uguali per semplicità di gameplay, nel gioco completo saranno diversificate per garantire profondità del gameplay e varietà nei personaggi.
 ## Storia
 [Cutscene Iniziale](./movies/cutscene_iniziale.mp4)
@@ -112,7 +113,7 @@ Durante ogni turno, al player è affidata la gestione di 5 secondi, per cui:
 	- Mossa bonus*
 \*_Ogni eroe giocabile ha una mossa bonus su misura che gli permette di movimentare il match (p.e. il Minotauro può caricare (primo utilizzo della mossa bonus) e sferrare (secondo utilizzo) un attacco più forte utilizzando due volte la mossa bonus. Teseo, invece, scegliendo e usando con successo per tre volte la sua mossa bonus, riavvolgendo il filo d'Arianna, vince la partita pacificamente_.
 
-<img src=".img/mosse.png" alt="mosse" width="200"/>
+<img src="img/mosse.png" alt="mosse" width="200"/>
 
 Un jingle visivo (non musicale per il momento, vedi [Idee](#idee)) scandisce il ritmo dei turni: "mino", "mino", "tauro!". Entrambi i giocatori scelgono in contemporanea la loro azione. Il player non può scegliere per due volte consecutive la stessa.  
 
