@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cv28wiq7rhan3"]
+[gd_scene load_steps=6 format=3 uid="uid://cv28wiq7rhan3"]
 
 [ext_resource type="Script" path="res://scripts/FinalScript.gd" id="1_2n562"]
 [ext_resource type="Texture2D" uid="uid://hnrvgx6e38te" path="res://assets/endingbackground.png" id="1_s4onn"]
 [ext_resource type="Texture2D" uid="uid://0qu64vn0vhku" path="res://assets/tesvince.png" id="3_ogtsl"]
+[ext_resource type="Theme" uid="uid://c3r5vf46bmsjk" path="res://ui/orange_theme.tres" id="4_en86b"]
 
 [sub_resource type="SystemFont" id="SystemFont_tdvaj"]
 font_names = PackedStringArray("Bauhaus 93")
@@ -38,3 +39,35 @@ horizontal_alignment = 1
 position = Vector2(579, 421)
 scale = Vector2(0.336719, 0.33418)
 texture = ExtResource("3_ogtsl")
+
+[node name="HeroButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 138.0
+offset_top = 450.0
+offset_right = 325.0
+offset_bottom = 504.0
+size_flags_horizontal = 3
+theme = ExtResource("4_en86b")
+text = "Back to
+Select Hero"
+icon_alignment = 1
+
+[node name="MainMenuButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 139.0
+offset_top = 512.0
+offset_right = 325.0
+offset_bottom = 559.0
+size_flags_horizontal = 3
+theme = ExtResource("4_en86b")
+text = "Main Menu"
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 139.0
+offset_top = 566.0
+offset_right = 324.0
+offset_bottom = 613.0
+size_flags_horizontal = 3
+theme = ExtResource("4_en86b")
+text = "Quit"

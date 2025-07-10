@@ -21,6 +21,13 @@ var texture_circles = [
 	preload("res://assets/circle_full.png"),  # 1 Punto per Minotauro
 ]
 
+@onready var settings_button = $SettingsButton
+
+@onready var action_log_p1 = $ActionLog
+@onready var action_log_p2 = $ActionLog2
+var log_entries_p1 := []
+var log_entries_p2 := []
+
 var regions = [
 	Rect2(1024, 0, 256, 720),  # 1
 	Rect2(785, 0, 239, 720),   # 2
@@ -92,6 +99,7 @@ const HEAL_WHILE_ATTACKING = 3
 # Called when the node enters the scene tree for the first time.
 # Inizializza i parametri dei player e fa cominciare la partita.
 func _ready() -> void:
+	settings_button.pressed.connect(_on_settings_pressed)
 	# Inizializza i player sulla base dei personaggi e il kit che hanno scelto
 	p1.initialize_player(GameState.player1, GameState.kitplayer1)
 	p2.initialize_player(GameState.player2, GameState.kitplayer2)
@@ -105,10 +113,12 @@ func _ready() -> void:
 		p1.flip = true
 	if p2.p_name == "Thes":
 		p2.flip = true
+		
+	action_log_p1.text = ""
+	action_log_p2.text = ""
 	
 	# Inizializza la grafica e fa partire il countdown
-	update_points_bar()
-	
+	update_points_bar()	
 	update_health_bar()
 	
 	update_frames()
@@ -151,7 +161,9 @@ func countdown():
 func start_turn() -> void:
 	cur_turn += 1;
 	update_frames()
-	print("Turno %d" % cur_turn)
+  
+	log_action_p1("Turn: %d" % cur_turn)
+	log_action_p2("Turn: %d" % cur_turn)
 	
 	p1.move = Move.NONE
 	p2.move = Move.NONE
@@ -178,7 +190,6 @@ func _on_timer_timeout() -> void:
 	
 	if end_condition():
 		end_match()
-		get_tree().change_scene_to_file("res://scenes/Final.tscn")
 	else:
 		start_turn();
 
@@ -240,57 +251,63 @@ func process_moves() -> void:
 	for i in 3:
 		if p1_uses_item[i]:
 			p1.kit.use_item(p1, i)
+			log_action_p1("P1: " + p1.p_name + " takes" + p1.kit.items[i].item_name + "!")
 			
 	for i in 3:
 		if p2_uses_item[i]:
 			p2.kit.use_item(p2, i)
+			log_action_p2("P2: " + p2.p_name + " takes" + p2.kit.items[i].item_name + "!")
 	
 	# Controllo sul giocatore che ripete la stessa mossa
 	if p1.last_move == p1.move and p1.move != Move.NONE:
 		p1.move = Move.NONE
-		print(p1.p_name + " ripete la stessa mossa!")
+		log_action_p1("P1: " + p1.p_name + "!" + " You can't choose the same move two times in a row!")
 		
 	if p2.last_move == p2.move and p2.move != Move.NONE:
 		p2.move = Move.NONE
-		print(p2.p_name + " ripete la stessa mossa!")
+		log_action_p2("P2: " + p2.p_name + "!" + " You can't choose the same move two times in a row!")
 	
 	# Controllo sul giocatore che non ha scelto una mossa
 	if p1.move == Move.NONE:
-		print(p1.p_name + " non fa nulla!")
+		log_action_p1("P1: " + p1.p_name + " What were you trying to do?!")
 		
 	if p2.move == Move.NONE:
-		print(p2.p_name + " non fa nulla!")
+		log_action_p2("P2: " + p2.p_name + " What were you trying to do?!")
 	
 	# Controlla se un player sta usando Divine Curtain e l'altro Phantom Sword (i due item si annullano a vicenda)
 	if (not p1.can_take_damage and p2.attack_can_pierce):
 		p1.can_take_damage = true
 		p2.attack_can_pierce = false
-		print("I due item si annullano!")
+		log_action_p1("No way: the items you used have cancelled each other out!")
+		log_action_p2("No way: the items you used have cancelled each other out!")
+
 		
 	if (not p2.can_take_damage and p1.attack_can_pierce):
 		p2.can_take_damage = true
 		p1.attack_can_pierce = false
-		print("I due item si annullano!")
+		log_action_p1("No way: the items you used have cancelled each other out!")
+		log_action_p2("No way: the items you used have cancelled each other out!")
+
 	
 	# Se P1 si difende guadagna una riduzione danni in base al tempismo
 	if p1.move == Move.DEFEND:
 		if p1_offset <= PERFECT_WINDOW:
 			p1_dmg_reduction = p1.def
-			print("Teseo riduce i danni di %d HP!" % p1_dmg_reduction)
+			log_action_p1(p1.p_name + " reduces damage by %d HP!" % p1_dmg_reduction)
 		else:
 			# Penalità: Riduce la riduzione danni del 20%
 			p1_dmg_reduction = round(p2.def * PENALTY_PERCENTAGE)
-			print("Penalità: Teseo riduce i danni di %d HP!" % p1_dmg_reduction)
+			log_action_p1("Time Penalty: " + p1.p_name + " reduces damage by %d HP!" % p1_dmg_reduction)
 			
 	# Se P2 si difende guadagna una riduzione danni in base al tempismo
 	if p2.move == Move.DEFEND:
 		if p2_offset <= PERFECT_WINDOW:
 			p2_dmg_reduction = p1.def
-			print("Minotauro riduce i danni di %d HP!" % p1_dmg_reduction)
+			log_action_p2(p2.p_name + " reduces damage by %d HP!" % p1_dmg_reduction)
 		else:
 			# Penalità: Riduce la riduzione danni del 20%
 			p2_dmg_reduction = round(p2.def * PENALTY_PERCENTAGE)
-			print("Penalità: Minotauro riduce i danni di %d HP!" % p1_dmg_reduction)
+			log_action_p2("Time Penalty: " + p2.p_name +  " reduces damage by %d HP!" % p1_dmg_reduction)
 			
 	# Attacco P1 - Toglie danni a P2 pari all'attacco di P1 meno la riduzione danni di P2
 	if p1.move == Move.ATTACK:
@@ -300,7 +317,14 @@ func process_moves() -> void:
 		
 		if p1_offset <= PERFECT_WINDOW:
 			p2.take_damage(p1.atk - p2_dmg_reduction)
+			log_action_p2(p2.take_damage(round(p1.atk * PENALTY_PERCENTAGE) - p1_dmg_reduction))
+      
+		else:
+			# Penalità: Riduce il danno inflitto del 20%
+			p2.take_damage(round(p1.atk * PENALTY_PERCENTAGE) - p2_dmg_reduction)
+			log_action_p2(p2.take_damage(round(p1.atk * PENALTY_PERCENTAGE) - p1_dmg_reduction))
 			animation_p2.play("damage")
+      
 		else:
 			# Penalità: Riduce il danno inflitto del 20%
 			p2.take_damage(round(p1.atk * PENALTY_PERCENTAGE) - p2_dmg_reduction)
@@ -318,11 +342,14 @@ func process_moves() -> void:
 		
 		if p2_offset <= PERFECT_WINDOW:
 			p1.take_damage(p2.atk - p1_dmg_reduction)
-			animation_p1.play("damage")
+			log_action_p1(p1.take_damage(round(p2.atk * PENALTY_PERCENTAGE) - p2_dmg_reduction))
+      animation_p1.play("damage")
 		else:
 			# Penalità: Riduce il danno inflitto del 20%
 			p1.take_damage(round(p2.atk * PENALTY_PERCENTAGE) - p1_dmg_reduction)
-			animation_p1.play("damage")
+			log_action_p1(p1.take_damage(round(p2.atk * PENALTY_PERCENTAGE) - p2_dmg_reduction))
+      animation_p1.play("damage")
+
 			
 		# Controlla se Fearless Heart è attivo
 		if p2.heal_while_attacking and p1.move == Move.ATTACK:
@@ -331,18 +358,20 @@ func process_moves() -> void:
 	# Per le mosse speciali i check sono fatti nel metodo stesso
 	# Mossa speciale P1 - Sarà gestita dal metodo apposito
 	if p1.move == Move.SPECIAL:
-		if p1.p_name == "Mino" and p1.cur_theater_points == 1:
-			animation_p2.play("damage")
-			
-		p1.special_move(p2, p1_offset > PERFECT_WINDOW, p2_dmg_reduction)
+    if p1.p_name == "Mino" and p1.cur_theater_points == 1:
+      animation_p2.play("damage"
+		var special_move_p1 = p1.special_move(p2, p1_offset > PERFECT_WINDOW, p2_dmg_reduction)
+		log_action_p1(special_move_p1)
+		log_action_p2(special_move_p1)
 		
 	# Mossa speciale P2 - Sarà gestita dal metodo apposito
 	if p2.move == Move.SPECIAL:
-		if p2.p_name == "Mino" and p2.cur_theater_points == 1:
-			animation_p1.play("damage")
-			
-		p2.special_move(p1, p2_offset > PERFECT_WINDOW, p1_dmg_reduction)
-	
+    if p2.p_name == "Mino" and p2.cur_theater_points == 1:
+      animation_p1.play("damage")
+		var special_move_p2 = p2.special_move(p1, p2_offset > PERFECT_WINDOW, p1_dmg_reduction)
+		log_action_p1(special_move_p2)
+		log_action_p2(special_move_p2)
+
 	# Aggiorna la barra dei punti dei player graficamente,
 	# mettendola in linea con gli HP correnti dei player
 	update_points_bar()
@@ -409,8 +438,7 @@ func update_points_bar():
 		P2_points.scale = Vector2(0.36, 0.36)
 		P2_points.position = Vector2(943, 285)
 		P2_points.texture = texture_circles[p2.cur_theater_points]
-		
-
+    
 # Chiamata alla fine di ogni turno, verifica se il match è terminato o meno
 func end_condition() -> bool:
 	# Uno dei due player è arrivato a 0 di vita
@@ -432,36 +460,40 @@ func end_match() -> void:
 	# Vince il player con più HP o che ha raggiunto il numero massimo di TP
 	# In caso di pareggio, nessun player guadagna un punto
 	if check_parity():
-		print("Abbiamo un pareggio!")
+		log_action_p1("Incredible!!! That's TIE!")
+		log_action_p2("Incredible!!! That's TIE!")
 	elif winner() == 1:
-		print("Vince " + p1.p_name + "!")
+		log_action_p1("P1: " + p1.p_name + " WINS!")
 		p1_wins += 1
 	else:
-		print("Vince " + p2.p_name + "!")
+		log_action_p2("P2: " + p2.p_name + " WINS!")
 		p2_wins += 1
 		
 	await get_tree().create_timer(0.5).timeout
 	
 	# Al meglio di 5
 	if p1_wins == 3 and p2_wins == 3:
-		print("La partita finisce con un pareggio!")
 		GameState.winner = null
 		GameState.winner_number = 0
+		get_tree().change_scene_to_file("res://scenes/Final.tscn")
+
 	elif p1_wins == 3:
-		print ("Il giocatore 1 vince l'intera partita!")
 		GameState.winner = p1
 		GameState.winner_number = 1
+		get_tree().change_scene_to_file("res://scenes/Final.tscn")
+
 	elif p2_wins == 3:
-		print ("Il giocatore 2 vince l'intera partita!")
 		GameState.winner = p2
 		GameState.winner_number = 2
+		get_tree().change_scene_to_file("res://scenes/Final.tscn")
+
 	else:
 		processing_turn = false
 		
 		await countdown()
 		
 		# Prima di passare al match successivo, ricarica i kit, la vita dei
-		# player, i punti teatro e reimposta il turno a 0, per poi aggiornare la grafica
+		# player, i punti teatro e reimposta il turno a 0
 		p1.restore()
 		p2.restore()
 		
@@ -470,7 +502,7 @@ func end_match() -> void:
 		
 		p1.cur_theater_points = 0
 		p2.cur_theater_points = 0
-		
+
 		p1.last_move = Move.NONE
 		p2.last_move = Move.NONE
 		
@@ -627,6 +659,24 @@ func update_frames():
 	p2_kit.modulate = Color(1,1,1,1)
 	p2_kit.global_position = Vector2(800, 596)
 	p2_kit.scale = Vector2(0.242, 0.242)
+
+func log_action_p1(message: String) -> void:
+	log_entries_p1.append(message)
+	if log_entries_p1.size() > 5:
+			log_entries_p1.pop_front()
+	action_log_p1.text = ""
+	for entry in log_entries_p1:
+		action_log_p1.text += entry + "\n"
+		
+func log_action_p2(message: String) -> void:
+	log_entries_p2.append(message)
+	if log_entries_p2.size() > 5:
+			log_entries_p2.pop_front()
+	action_log_p2.text = ""
+	for entry in log_entries_p2:
+		action_log_p2.text += entry + "\n"
+func _on_settings_pressed():
+	SceneManager.go_to_settings()
 
 func play_sound(move: Move) -> void:
 	match move:
