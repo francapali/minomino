@@ -118,6 +118,20 @@ Le azioni svolte dai due eroi sono percepibili tramite:
 - brevi animazioni (per l'attacco),
 - feedback sonori
 e sono visionabili (per il momento, vedi [Idee](#idee)) grazie a due finestre testuali posizionate agli angoli in alto della schermata di gioco. 
+#### Comandi
+Per rendere la demo quanto più accessibile possibile per gli utenti, è stata implementata la compatibilità con tutti i controller delle console principali. Riportiamo quindi il layout dei comandi per *DualShock 4/5*, *Xbox Controller* e *Nintendo Switch Pro Controller*.
+
+|                       DualShock                        |                     Xbox/Switch Pro Controller                      |
+| :----------------------------------------------------: | :-----------------------------------------------------------------: |
+| ![Controlli Playstation](img/ImmaginiControlli/PS.png) | ![Controlli Xbox/Nintendo](img/ImmaginiControlli/Xbox_Nintendo.png) |
+
+Per estendere l'opportunità di giocare la demo a quanti più utenti possibili, è stato implementato ad hoc per la demo un sistema di input da tastiera, che copre anche il multiplayer locale su un'unica tastiera. Di seguito riportiamo le immagini con i comandi per entrambi i player.
+
+|                 Giocatore 1 - Tastiera regolare                 |                Giocatore 2 - Tastierino numerico                |
+| :-------------------------------------------------------------: | :-------------------------------------------------------------: |
+| ![Controlli tastiera P1](img/ImmaginiControlli/P1_Keyboard.png) | ![Controlli Playstation](img/ImmaginiControlli/P2_Keyboard.png) |
+
+Le immagini dei controller e dei tasti della tastiera sono state messe a disposizione dall'utente [Nicolae (Xelu) Berbece](https://www.reddit.com/r/gamedev/comments/1z0zid/free_keyboard_and_controllers_prompts_pack/), sotto la licenza *Creative Commons 0 (CC0)*.
 ### Obiettivi
 - Obiettivi del gioco in modalità Single Player (Campagna)
 	- Vincere gli scontri e superare gli "atti"
