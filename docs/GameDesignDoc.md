@@ -1,5 +1,4 @@
-# <img src="./img/bannergioco.png" alt="banner" width="1000"/>
-## < Link esterni >
+![Title](img/banner/title.png)
 
 ### Storico delle revisioni del documento
 | Versione |             Autori             |    Data    |                                                   Note                                                    |
@@ -50,7 +49,6 @@ Sarà sviluppato in Godot (v. 4.3-stable) e frutto del lavoro di due sviluppator
 - [Idee](#idee)
 
 ![Banner](./img/banner/Personaggi.png)  
-
 ## Personaggi
 **minomino** presenta un cast di personaggi ispirati alla mitologia greca, reinterpretati in chiave pop e teatrale. Ogni personaggio viene rappresentato come un burattino di carta con un design distintivo e uno stile narrativo coerente con la propria leggenda.
 
@@ -80,7 +78,6 @@ Ogni personaggio ha una personalità distinta che emerge nelle animazioni e nell
 Per la demo le statistiche dei due personaggi sono uguali per semplicità di gameplay, nel gioco completo saranno diversificate per garantire profondità del gameplay e varietà nei personaggi.  
 
 ![Banner](./img/banner/Storia.png)  
-
 ## Storia
 [Cutscene Iniziale](https://youtu.be/Zpo7WcD7IP4)  
 Una bambina, ormai diventata adulta, riporta alla mente i ricordi della sua estate 2006. Ha trascorso le vacanze estive con suo fratello a casa dei nonni con i quali avevano un bellissimo rapporto. Tra le attività che amavano fare insieme per trascorrere le calde giornate, la preferita era quella di disegnare insieme e di dare vita a storie e personaggi di cui immaginavano le sembianze, i colori e le narrazioni.
@@ -110,7 +107,6 @@ Inoltre, la narrazione condivisa, la collaborazione familiare e il gioco leggero
   La progressione culmina in una fase finale in cui il player potrà creare il proprio eroe personalizzato, mescolando elementi estetici sbloccati durante il gioco, riutilizzandolo sia nelle altre modalità che in una modalità multiplayer online come avatar (vedi [Idee](#idee) )
 
 ![Banner](./img/banner/Gameplay.png)  
-
 ## Gameplay
 **minomino** è un gioco a turni strategico, costituito da match al meglio di 5 da cinque turni ciascuno.
 Durante ogni turno, al player è affidata la gestione di 5 secondi, per cui:
@@ -138,30 +134,17 @@ Le azioni svolte dai due eroi sono percepibili tramite:
 e sono visionabili (per il momento, vedi [Idee](#idee)) grazie a due finestre testuali posizionate agli angoli in alto della schermata di gioco.
 
 #### Comandi
-
 Per rendere la demo quanto più accessibile possibile per gli utenti, è stata implementata la compatibilità con tutti i controller delle console principali. Riportiamo quindi il layout dei comandi per *DualShock 4/5*, *Xbox Controller* e *Nintendo Switch Pro Controller*.
 
-
-
 |                       DualShock                        |                     Xbox/Switch Pro Controller                      |
-
 | :----------------------------------------------------: | :-----------------------------------------------------------------: |
-
 | ![Controlli Playstation](img/ImmaginiControlli/PS.png) | ![Controlli Xbox/Nintendo](img/ImmaginiControlli/Xbox_Nintendo.png) |
-
-
 
 Per estendere l'opportunità di giocare la demo a quanti più utenti possibili, è stato implementato ad hoc per la demo un sistema di input da tastiera, che copre anche il multiplayer locale su un'unica tastiera. Di seguito riportiamo le immagini con i comandi per entrambi i player.
 
-
-
 |                 Giocatore 1 - Tastiera regolare                 |                Giocatore 2 - Tastierino numerico                |
-
 | :-------------------------------------------------------------: | :-------------------------------------------------------------: |
-
 | ![Controlli tastiera P1](img/ImmaginiControlli/P1_Keyboard.png) | ![Controlli Playstation](img/ImmaginiControlli/P2_Keyboard.png) |
-
-
 
 Le immagini dei controller e dei tasti della tastiera sono state messe a disposizione dall'utente [Nicolae (Xelu) Berbece](https://www.reddit.com/r/gamedev/comments/1z0zid/free_keyboard_and_controllers_prompts_pack/), sotto la licenza *Creative Commons 0 (CC0)*.
 
@@ -204,7 +187,7 @@ Nello specifico:
 - **Rage pack**:
   - Ares' Wrath: L'attacco ha un boost di 3
   - Fearless Heart: Se vieni attaccato mentre attacchi, recupera 2HP
-  - Phantom Blade: L'attacco ignora le difese dell'avversario
+  - Phantom Blade: L'attacco ignora le difese dell'avversario  
 <img src="./img/SafetyPack.png" alt="SP" width="200"/> <img src="./img/RagePack.png" alt="RP" width="200"/>
 
 *(N.B. in quanto Divine Curtain e Phantom Sword si oppongono direttamente come effetti, i due item si annullano a vicenda se vengono utilizzati da due player diversi nello stesso turno.)*
