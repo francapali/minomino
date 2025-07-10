@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://mvj15m4mxxk0"]
+[gd_scene load_steps=27 format=3 uid="uid://mvj15m4mxxk0"]
 
 [ext_resource type="Script" path="res://scripts/BattleScript.gd" id="1_ml41f"]
 [ext_resource type="Texture2D" uid="uid://ck3ehs3yjiwcj" path="res://assets/background.png" id="2_0axw4"]
@@ -10,15 +10,31 @@
 [ext_resource type="Texture2D" uid="uid://pb8jahyun3jy" path="res://assets/MosseThes.png" id="6_nq00l"]
 [ext_resource type="AudioStream" uid="uid://bbb17yvjhrk8y" path="res://ost/battle theme.mp3" id="7_cdaro"]
 [ext_resource type="Texture2D" uid="uid://dtq1tbse43kqa" path="res://assets/RageItems.png" id="8_1pfyn"]
-[ext_resource type="Texture2D" uid="uid://drsv55ains5hg" path="res://assets/MaxHP.png" id="9_f3mbx"]
 [ext_resource type="Script" path="res://scripts/action_log.gd" id="10_omkf6"]
+[ext_resource type="Texture2D" uid="uid://bs084lxnk0v48" path="res://assets/zeroHP.png" id="11_1xg63"]
 [ext_resource type="Theme" uid="uid://c3r5vf46bmsjk" path="res://ui/orange_theme.tres" id="11_e3j7k"]
 [ext_resource type="Texture2D" uid="uid://b7r2ffo0gnty3" path="res://assets/settingsicon.png" id="12_46kja"]
+[ext_resource type="Texture2D" uid="uid://bn7wxoe5aervx" path="res://assets/progressHP.png" id="12_fpp4b"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t30gj"]
 shader = ExtResource("3_slvsf")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_value = 0.0
+
+[sub_resource type="Animation" id="Animation_musot"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_hiabb"]
 resource_name = "damage"
@@ -36,7 +52,18 @@ tracks/0/keys = {
 "values": [0.0, 1.0, 0.0]
 }
 
-[sub_resource type="Animation" id="Animation_musot"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2take"]
+_data = {
+"RESET": SubResource("Animation_musot"),
+"damage": SubResource("Animation_hiabb")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ae0ld"]
+shader = ExtResource("5_2h8g2")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
+
+[sub_resource type="Animation" id="Animation_pfu0l"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -50,17 +77,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0]
 }
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_2take"]
-_data = {
-"RESET": SubResource("Animation_musot"),
-"damage": SubResource("Animation_hiabb")
-}
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ae0ld"]
-shader = ExtResource("5_2h8g2")
-shader_parameter/flash_color = Color(1, 1, 1, 1)
-shader_parameter/flash_value = 0.0
 
 [sub_resource type="Animation" id="Animation_wnwt6"]
 resource_name = "damage"
@@ -78,21 +94,6 @@ tracks/0/keys = {
 "values": [0.0, 1.0, 0.0]
 }
 
-[sub_resource type="Animation" id="Animation_pfu0l"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:material:shader_parameter/flash_value")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wewqc"]
 _data = {
 "RESET": SubResource("Animation_pfu0l"),
@@ -105,6 +106,7 @@ subpixel_positioning = 0
 
 [sub_resource type="SystemFont" id="SystemFont_83ooc"]
 font_names = PackedStringArray("Monospace")
+subpixel_positioning = 0
 
 [sub_resource type="GDScript" id="GDScript_y2qfe"]
 script/source = "extends Button
@@ -241,21 +243,37 @@ theme_override_fonts/font = SubResource("SystemFont_4dn5n")
 theme_override_font_sizes/font_size = 48
 text = "MINOTAUR"
 
-[node name="HP_P1" type="TextureRect" parent="."]
-offset_left = 198.0
-offset_top = 236.0
-offset_right = 435.0
-offset_bottom = 268.0
-texture = ExtResource("9_f3mbx")
-expand_mode = 1
+[node name="HP_P1" type="CanvasLayer" parent="."]
+offset = Vector2(198, 236)
+scale = Vector2(0.56, 0.56)
+transform = Transform2D(0.56, 0, 0, 0.56, 198, 236)
 
-[node name="HP_P2" type="TextureRect" parent="."]
-offset_left = 727.0
-offset_top = 237.0
-offset_right = 964.0
-offset_bottom = 269.0
-texture = ExtResource("9_f3mbx")
-expand_mode = 1
+[node name="ProgressBar" type="ProgressBar" parent="HP_P1"]
+offset_right = 4.0
+offset_bottom = 27.0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HP_P1"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_under = ExtResource("11_1xg63")
+texture_progress = ExtResource("12_fpp4b")
+texture_progress_offset = Vector2(15, 13)
+
+[node name="HP_P2" type="CanvasLayer" parent="."]
+offset = Vector2(727, 236)
+scale = Vector2(0.56, 0.56)
+transform = Transform2D(0.56, 0, 0, 0.56, 727, 236)
+
+[node name="ProgressBar" type="ProgressBar" parent="HP_P2"]
+offset_right = 4.0
+offset_bottom = 27.0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HP_P2"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_under = ExtResource("11_1xg63")
+texture_progress = ExtResource("12_fpp4b")
+texture_progress_offset = Vector2(15, 13)
 
 [node name="ActionLog" type="RichTextLabel" parent="."]
 offset_right = 191.0
@@ -274,7 +292,6 @@ scroll_following = true
 script = ExtResource("10_omkf6")
 
 [node name="SettingsButton" type="Button" parent="."]
-anchors_preset = -1
 offset_left = 527.0
 offset_top = 542.0
 offset_right = 618.0

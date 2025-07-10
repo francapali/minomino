@@ -22,7 +22,7 @@ func _ready() -> void:
 
 func update_frame():
 	if GameState.winner_number == 1:
-		GameState.player1 == winner_name
+		GameState.player1 = winner_name
 		if winner_name.text == "Thes":
 			winner_name.text = "Theseus WINS!"
 			winner_sprite.texture = theswins_texture
@@ -36,7 +36,7 @@ func update_frame():
 			winner_sprite.scale = Vector2(0.337, 0.334)
 		
 	elif GameState.winner_number == 2:
-		GameState.player1 == winner_name
+		GameState.player1 = winner_name
 		if winner_name.text == "Thes":
 			winner_name.text = "Theseus WINS!"
 			winner_sprite.texture = theswins_texture
@@ -66,10 +66,7 @@ func update_frame():
 
 
 func _on_hero_pressed():
-	if SceneManager.last_scene_path != "":
-		get_tree().change_scene_to_file("res://scenes/CharacterSelect.tscn")
-	else:
-		print("Nessuna scena precedente salvata.")
+	get_tree().change_scene_to_file("res://scenes/CharacterSelect.tscn")
 
 # Va alla schermata principale (Home.tscn)
 func _on_main_menu_pressed():

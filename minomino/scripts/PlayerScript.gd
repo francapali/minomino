@@ -112,6 +112,8 @@ func special_move(enemy: Player, penalty: bool, dmg_reduction: int) -> String:
 			elif not penalty:
 				cur_theater_points += 1
 				output = "Theseus rewinds the ball of yarn! He gains one bonus star!"
+			else:
+				output = "Time Penalty: Theseus gains no points!"
 				
 			
 		# Mossa speciale del Minotauro - Artigli: Attacco potenziato che fa il 50% dei danni in più,

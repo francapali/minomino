@@ -93,7 +93,7 @@ var p2_uses_item: Array[bool] = [false, false, false]
 const PENALTY_PERCENTAGE = 0.8
 const TURN_DURATION = 5
 const MAX_TURN = 5
-const PERFECT_WINDOW = 0.9
+const PERFECT_WINDOW = 0.2
 const HEAL_WHILE_ATTACKING = 3
 
 # Called when the node enters the scene tree for the first time.
@@ -118,7 +118,7 @@ func _ready() -> void:
 	action_log_p2.text = ""
 	
 	# Inizializza la grafica e fa partire il countdown
-	update_points_bar()	
+	update_points_bar()
 	update_health_bar()
 	
 	update_frames()
@@ -181,6 +181,8 @@ func _on_timer_timeout() -> void:
 	$Timer.stop()
 	
 	await get_tree().create_timer(1).timeout
+	
+	timer_display.visible = false
 	
 	processing_turn = true
 	
@@ -316,20 +318,16 @@ func process_moves() -> void:
 			p2_dmg_reduction = 0
 		
 		if p1_offset <= PERFECT_WINDOW:
-			p2.take_damage(p1.atk - p2_dmg_reduction)
-			log_action_p2(p2.take_damage(round(p1.atk * PENALTY_PERCENTAGE) - p1_dmg_reduction))
-      
+			log_action_p1(p1.p_name + " attacks!")
+			log_action_p2(p2.take_damage(p1.atk - p1_dmg_reduction))
+			animation_p2.play("damage")
+	  
 		else:
 			# Penalità: Riduce il danno inflitto del 20%
-			p2.take_damage(round(p1.atk * PENALTY_PERCENTAGE) - p2_dmg_reduction)
+			log_action_p1("Time Penalty: " + p1.p_name + " attacks!")
 			log_action_p2(p2.take_damage(round(p1.atk * PENALTY_PERCENTAGE) - p1_dmg_reduction))
 			animation_p2.play("damage")
-      
-		else:
-			# Penalità: Riduce il danno inflitto del 20%
-			p2.take_damage(round(p1.atk * PENALTY_PERCENTAGE) - p2_dmg_reduction)
-			animation_p2.play("damage")
-		
+
 		# Controlla se Fearless Heart è attivo
 		if p1.heal_while_attacking and p2.move == Move.ATTACK:
 			p1.heal(HEAL_WHILE_ATTACKING)
@@ -341,14 +339,14 @@ func process_moves() -> void:
 			p1_dmg_reduction = 0
 		
 		if p2_offset <= PERFECT_WINDOW:
-			p1.take_damage(p2.atk - p1_dmg_reduction)
-			log_action_p1(p1.take_damage(round(p2.atk * PENALTY_PERCENTAGE) - p2_dmg_reduction))
-      animation_p1.play("damage")
+			log_action_p2(p2.p_name + " attacks!")
+			log_action_p1(p1.take_damage(p2.atk - p2_dmg_reduction))
+			animation_p1.play("damage")
 		else:
 			# Penalità: Riduce il danno inflitto del 20%
-			p1.take_damage(round(p2.atk * PENALTY_PERCENTAGE) - p1_dmg_reduction)
+			log_action_p2("Time Penalty: " + p2.p_name + " attacks!")
 			log_action_p1(p1.take_damage(round(p2.atk * PENALTY_PERCENTAGE) - p2_dmg_reduction))
-      animation_p1.play("damage")
+			animation_p1.play("damage")
 
 			
 		# Controlla se Fearless Heart è attivo
@@ -358,16 +356,16 @@ func process_moves() -> void:
 	# Per le mosse speciali i check sono fatti nel metodo stesso
 	# Mossa speciale P1 - Sarà gestita dal metodo apposito
 	if p1.move == Move.SPECIAL:
-    if p1.p_name == "Mino" and p1.cur_theater_points == 1:
-      animation_p2.play("damage"
+		if p1.p_name == "Mino" and p1.cur_theater_points == 1:
+			animation_p2.play("damage")
 		var special_move_p1 = p1.special_move(p2, p1_offset > PERFECT_WINDOW, p2_dmg_reduction)
 		log_action_p1(special_move_p1)
 		log_action_p2(special_move_p1)
 		
 	# Mossa speciale P2 - Sarà gestita dal metodo apposito
 	if p2.move == Move.SPECIAL:
-    if p2.p_name == "Mino" and p2.cur_theater_points == 1:
-      animation_p1.play("damage")
+		if p2.p_name == "Mino" and p2.cur_theater_points == 1:
+			animation_p1.play("damage")
 		var special_move_p2 = p2.special_move(p1, p2_offset > PERFECT_WINDOW, p1_dmg_reduction)
 		log_action_p1(special_move_p2)
 		log_action_p2(special_move_p2)
@@ -406,9 +404,6 @@ func process_moves() -> void:
 	# Reimposta gli array di utilizzo degli item a false per il prossimo turno
 	p1_uses_item = [false, false, false]
 	p2_uses_item = [false, false, false]
-	
-	#print("P1 - Mossa: %d - Offset di tempo: %f" % [p1.move, p1_offset])
-	#print("P2 - Mossa: %d - Offset di tempo: %f" % [p2.move, p2_offset])
 
 # Aggiorna graficamente la barra della vita di entrambi i giocatori
 func update_health_bar():
@@ -438,7 +433,7 @@ func update_points_bar():
 		P2_points.scale = Vector2(0.36, 0.36)
 		P2_points.position = Vector2(943, 285)
 		P2_points.texture = texture_circles[p2.cur_theater_points]
-    
+	
 # Chiamata alla fine di ogni turno, verifica se il match è terminato o meno
 func end_condition() -> bool:
 	# Uno dei due player è arrivato a 0 di vita
@@ -468,23 +463,24 @@ func end_match() -> void:
 	else:
 		log_action_p2("P2: " + p2.p_name + " WINS!")
 		p2_wins += 1
-		
-	await get_tree().create_timer(0.5).timeout
 	
 	# Al meglio di 5
 	if p1_wins == 3 and p2_wins == 3:
 		GameState.winner = null
 		GameState.winner_number = 0
+		await get_tree().create_timer(0.5).timeout
 		get_tree().change_scene_to_file("res://scenes/Final.tscn")
 
 	elif p1_wins == 3:
 		GameState.winner = p1
 		GameState.winner_number = 1
+		await get_tree().create_timer(0.5).timeout
 		get_tree().change_scene_to_file("res://scenes/Final.tscn")
 
 	elif p2_wins == 3:
 		GameState.winner = p2
 		GameState.winner_number = 2
+		await get_tree().create_timer(0.5).timeout
 		get_tree().change_scene_to_file("res://scenes/Final.tscn")
 
 	else:
@@ -578,6 +574,8 @@ func _process(delta: float) -> void:
 				timer_display.region_enabled = false
 				timer_display.scale = Vector2(0.35, 0.367)
 				timer_display.texture = texture_minomino_exclamation
+			
+			timer_display.visible = true
 		else:
 			timer_display.region_enabled = false
 			timer_display.scale = Vector2(0.35, 0.367)
@@ -675,6 +673,7 @@ func log_action_p2(message: String) -> void:
 	action_log_p2.text = ""
 	for entry in log_entries_p2:
 		action_log_p2.text += entry + "\n"
+
 func _on_settings_pressed():
 	SceneManager.go_to_settings()
 
@@ -689,4 +688,3 @@ func play_sound(move: Move) -> void:
 		Move.SPECIAL:
 			sound_effects.stream = special_sfx
 			sound_effects.play()
-	pass
