@@ -192,6 +192,16 @@ Nello specifico:
   - Phantom Blade: L'attacco ignora le difese dell'avversario  
 <img src="./img/gui/SafetyPack.png" alt="SP" width="350"/> <img src="./img/gui/RagePack.png" alt="RP" width="350"/>
 
+Oltre a questi due Starter Kit, andando avanti nel gioco sarà possibile sbloccare altri kit (non implementati nella demo), tra cui:
+- **Tactical Pack**:
+  - Mind’s Edge: Se l'avversario attacca mentre difendi, guadagni 3 di attacco nel prossimo turno
+  - Calculated Blow: L'attacco infligge danni aggiuntivi pari alla metà della difesa dell’avversario
+  - Momentum Guard: Se non subisci danni in un turno, guadagni +2 alla difesa nel turno successivo.
+- **Revenant Pack**:
+  - Last Breath – Il prossimo attacco ti porterà a 1HP, indipendentemente da quanti danni ricevi
+  - Blood Bond – Se colpisci un nemico, recuperi un numero di HP pari al 20% del danno inflitto
+  - Enduring Rage - Se hai meno di 20 HP, l'attacco raddoppia per questo turno
+
 *(N.B. in quanto Divine Curtain e Phantom Sword si oppongono direttamente come effetti, i due item si annullano a vicenda se vengono utilizzati da due player diversi nello stesso turno.)*
 ### Progressione e sfida
 La progressione della Modalità Single Player (campagna) è lineare e suddivisa in 6 "atti" (ciascuno caratterizzato da una coppia di eroi). Al superamento di ogni "atto" la difficoltà degli scontri aumenterà grazie ad un sistema di gestione della CPU implementata in seguito (vedi [Idee](#idee)).
@@ -292,6 +302,8 @@ Idee modalità di gioco future:
 	- Single Player Locale:
 	  Esattamente come nella modalità descritta al punto precedente, il player giocherà scontri contro burattini governati dall'AI.
 - Modalità "crea il tuo atto" per generare match personalizzati
+
+Nuovi item e starter kit con effetti particolari, tra cui assorbimento e repulsione del danno avversario, incrementi delle proprie statistiche, item potenti che richiedono di spendere punti bonus e così via
 
 Integrazione di:
 - Diorama editor per personalizzare lo sfondo del palco e utilizzarlo in Modalità Libera e Modalità Multiplayer Locale.
