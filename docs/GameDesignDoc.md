@@ -198,9 +198,9 @@ Oltre a questi due Starter Kit, andando avanti nel gioco sarà possibile sblocca
   - Calculated Blow: L'attacco infligge danni aggiuntivi pari alla metà della difesa dell’avversario
   - Momentum Guard: Se non subisci danni in un turno, guadagni +2 alla difesa nel turno successivo.
 - **Revenant Pack**:
-  - Last Breath – Il prossimo attacco ti porterà a 1HP, indipendentemente da quanti danni ricevi
-  - Blood Bond – Se colpisci un nemico, recuperi un numero di HP pari al 20% del danno inflitto
-  - Enduring Rage - Se hai meno di 20 HP, l'attacco raddoppia per questo turno
+  - Last Breath: Il prossimo attacco ti porterà a 1HP, indipendentemente da quanti danni ricevi
+  - Blood Bond: Se colpisci un nemico, recuperi un numero di HP pari al 20% del danno inflitto
+  - Enduring Rage: Se hai meno di 20 HP, l'attacco raddoppia per questo turno
 
 *(N.B. in quanto Divine Curtain e Phantom Sword si oppongono direttamente come effetti, i due item si annullano a vicenda se vengono utilizzati da due player diversi nello stesso turno.)*
 ### Progressione e sfida
