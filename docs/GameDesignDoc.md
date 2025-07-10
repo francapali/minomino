@@ -303,8 +303,6 @@ Idee modalità di gioco future:
 	  Esattamente come nella modalità descritta al punto precedente, il player giocherà scontri contro burattini governati dall'AI.
 - Modalità "crea il tuo atto" per generare match personalizzati
 
-Nuovi item e starter kit con effetti particolari, tra cui assorbimento e repulsione del danno avversario (Manipulator's Pack), incrementi delle proprie statistiche (Mathematician's Pack), item potenti che richiedono di spendere punti bonus (Aristocrat's Pack), item che causano effetti di stato che permangono per più di un turno e item per curare i suddetti effetti (Alchemist's Pack)
-
 Integrazione di:
 - Diorama editor per personalizzare lo sfondo del palco e utilizzarlo in Modalità Libera e Modalità Multiplayer Locale.
 - Hero editor per creare e personalizzare il proprio burattino, mescolando elementi estetici e di gameplay sbloccati durante il gioco, riutilizzandolo sia nelle altre modalità che in una modalità online come avatar
@@ -314,3 +312,5 @@ Integrazione di:
 Eliminazione dei Log dei giocatori nella Modalità Multiplayer Locale in ottica di migliorie all'esperienza di gioco tramite UX/UI, feedback sonori e visivi.
 
 Implementazione dell'algoritmo di gestione degli eroi non giocabili (CPU) con possibilità di scegliere una difficoltà di gioco nella Modalità Libera. Adattamento della CPU al player nelle modalità Single Player (campagna e infinita).
+
+Nuovi item e starter kit con effetti particolari, tra cui assorbimento e repulsione del danno avversario _(Manipulator's Pack)_, incrementi delle proprie statistiche _(Mathematician's Pack)_, item potenti che richiedono di spendere punti bonus _(Shopkeeper's Pack)_, item che causano effetti di stato che permangono per più di un turno e item per curare i suddetti effetti _(Alchemist's Pack)_.
