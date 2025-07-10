@@ -68,7 +68,7 @@ Ogni personaggio ha una personalità distinta che emerge nelle animazioni e nell
 | ----------- | ------- | ------ | --- | ---------------------------------- |
 | Teseo       | + 10    | + 10   | 50  | Filo d'Arianna (vittoria pacifica) |
 | Minotauro   | + 10    | + 10   | 50  | Doppio Attacco (50% in più)        |
-Per la demo le statistiche dei due personaggi sono uguali per semplicità di gameplay, nel gioco completo sarà diversificato.
+Per la demo le statistiche dei due personaggi sono uguali per semplicità di gameplay, nel gioco completo saranno diversificate per garantire profondità del gameplay e varietà nei personaggi.
 ## Storia
 [Cutscene Iniziale]()
 Una bambina, ormai diventata adulta, riporta alla mente i ricordi della sua estate 2006. Ha trascorso le vacanze estive con suo fratello a casa dei nonni con i quali avevano un bellissimo rapporto. Tra le attività che amavano fare insieme per trascorrere le calde giornate, la preferita era quella di disegnare insieme e di dare vita a storie e personaggi di cui immaginavano le sembianze, i colori e le narrazioni.
