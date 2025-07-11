@@ -77,7 +77,7 @@ Ogni personaggio ha una personalità distinta che emerge nelle animazioni e nell
 | Teseo       | + 10    | + 10   | 50  | Filo d'Arianna (vittoria pacifica) |
 | Minotauro   | + 10    | + 10   | 50  | Doppio Attacco (50% in più)        |
 
-Per la demo le statistiche dei due personaggi sono uguali per semplicità di gameplay, nel gioco completo saranno diversificate per garantire profondità del gameplay e varietà nei personaggi.  
+Per la demo le statistiche dei due eroi sono uguali per semplicità, nel gioco completo saranno diversificate per garantire profondità del gameplay e varietà nei personaggi.  
 
 ![Banner](./img/banner/Storia.png)  
 ## Storia
@@ -100,7 +100,7 @@ Inoltre, la narrazione condivisa, la collaborazione familiare e il gioco leggero
 ## Trama
 - Modalità Single Player:
   Il player "segue" gli spettacoli teatrali messi in scena.
-  Ogni "atto" della campagna corrisponde a una rivalità mitologica, dove sarà necessario vincere la sfida da entrambi i punti di vista e per sbloccare nuovi personaggi (che possono essere riutilizzati nella modalità libera e nella modalità multiplayer locale), nuovi atti.
+  Ogni "atto" della campagna corrisponde a una rivalità mitologica, dove sarà necessario vincere la sfida da entrambi i punti di vista e per sbloccare nuovi personaggi (che possono essere riutilizzati nella modalità libera e nella modalità multiplayer locale), nuovi contenuti e nuovi atti.
   
   Le sfide tra eroi (perché non ci sono buoni e cattivi, ma gesta eroiche) rispecchiano ogni mito nel design dei personaggi, dell'ambientazioni e degli asset di mosse assegnati.
   
@@ -119,30 +119,31 @@ Durante ogni turno, al player è affidata la gestione di 5 secondi, per cui:
   Il player dovrà scegliere la sua mossa per il turno tra tre azioni disponibili:
 	- Attacco
 	- Difesa
-	- Mossa bonus*
-\*_Ogni eroe giocabile ha una mossa bonus su misura che gli permette di movimentare il match (p.e. il Minotauro può caricare (primo utilizzo della mossa bonus) e sferrare (secondo utilizzo) un attacco più forte utilizzando due volte la mossa bonus. Teseo, invece, scegliendo e usando con successo per tre volte la sua mossa bonus, riavvolgendo il filo d'Arianna, vince la partita pacificamente_.
+	- Mossa bonus*  
+\*_Ogni eroe giocabile ha una mossa bonus su misura che gli permette di movimentare il match (p.e. il Minotauro può caricare (primo utilizzo della mossa bonus) e sferrare (secondo utilizzo) un attacco più forte utilizzando due volte la mossa bonus. Teseo, invece, scegliendo e usando con successo per tre volte la sua mossa bonus, riavvolgendo il filo d'Arianna, vince il match pacificamente_.
 
 <img src="img/gui/mosse.png" alt="mosse" width="350"/>
 
 Un jingle visivo (non musicale per il momento, vedi [Idee](#idee)) scandisce il ritmo dei turni: "mino", "mino", "tauro!". Entrambi i giocatori scelgono in contemporanea la loro azione. Il player non può scegliere per due volte consecutive la stessa.  
 
-<img src="./img/gui/5.png" alt="mino" width="350"/> <img src="./img/gui/6.png" alt="mino2" width="350"/> <img src="./img/gui/7.png" alt="tauro" width="350"/>
+<img src="./img/gui/5.png" alt="mino" width="300"/> <img src="./img/gui/6.png" alt="mino2" width="300"/> <img src="./img/gui/7.png" alt="tauro" width="300"/>
 
-Nel caso in cui si dovesse scegliere troppo presto o troppo tardi l'azione per il proprio eroe, quest'ultima subirà una penalità lieve. Per il nostro gioco, una mossa è considerata a ritmo se il player la sceglie entro 0.2 secondi dallo scadere del quinto secondo. Sceglierla poco prima o poco dopo questa finestra di input risulterà in una penalità lieve, mentre sceglierla 
+Nel caso in cui si dovesse scegliere troppo presto o troppo tardi l'azione per il proprio eroe, quest'ultima subirà una penalità lieve. In minomino, una mossa è considerata "a ritmo" se il player la sceglie entro 0.2 secondi dallo scadere del quinto secondo. Sceglierla poco prima o poco dopo questa finestra di input risulterà in una penalità lieve.
 
 Le azioni svolte dai due eroi sono percepibili tramite:
 - brevi animazioni (per l'attacco),
-- feedback sonori
+- feedback sonori  
+
 e sono visionabili (per il momento, vedi [Idee](#idee)) grazie a due finestre testuali posizionate agli angoli in alto della schermata di gioco.
 
 #### Comandi
-Per rendere la demo quanto più accessibile possibile per gli utenti, è stata implementata la compatibilità con tutti i controller delle console principali. Riportiamo quindi il layout dei comandi per *DualShock 4/5*, *Xbox Controller* e *Nintendo Switch Pro Controller*.
+Per rendere la demo quanto più accessibile possibile per gli utenti, è stata implementata la compatibilità con tutti i controller delle console principali. Si riporta quindi il layout dei comandi per *DualShock 4/5*, *Xbox Controller* e *Nintendo Switch Pro Controller*.
 
 |                       DualShock                        |                     Xbox/Switch Pro Controller                      |
 | :----------------------------------------------------: | :-----------------------------------------------------------------: |
 | ![Controlli Playstation](img/ImmaginiControlli/PS.png) | ![Controlli Xbox/Nintendo](img/ImmaginiControlli/Xbox_Nintendo.png) |
 
-Per estendere l'opportunità di giocare la demo a quanti più utenti possibili, è stato implementato ad hoc per la demo un sistema di input da tastiera, che copre anche il multiplayer locale su un'unica tastiera. Di seguito riportiamo le immagini con i comandi per entrambi i player.
+Per estendere l'opportunità di giocare la demo a quanti più utenti possibili, è stato implementato ad hoc per la demo un sistema di input da tastiera, che copre anche il multiplayer locale su un'unica tastiera. Di seguito si riportano le immagini con i comandi per entrambi i player.
 
 |                 Giocatore 1 - Tastiera regolare                 |                Giocatore 2 - Tastierino numerico                |
 | :-------------------------------------------------------------: | :-------------------------------------------------------------: |
@@ -183,7 +184,7 @@ Successivamente alla scelta del personaggio da schierare sul palcoscenico, il pl
 
 Nello specifico:
 - **Safety Pack**:
-  - Pot of Courage: Cura 5HP
+  - Potion of Courage: Cura 5HP
   - Igea's Infusion: Cura 10HP
   - Divine Curtain: Previene tutti i danni del prossimo turno
 - **Rage pack**:
@@ -213,13 +214,13 @@ Superati tutti gli atti, in seguito a ripetuti scontri con gli eroi che contradd
 Il player si considera sconfitto in un match se:
 - I propri punti vita arrivano a zero
 - L'eroe avversario raggiunge il suo obiettivo secondario
-  _(p.e. Teseo usa tre volte la mossa bonus)
+  _(p.e. Teseo usa tre volte la mossa bonus)_
 - Se ha meno HP dell'avversario
+
 Il player si considera sconfitto in uno scontro se:
 - Ha perso tre match
 
-Nel caso in cui i player scendano sotto il 50% della vita del loro personaggio, alla fine del match gli HP del personaggio verranno riportati al 50%. Questo è per impedire che un player che perde troppa vita in un match non abbia più possibilità di recuperare nei match successivi.  
-
+Dovessero i player, alla fine di un match, avere la Health Bar con un valore inferiore al 50%, i punti vita del proprio eroe saranno riportati al 50% prima del match successivo. Questa meccanica permette ad entrambi gli eroi di ripartire alla pari, impedendo di avere squilibri, dando la possibilità a chi è stato sconfitto durante il match precedente di recuperare. 
 ![Banner](./img/banner/ArtStyle.png)  
 ## Art Style
 - Stile illustrato: texture disegnate a mano, contorni spessi
@@ -242,15 +243,14 @@ Nel caso in cui i player scendano sotto il 50% della vita del loro personaggio, 
 ![Banner](./img/banner/DettagliTecnici.png)  
 ## Dettagli Tecnici
 Le piattaforme prioritarie nell'implementazione sono:
-- PC, Steam 
-  _N.B. Al fine della demo sono stati implementati i controlli sia da controller che da tastiera così che si possa giocare in due anche su un solo dispositivo.
-  (screenshot comandi)
+- PC, Steam  
+  _N.B. Al fine della demo sono stati implementati i controlli sia da controller che da tastiera così che si possa giocare in due anche su un solo dispositivo._
 - Console Indie-Friendly
-- Mobile (Android & IOS)
-  _N.B. Nel caso multiplayer locale, i giocatori dovranno disporre o di due controller da collegare al device, o avere due dispositivi diversi.
-- Motore: Godot Engine v. 4.4.1
+- Mobile (Android & IOS)  
+  _N.B. Nel caso multiplayer locale, i giocatori dovranno disporre o di due controller da collegare al device, o avere due dispositivi diversi._
+- Motore: Godot Engine v. 4.3-stable
 - Produzione agile con sprint settimanali
-- IA: script pseudo-strategico con evoluzione adattiva
+- IA: script pseudo-strategico con evoluzione adattiva  
   _Non implementato nella demo_
 
 ![Banner](./img/banner/Mercato.png)  
@@ -269,10 +269,6 @@ Finanziamento tramite:
 - Eventuale crowdfunding
 - Incubatori di startup per l'industria videoludica
 ### Target  
-- Età: 8+ anni
-- Giocatori casual, famiglie, educatori, creativi
-- Persone attratte da narrazione leggera e stile grafico distintivo
-
 Il target di riferimento individuato per **minomino** coinvolge giocatori casual di tutte le età a partire dagli 8 anni, famiglie, educatori e creativi. L'utente medio che ci si aspetta interessato dal prodotto è attratto da narrazioni leggere, nostalgiche e uno stile grafico distintivo. Il gioco deve rappresentare un'alternativa valida alle esperienze frenetiche, con forte appeal estetico e una componente cooperativa/comunitaria, ma anche competitiva nel caso di partite in multiplayer locale/online.
 
 ### Piattaforma e monetizzazione
@@ -298,7 +294,7 @@ Possibile estensione a giapponese per pubblico amante dell'estetica pop/cartoon.
 ![Banner](./img/banner/Idee.png)  
 ## Idee
 Idee modalità di gioco future:
-- Modalità Multiplayer Online:
+- Modalità Multiplayer Online:  
   Il player dopo aver finito la campagna e datagli la possibilità di customizzare il suo eroe, scende in battaglia nelle stesse modalità del multiplayer locale ma contro giocatori online.
 - Modalità Infinita:
 	- Multiplayer Online:
