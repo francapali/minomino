@@ -1,118 +1,316 @@
-# < Logo del team di sviluppo >
-# < Logo del gioco >
-## < Link esterni >
+![Title](img/banner/title.png)
 
 ### Storico delle revisioni del documento
-| Versione |  Autori  |   Data   |   Note   |
-| :------: | :------: | :------: | :------: |
-| 1.00     | Pierpaolo Basile | 17/03/2022 | Prima versione del template per GDD |
-| 2.00     | Pierpaolo Basile | 24/03/2022 | Seconda versione del template per GDD |
-|   ...    |   ...    |   ...    |   ...    |
+| Versione |             Autori             |    Data    |                                                   Note                                                    |
+| :------: | :----------------------------: | :--------: | :-------------------------------------------------------------------------------------------------------: |
+|   1.00   |       Francesca Palumbo        | 03/07/2025 |                                         Prima versione della GDD                                          |
+|   2.00   | Yuri Tateo e Francesca Palumbo | 10/07/2025 | Seconda versione della GDD a demo completata, con ampliamento di tutti i campi rispetto la prima versione |
+|   3.00   | Yuri Tateo e Francesca Palumbo | 11/07/2025 | Aggiunta delle immagini di gioco, dell'artstyle, concept art e comandi di gioco, ulteriori dettagli finali |
 
-### Descrizione del progetto (elevator pitch)
-Un sommario che spieghi in poche parole il gioco senza aggiungere particolari dettagli sulle meccaniche di gioco o altro. Dovrebbe essere massimo una pagina e serve per attirare l’attenzione di investitori o del pubblico. Se il nome del gioco è disponibile andrebbe menzionato, oppure andrebbero menzionate alcune proposte di nome.
+### Descrizione del progetto ([elevator pitch](PitchMinoMino.pdf))
+Questo documento di game design descrive i dettagli di **minomino**: un gioco a turni ispirato alla mitologia greca, con un'estetica teatrale e un'anima multiplayer locale. Progettato per un target **casual e famigliare**, combina strategia leggera e storytelling creativo.  
+  
+L'idea include una **campagna per sbloccare nuovi personaggi giocabili** e una modalità multiplayer locale veloce e divertente per sfidare amici e parenti. L’avventura prende vita su un piccolo teatro di legno, dove una coppia di nonni, dà forma a eroi della mitologia greca dimostrando ai propri nipoti che l’immaginazione non ha confini.  
 
-*(Esempio testo) Questo documento di game design descrive i dettagli di un gioco per PC di genere platform ambientato in un mondo medioevale. Il gioco permetterà di utilizzare diversi personaggi con caratteristiche distintive, ognuno con una sua storia che influenzerà le meccaniche e l’andamento del gioco. Il nome non è stato ancora definito, ma ci sono alcune proposte: “Medieval Story”, “Gold Sword”, …*
+Il sipario si apre su scenari ispirati al mito: ogni combattimento è una rappresentazione teatrale. In ogni sfida, il player veste i panni di un personaggio mitologico – come Teseo o il Minotauro, protagonisti della demo –per rivivere antiche rivalità... ma in chiave pop e colorata!  
 
-### Team
-Informazioni sul team di sviluppo. Le competenze del team dovrebbero convincere il lettore che siete capaci di sviluppare quello che state descrivendo nel documento.
+**minomino** è un gioco dove non ci sono combo o riflessi istantanei, ma scelte tattiche con effetti immediati. Ogni personaggio ha tre azioni: attacco, difesa e una mossa bonus personalizzata per ciascun personaggio in base al proprio playstyle, mossa che generalmente opera con i cosiddetti "punti bonus".
+
+I turni sono scanditi da 5 secondi e dal jingle “mino, mino, tauro!”, al termine del quale entrambi i giocatori devono aver scelto la loro mossa con il giusto tempismo. Vince chi porta l'avversario a zero punti vita o chi ottiene per primo, se esiste, il proprio obiettivo secondario.  
+
+La progressione è lineare, con sblocco graduale di 6 coppie iconiche mitologiche (12 personaggi) e una fase finale di customizzazione, che permette di creare il proprio burattino combinando volti, mosse e stili preferiti.  
+
+L'art-style è fortemente ispirato ai diari illustrati e al cartoon low-poly, con texture dipinte a mano e contorni spessi. I burattini hanno animazioni “stop-motion-like” e un’illuminazione da palcoscenico, per enfatizzare l’atmosfera teatrale. Mockup e sketch mostrano le quinte, le tende e le icone delle mosse con un design semplice ma distintivo, perfetto per creare un’identità visiva riconoscibile.  
+
+Sarà sviluppato in Godot (v. 4.3-stable) e frutto del lavoro di due sviluppatori che cureranno insieme game design, sviluppo, animazione e UX/UI. La produzione seguirà un approccio agile, con sprint settimanali e milestone chiave: prototipo, meccaniche, interfaccia, campagna e polish finale. Per la modalità single player, l’IA sarà governata da uno script pseudo-strategico, con possibili evoluzioni in pattern adattivi per una sfida sempre più dinamica.
+
+### L'MT: il MinoTeam
+<img src="./img/minoteamfranca.png" alt="banner" width="500"/> <img src="./img/minoteamyuri.png" alt="banner" width="500"/>  
 
 ## Indice  
-- [Personaggi](#personaggi)  
-- [Storia](#storia)  
-  - [Tema](#tema)  
-- [Trama](#trama)  
-- [Gameplay](#gameplay)  
-  - [Obiettivi](#obiettivi)  
-  - [Abilità del giocatore](#abilit%C3%A0-del-giocatore)  
-  - [Meccaniche di gioco](#meccaniche-di-gioco)  
-  - [Oggetti e power-ups](#oggetti-e-power-ups)  
-  - [Progressione e sfida](#progressione-e-sfida)  
-  - [Sconfitta](#sconfitta)  
-- [Art Style](#art-style)  
-- [Musica e suono](#musica-e-suono)  
-- [Dettagli tecnici](#dettagli-tecnici)  
-- [Mercato](#mercato)  
-  - [Target](#target)  
-  - [Piattaforma e monetizzazione](#piattaforma-e-monetizzazione)  
-  - [Localizzazione](#localizzazione)  
-- [Idee](#idee)  
+- [Indice](#indice)
+- [Personaggi](#personaggi)
+- [Storia](#storia)
+  - [Tema](#tema)
+- [Trama](#trama)
+- [Gameplay](#gameplay)
+    - [Comandi](#comandi)
+  - [Obiettivi](#obiettivi)
+  - [Abilità del giocatore](#abilità-del-giocatore)
+  - [Meccaniche di gioco](#meccaniche-di-gioco)
+  - [Oggetti e power-ups](#oggetti-e-power-ups)
+  - [Progressione e sfida](#progressione-e-sfida)
+  - [Sconfitta](#sconfitta)
+- [Art Style](#art-style)
+- [Musica e Suono](#musica-e-suono)
+- [Dettagli Tecnici](#dettagli-tecnici)
+- [Mercato](#mercato)
+  - [Target](#target)
+  - [Piattaforma e monetizzazione](#piattaforma-e-monetizzazione)
+  - [Localizzazione](#localizzazione)
+- [Idee](#idee)
 
-**Questo indice non è definitivo, ma può essere modificato in base alla tipologia di gioco o alle necessità. L’importante è che il documento riporti tutti i dettagli relativi al game design del gioco che si intende sviluppare.**
-
+![Banner](./img/banner/Personaggi.png)  
 ## Personaggi
-Descrivere i personaggi del gioco prima di descrivere la storia nella prossima sezione. Se il gioco non prevede né personaggi né storia è possibile eliminare queste sezioni. Ogni gioco dovrebbe prevedere una storia, un background per motivare il giocatore e spingerlo a provare il gioco.
+**minomino** presenta un cast di personaggi ispirati alla mitologia greca, reinterpretati in chiave pop e teatrale. Ogni personaggio viene rappresentato come un burattino di carta con un design distintivo e uno stile narrativo coerente con la propria leggenda.
 
-*(Esempio testo) Il gioco prevedere tre personaggi ognuno con una sua storia e delle abilità distintive. I personaggi sono: bla bla bla…*
+I personaggi si sbloccano gradualmente e sono organizzati in coppie mitologiche rivali, i primi due giocabili nella demo sono:
 
+- Teseo – L'eroe determinato ed abile stratega.
+- Minotauro – Il “mostro” incompreso, forte ma dotato di grande immaginazione, ignaro del diverso, danza per istinto, attacca per sopravvivenza.
+
+<img src="./img/Heroes/teseo.png" alt="teseo" width="200"/> <img src="./img/Heroes/minotauro.png" alt="minotauro" width="200"/>  
+
+Tra gli altri personaggi sbloccabili nel gioco completo:  
+- Perseo – Astuto semidio che con l'ingegno riesce sempre a tirarsi fuori dai guai.
+- Medusa – Unica mortale tra le sue sorelle Gorgoni, trasforma in pietra chiunque le guardi.
+- Ulisse – Avventuroso re di Itaca, con furbizia si destreggia tra le più temerarie difficoltà.
+- Polifemo – Gigante con un occhio solo. Se diffidente, divora senza pietà chi non conosce.
+
+<img src="./img/Heroes/perseo.png" alt="perseo" width="200"/> <img src="./img/Heroes/medusa.png" alt="medusa" width="200"/>
+<img src="./img/Heroes/ulisse.png" alt="ulisse" width="200"/> <img src="./img/Heroes/polifemo.png" alt="polifemo" width="200"/>
+
+Ogni personaggio ha una personalità distinta che emerge nelle animazioni e nelle azioni che può svolgere in partita. I personaggi dispongono di mosse speciali ad hoc e statistiche che rispecchiano la loro personalità.
+
+| Personaggio | Attacco | Difesa | HP  | Mossa Speciale                     |
+| ----------- | ------- | ------ | --- | ---------------------------------- |
+| Teseo       | + 10    | + 10   | 50  | Filo d'Arianna (vittoria pacifica) |
+| Minotauro   | + 10    | + 10   | 50  | Doppio Attacco (50% in più)        |
+
+Per la demo le statistiche dei due eroi sono uguali per semplicità, nel gioco completo saranno diversificate per garantire profondità del gameplay e varietà nei personaggi.  
+
+![Banner](./img/banner/Storia.png)  
 ## Storia
-Introdurre la storia facendo riferimento ai personaggi descritti nella sezione precedente. Cercate di coinvolgere il lettore e di fornire dettagli sull'ambientazione del gioco.
+[Cutscene Iniziale](https://youtu.be/Zpo7WcD7IP4)  
+Una bambina, ormai diventata adulta, riporta alla mente i ricordi della sua estate 2006. Ha trascorso le vacanze estive con suo fratello a casa dei nonni con i quali avevano un bellissimo rapporto. Tra le attività che amavano fare insieme per trascorrere le calde giornate, la preferita era quella di disegnare insieme e di dare vita a storie e personaggi di cui immaginavano le sembianze, i colori e le narrazioni.
 
-*(Esempio testo) Il gioco è ambientato nel medioevo. Le storie dei tre personaggi si intrecciano nel gioco, in particolare…*
+In un pomeriggio non poi diverso dagli altri, l'allora bambina mostrò ai suoi nonni l'ultimo disegno realizzato con il fratello: Teseo e il Minotauro.
 
+<img src="./img/family/1.png" alt="nonni" width="200"/> <img src="./img/family/2.png" alt="nonni2" width="200"/> <img src="./img/family/3.png" alt="disegno" width="200"/> <img src="./img/family/4.png" alt="disegno2" width="200"/>
+
+L'anziana coppia, affascinata dall'amore dei bambini per l'immaginazione e l'emozione per l'avventura, decisero di dar vita a rappresentazioni mitologiche mediante un teatrino di legno e burattini di carta dai colori accesi.
+
+I quattro passarono le settimane successive a mimare le azioni dei personaggi, ricreare un motivetto coinvolgente e intavolare battute leggere. Ogni sfida è un piccolo atto teatrale che racconta, con ironia e stupore, le antiche rivalità della mitologia greca.
+
+Il palco, con le sue quinte, corde e riflettori, diventa un mondo immaginario in cui la fantasia prende il sopravvento sulla realtà. Ogni scontro rappresenta un nuovo "spettacolo".
 ### Tema
-Descrivere il tema principale della storia.
+Tema di **minomino** è la forza dell'immaginazione: la mitologia greca come patrimonio creativo che può reinventarsi ispirando anche le nuove generazioni.
 
-*(Esempio testo) Il gioco è ambientato nel medioevo e la storia si basa sull’amicizia che lega i tre protagonisti…*
-
+Inoltre, la narrazione condivisa, la collaborazione familiare e il gioco leggero ma significativo sono altri degli aspetti con cui i giocatori si interfacciano durante l'esperienza di gioco.
 ## Trama
-Questa sezione dovrebbe chiarire come il giocatore avanza nella storia durante il gioco.
+- Modalità Single Player:
+  Il player "segue" gli spettacoli teatrali messi in scena.
+  Ogni "atto" della campagna corrisponde a una rivalità mitologica, dove sarà necessario vincere la sfida da entrambi i punti di vista e per sbloccare nuovi personaggi (che possono essere riutilizzati nella modalità libera e nella modalità multiplayer locale), nuovi contenuti e nuovi atti.
+  
+  Le sfide tra eroi (perché non ci sono buoni e cattivi, ma gesta eroiche) rispecchiano ogni mito nel design dei personaggi, dell'ambientazioni e degli asset di mosse assegnati.
+  
+  _(p.e. Perseo vs Medusa, dove Perseo può sfruttare lo specchio per pietrificare Medusa e quest'ultima può invece pietrificarlo mentre lui è indifeso)_
+  
+  La progressione culmina in una fase finale in cui il player potrà creare il proprio eroe personalizzato, mescolando elementi estetici sbloccati durante il gioco, riutilizzandolo sia nelle altre modalità che in una modalità multiplayer online come avatar (vedi [Idee](#idee) )
 
-*(Esempio testo) Il gioco inizia con una scena in cui i tre personaggi sono in una taverna e discutono delle loro avventure. Dopo dei dialoghi dai quali si intuisce il background di ogni personaggio, il giocatore potrà scegliere con quale personaggio giocare. Dopo la scelta partirà un tutorial che spiega come utilizzare le specifiche abilità del personaggio scelto. Il primo livello è ambientato…*
-
+![Banner](./img/banner/Gameplay.png)  
 ## Gameplay
-Questa è la sezione più importante del documento è fornisce tutti i dettagli del sistema di regole previste dal gioco.
+**minomino** è un gioco a turni strategico, costituito da match al meglio di 5 da cinque turni ciascuno.
+Durante ogni turno, al player è affidata la gestione di 5 secondi, per cui:
+- **ENTRO 5 SECONDI**:
+  Il player dovrà scegliere se assegnare un item del Kit scelto in precedenza per il suo eroe (vedi [Oggetti e power-ups](#oggetti-e-power-ups))
+- **ALLO SCADERE DEL QUINTO SECONDO
+  (espediente ritmico scandito da "mino" "mino" "tauro!")**:
+  Il player dovrà scegliere la sua mossa per il turno tra tre azioni disponibili:
+	- Attacco
+	- Difesa
+	- Mossa bonus*  
+\*_Ogni eroe giocabile ha una mossa bonus su misura che gli permette di movimentare il match (p.e. il Minotauro può caricare (primo utilizzo della mossa bonus) e sferrare (secondo utilizzo) un attacco più forte utilizzando due volte la mossa bonus. Teseo, invece, scegliendo e usando con successo per tre volte la sua mossa bonus, riavvolgendo il filo d'Arianna, vince il match pacificamente_.
+
+<img src="img/gui/mosse.png" alt="mosse" width="350"/>
+
+Un jingle visivo (non musicale per il momento, vedi [Idee](#idee)) scandisce il ritmo dei turni: "mino", "mino", "tauro!". Entrambi i giocatori scelgono in contemporanea la loro azione. Il player non può scegliere per due volte consecutive la stessa.  
+
+<img src="./img/gui/5.png" alt="mino" width="300"/> <img src="./img/gui/6.png" alt="mino2" width="300"/> <img src="./img/gui/7.png" alt="tauro" width="300"/>
+
+Nel caso in cui si dovesse scegliere troppo presto o troppo tardi l'azione per il proprio eroe, quest'ultima subirà una penalità lieve. In minomino, una mossa è considerata "a ritmo" se il player la sceglie entro 0.2 secondi dallo scadere del quinto secondo. Sceglierla poco prima o poco dopo questa finestra di input risulterà in una penalità lieve.
+
+Le azioni svolte dai due eroi sono percepibili tramite:
+- brevi animazioni (per l'attacco),
+- feedback sonori  
+
+e sono visionabili (per il momento, vedi [Idee](#idee)) grazie a due finestre testuali posizionate agli angoli in alto della schermata di gioco.
+
+#### Comandi
+Per rendere la demo quanto più accessibile possibile per gli utenti, è stata implementata la compatibilità con tutti i controller delle console principali. Si riporta quindi il layout dei comandi per *DualShock 4/5*, *Xbox Controller* e *Nintendo Switch Pro Controller*.
+
+|                       DualShock                        |                     Xbox/Switch Pro Controller                      |
+| :----------------------------------------------------: | :-----------------------------------------------------------------: |
+| ![Controlli Playstation](img/ImmaginiControlli/PS.png) | ![Controlli Xbox/Nintendo](img/ImmaginiControlli/Xbox_Nintendo.png) |
+
+Per estendere l'opportunità di giocare la demo a quanti più utenti possibili, è stato implementato ad hoc per la demo un sistema di input da tastiera, che copre anche il multiplayer locale su un'unica tastiera. Di seguito si riportano le immagini con i comandi per entrambi i player.
+
+|                 Giocatore 1 - Tastiera regolare                 |                Giocatore 2 - Tastierino numerico                |
+| :-------------------------------------------------------------: | :-------------------------------------------------------------: |
+| ![Controlli tastiera P1](img/ImmaginiControlli/P1_Keyboard.png) | ![Controlli Playstation](img/ImmaginiControlli/P2_Keyboard.png) |
+
+Le immagini dei controller e dei tasti della tastiera sono state messe a disposizione dall'utente [Nicolae (Xelu) Berbece](https://www.reddit.com/r/gamedev/comments/1z0zid/free_keyboard_and_controllers_prompts_pack/), sotto la licenza *Creative Commons 0 (CC0)*.
 
 ### Obiettivi
-Specificare in modo chiaro gli obiettivi del gioco. Cosa deve spingere il giocatore a giocare al vostro gioco?
-
-*(Esempio testo) L’obiettivo del gioco è progredire attraverso i vari livelli distruggendo i nemici e raccogliendo particolari oggetti che verranno utilizzati per modificare le abilità del giocare. Alcuni oggetti saranno necessari per sconfiggere i boss di fine livello.*
-
+- Obiettivi del gioco in modalità Single Player (Campagna)
+	- Vincere gli scontri e superare gli "atti"
+	- Sbloccare nuovi personaggi per completare la campagna
+	- Personalizzare il proprio burattino finale
+- Modalità Multiplayer Locale/ Modalità libera/ Modalità Single Player
+	- Obiettivi per ogni scontro:
+		- Vincere tre match
+	- Obiettivi per ogni match:
+	  In base al tipo di eroe scelto potrebbero esserci obiettivi diversi. In particolare:
+		- Vincere il match abbattendo i punti vita dell'avversario (applicabile a tutti gli eroi)
+		- Usare tre volte la mossa bonus con Teseo per vincere il match pacificamente.
+	- Obiettivi per ogni turno:
+		- Scegliere un eventuale item dal Kit
+		- Scegliere l'azione per il turno andando a tempo
+_Altri eroi potrebbero avere obiettivi secondari così come per Teseo_
 ### Abilità del giocatore
-Quali sono le abilità richieste al giocatore? Come queste variano nel tempo? Come il giocatore acquisisce il controllo sulle meccaniche di gioco?
+Il giocatore deve sviluppare capacità decisionali rapide, lettura delle intenzioni dell'avversario, gestione del rischio e comprensione delle peculiarità di ogni personaggio.
 
-*(Esempio testo) Ogni personaggio ha le sue abilità che potranno essere potenziate e modificate durante il gioco raccogliendo degli oggetti. In particolare, le abilità di ogni personaggio sono: …. Per poter sconfiggere i boss di fine livello il giocatore dovrà… . Il giocatore potrà saltare, raccogliere oggetti, …*
-
+Non sono richiesti riflessi pronti: la sfida è tutta mentale e ritmica.
 ### Meccaniche di gioco
-In questa sezione vanno descritte tutte le meccaniche di gioco anche utilizzando schemi, diagrammi, bozze, oppure prototipi già realizzati che mostrino il funzionamento delle meccaniche. In questa sezione andrebbero specificate le meccaniche di gioco fondamentali (core mechanics). Nelle sezioni successive possiamo riportare le altre meccaniche secondarie. **Utilizzare le tecniche che abbiamo visto a lezione per descrivere le meccaniche.**
+- Turni simultanei a tempo per scegliere item e usare azione con penalità nel caso in cui non sia rispettato il ritmo.
+- Sistema "triade":
+  ogni eroe ha due mosse base e una bonus
+	- L'accumulo di tre mosse bonus per Teseo come meccanica alternativa di vittoria
+	- L'accumulo di due mosse bonus per il Minotauro come meccanica per aumentare il danno dell'attacco
+- Sistema "StarterKit":
+  ogni eroe ha un kit composto da tre item utilizzabili in uno scontro e ricaricati al termine di ogni match.
+### Oggetti e power-ups
+Successivamente alla scelta del personaggio da schierare sul palcoscenico, il player potrà scegliere uno tra due (per il momento, vedi [Idee](#idee)) **Starter Kit** contenenti tre oggetti volti al miglioramento di statistiche quali la barra della salute, l'attacco, la difesa e altri.
 
-### Oggetti e power-up
-In questa sezione vanno descritti gli oggetti che potrà utilizzare il giocatore ed eventuali power-up e come ottenerli.
+Nello specifico:
+- **Safety Pack**:
+  - Potion of Courage: Cura 5HP
+  - Igea's Infusion: Cura 10HP
+  - Divine Curtain: Previene tutti i danni del prossimo turno
+- **Rage pack**:
+  - Ares' Wrath: L'attacco ha un boost di 3
+  - Fearless Heart: Se vieni attaccato mentre attacchi, recupera 2HP
+  - Phantom Blade: L'attacco ignora le difese dell'avversario  
+<img src="./img/gui/SafetyPack.png" alt="SP" width="350"/> <img src="./img/gui/RagePack.png" alt="RP" width="350"/>
 
-*(Esempio testo) Durante la progressione nei livelli il giocatore dovrà raccogliere degli oggetti (alcuni nascosti) e dei power-up necessari a poter sconfiggere i boss di fine livello. In particolare, …*
+Oltre a questi due Starter Kit, andando avanti nel gioco sarà possibile sbloccare altri kit (non implementati nella demo), tra cui:
+- **Tactical Pack**:
+  - Mind’s Edge: Se l'avversario attacca mentre difendi, guadagni 3 di attacco nel prossimo turno
+  - Calculated Blow: L'attacco infligge danni aggiuntivi pari alla metà della difesa dell’avversario
+  - Momentum Guard: Se non subisci danni in un turno, guadagni +2 alla difesa nel turno successivo.
+- **Revenant Pack**:
+  - Last Breath: Il prossimo attacco ti porterà a 1HP, indipendentemente da quanti danni ricevi
+  - Blood Bond: Se colpisci un nemico, recuperi un numero di HP pari al 20% del danno inflitto
+  - Enduring Rage: Se hai meno di 20 HP, l'attacco raddoppia per questo turno
 
+*(N.B. in quanto Divine Curtain e Phantom Sword si oppongono direttamente come effetti, i due item si annullano a vicenda se vengono utilizzati da due player diversi nello stesso turno.)*
 ### Progressione e sfida
-Questa sezione riporta i dettagli su come il giocatore avanza nel gioco e quali sono le sfide che deve affrontare e superare.
+La progressione della Modalità Single Player (campagna) è lineare e suddivisa in 6 "atti" (ciascuno caratterizzato da una coppia di eroi). Al superamento di ogni "atto" la difficoltà degli scontri aumenterà grazie ad un sistema di gestione della CPU implementata in seguito (vedi [Idee](#idee)).
 
-*(Esempio testo) L’organizzazione dei livelli è lineare. Ogni livello prevede un boss di fine livello. Il boss del primo livello per essere sconfitto richiede…*
+Il primo atto, nello specifico, Teseo contro il Minotauro, l'obiettivo del player è proprio quello di familiarizzare con le meccaniche di gioco affinché si crei continuità con la sua esperienza in game.
 
+Superati tutti gli atti, in seguito a ripetuti scontri con gli eroi che contraddistinguono il mito inscenato, oltre alla possibilità di sbloccare l'utilizzo dei singoli eroi in altre modalità di gioco (Modalità Libera e Modalità Multiplayer Locale), sarà possibile personalizzare un proprio burattino di carta non solo nelle fattezze estetiche, ma anche dal punto di vista delle abilità speciali e mosse.
 ### Sconfitta
-Fornire i dettagli su come il giocatore può giungere al fatidico “Game Over”.
+Il player si considera sconfitto in un match se:
+- I propri punti vita arrivano a zero
+- L'eroe avversario raggiunge il suo obiettivo secondario
+  _(p.e. Teseo usa tre volte la mossa bonus)_
+- Se ha meno HP dell'avversario
 
+Il player si considera sconfitto in uno scontro se:
+- Ha perso tre match
+
+Dovessero i player, alla fine di un match, avere la Health Bar con un valore inferiore al 50%, i punti vita del proprio eroe saranno riportati al 50% prima del match successivo. Questa meccanica permette ad entrambi gli eroi di ripartire alla pari, impedendo di avere squilibri, dando la possibilità a chi è stato sconfitto durante il match precedente di recuperare. 
+![Banner](./img/banner/ArtStyle.png)  
 ## Art Style
-Qui vanno inseriti i dettagli visivi del gioco. Sarebbe utile fornire già alcuni concept art dei personaggi o dei livelli.
+- Stile illustrato: texture disegnate a mano, contorni spessi
+- Animazioni "stop-motion-like"
+- Illuminazione da palcoscenico con tende e luci che mostrino chiaramente l'azione.  
+<img src="./img/MinoEvolution/mino0.jpg" alt="mino0" width="200"/> <img src="./img/MinoEvolution/mino1.jpg" alt="mino1" width="200"/> <img src="./img/MinoEvolution/mino2.png" alt="mino2" width="200"/> <img src="./img/MinoEvolution/mino3.png" alt="mino3" width="200"/>  
+![FirstMockup](img/FirstMockup.png)  
 
-*(Esempio testo) Il gioco è un plaform 2D che prevede lo scrolling orizzontale e verticale. I livelli sono caratterizzati da un grafica pixel-art che ricorda i giochi 8/16 bit…*
-
+![Banner](./img/banner/MusicaeSuono.png)  
 ## Musica e Suono
-Qui vanno inseriti i dettagli sulla musica e sugli effetti sonori. Questa sezione può contenere varie sotto-sezioni in base alla complessità della musica e dei suoni.
-
+- Jingle ritmico per scandire i turni (es. "mino, mino, tauro!")
+  _(Non implementato nella demo)_
+- Tema musicale delle schermate: menu, scelta dei personaggi, scelta del kit.  
+  [Main Theme](./audio/MainTheme.mp3)
+- Tema musicale per gli scontri  
+  [Battle Theme](./audio/BattleTheme.mp3)
+- Effetti sonori per utilizzo degli item, attacco, difesa e mossa speciale, oltre a un jingle per la schermata che annuncia il vincitore della partita.
+  _(N.B. Per evitare confusioni durante i turni, dal momento che sono istantanei, viene riprodotto un solo sound effect per ogni turno, di conseguenza è stata definita una gerarchia di priorità per la loro riproduzione: Item -> Speciali -> Difesa -> Attacco)_  
+  
+![Banner](./img/banner/DettagliTecnici.png)  
 ## Dettagli Tecnici
-Qui vanno inseriti i dettagli tecnici relativi alle piattaforme per le quali verrà sviluppato il gioco e dettagli sui tool che verranno utilizzati. Questa sezione non dovrebbe essere molto dettagliata, ma dovrebbe fornire solo le informazioni più importanti. I dettagli vanno inseriti in un documento separato (Technical Design Document – TDD, non è richiesto per l'esame). Se decidete di utilizzare algoritmi particolari, ad esempio di generazione procedurale dei contenuti, elencate qui le metodologie che intendete utilizzare.
+Le piattaforme prioritarie nell'implementazione sono:
+- PC, Steam  
+  _N.B. Al fine della demo sono stati implementati i controlli sia da controller che da tastiera così che si possa giocare in due anche su un solo dispositivo._
+- Console Indie-Friendly
+- Mobile (Android & IOS)  
+  _N.B. Nel caso multiplayer locale, i giocatori dovranno disporre o di due controller da collegare al device, o avere due dispositivi diversi._
+- Motore: Godot Engine v. 4.3-stable
+- Produzione agile con sprint settimanali
+- IA: script pseudo-strategico con evoluzione adattiva  
+  _Non implementato nella demo_
 
+![Banner](./img/banner/Mercato.png)  
 ## Mercato
-Qui vanno inseriti i dettagli relativi al target del tuo gioco. A chi è rivolto questo gioco? A quale tipologia di giocatore? Quanto è grande il mercato al quale vi state rivolgendo? Questo mercato è in crescita negli ultimi anni? Questa sezione dovrebbe anche fornire dettagli su come si intende finanziare lo sviluppo del gioco.
+**minomino** si rivolge a un pubblico casual, familiare e a giocatori sociali in cerca di esperienze accessibili e originali, oppure divertenti e accattivanti senza necessariamente essere molto frenetiche.
 
-### Target
-Descrivere il target/pubblico di riferimento. Cercate di descrivere il vostro giocatore “tipo” e quali aspettative ha. Come il vostro gioco soddisfa le aspettative del vostro target?
+Il mercato dei party game e giochi turn-based "leggeri" è in crescita, soprattutto su piattaforme come Steam, itch.io e Mobile. Questo mercato offre ottimo potenziale in quanto permette di investire risorse contenute per sviluppare giochi che possano attirare l'attenzione di un pubblico moderatamente grande. Il cuore di questo genere di giochi è un _gameplay loop_ che sia soddisfacente per il player e possa offrire estensibilità e scalabilità per contenuti futuri, anche attraverso una currency in game utile per monetizzare espansioni o nuove esperienze di gioco post-lancio. 
+
+Trattandosi di una nicchia di mercato in forte crescita, oltre ai vantaggi evidenziati, è da tenere in considerazione lo sviluppo di prodotti analoghi che può generare una dispersione dell'utenza. Di conseguenza, per il _MinoTeam_, oltre alla definizione di un gameplay accattivante e coinvolgente, l'obiettivo è puntare nche sul fattore estetico e di game design del gioco, offrendo originalità e distinguendosi dagli altri già presenti e consolidati.
+
+Il gioco ha potenziale sia per il mercato europeo che per il Nord America.
+
+Finanziamento tramite:
+- Fondi per la creatività digitale
+- Programmi indie
+- Eventuale crowdfunding
+- Incubatori di startup per l'industria videoludica
+### Target  
+Il target di riferimento individuato per **minomino** coinvolge giocatori casual di tutte le età a partire dagli 8 anni, famiglie, educatori e creativi. L'utente medio che ci si aspetta interessato dal prodotto è attratto da narrazioni leggere, nostalgiche e uno stile grafico distintivo. Il gioco deve rappresentare un'alternativa valida alle esperienze frenetiche, con forte appeal estetico e una componente cooperativa/comunitaria, ma anche competitiva nel caso di partite in multiplayer locale/online.
 
 ### Piattaforma e monetizzazione
-Dettagli su come si intende pubblicare il gioco su ogni piattaforma prevista. Fornire anche dettagli su eventuali strategie di monetizzazione.
+- Itch.io - Demo
+- PC (Steam) – Versione base a pagamento con contenuti completi
+- Valutazione di console (Switch, Xbox Indie Program)
+- Monetizzazione tramite:
+	- DLC estetici e con ulteriori eroi (basati su altre mitologie),
+	- organizzazione di eventi competitivi e tornei con quote di partecipazione e ricompense per i vincitori, al fine di migliorare l'engagement e il feeling con il gioco da parte della community.
+	- Attività di social branding:
+		- Creazione di account social (p.e. Twitch, Instagram, Reddit, X)
+		- Contenuti per i social in partnership con personaggi influenti delle communities videoludiche (p.e. Content Creators, Influencers)
+		- Contenuti per sponsorizzazione
 
 ### Localizzazione
-Inserire dettagli sulle lingue supportate o su qualsiasi cosa che coinvolga la localizzazione del gioco.
+La lingua di gioco utilizzata è l'inglese, si prevede l'inserimento successivo delle seguenti:
+- Italiano 
+- Cinese (semplificato)
+- Spagnolo
+- Tedesco
+Possibile estensione a giapponese per pubblico amante dell'estetica pop/cartoon.
 
+![Banner](./img/banner/Idee.png)  
 ## Idee
-Inserire altre idee che non si è ancora sicuri di voler sviluppare nel gioco finale.
+Idee modalità di gioco future:
+- Modalità Multiplayer Online:  
+  Il player dopo aver finito la campagna e datagli la possibilità di customizzare il suo eroe, scende in battaglia nelle stesse modalità del multiplayer locale ma contro giocatori online.
+- Modalità Infinita:
+	- Multiplayer Online:
+	  Il player disporrà di un eroe "vuoto" senza mossa bonus con uno StarterKit base, giocherà scontri contro altri giocatori online al termine di ognuno, in caso di vittoria potrà aprire dei "bauli" che conterranno dei potenziamenti (p.e. nuove mosse, mosse bonus speciali, item singoli o nuovi kit). In caso di sconfitta, il player dovrà ricominciare.
+	- Single Player Locale:
+	  Esattamente come nella modalità descritta al punto precedente, il player giocherà scontri contro burattini governati dall'AI.
+- Modalità "crea il tuo atto" per generare match personalizzati
 
-*(Esempio testo) Si potrebbero implementare dei meccanismi in cui i livelli del gioco cambiano in base ad alcune scelte del giocatore o al personaggio scelto.*
+Integrazione di:
+- Diorama editor per personalizzare lo sfondo del palco e utilizzarlo in Modalità Libera e Modalità Multiplayer Locale.
+- Hero editor per creare e personalizzare il proprio burattino, mescolando elementi estetici e di gameplay sbloccati durante il gioco, riutilizzandolo sia nelle altre modalità che in una modalità online come avatar
+- Jingle musicale che scandisce il ritmo dei turni: "mino", "mino", "tauro!".
+  _Non implementato nella demo, cut-content._
+
+Eliminazione dei Log dei giocatori nella Modalità Multiplayer Locale in ottica di migliorie all'esperienza di gioco tramite UX/UI, feedback sonori e visivi.
+
+Implementazione dell'algoritmo di gestione degli eroi non giocabili (CPU) con possibilità di scegliere una difficoltà di gioco nella Modalità Libera. Adattamento della CPU al player nelle modalità Single Player (campagna e infinita).
+
+Nuovi item e starter kit con effetti particolari, tra cui assorbimento e repulsione del danno avversario _(Manipulator's Pack)_, incrementi delle proprie statistiche _(Mathematician's Pack)_, item potenti che richiedono di spendere punti bonus _(Shopkeeper's Pack)_, item che causano effetti di stato che permangono per più di un turno e item per curare i suddetti effetti _(Alchemist's Pack)_.

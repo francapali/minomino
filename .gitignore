@@ -39,3 +39,7 @@ __MACOSX/
 
 # Windows
 ehthumbs.db
+
+# Obsidian (Editor Markdown per la documentazione)
+.obsidian
+.obsidian/workspace
