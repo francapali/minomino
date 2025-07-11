@@ -255,9 +255,13 @@ Le piattaforme prioritarie nell'implementazione sono:
 
 ![Banner](./img/banner/Mercato.png)  
 ## Mercato
-**minomino** si rivolge a un pubblico casual, familiare e a giocatori sociali in cerca di esperienze accessibili e originali.
+**minomino** si rivolge a un pubblico casual, familiare e a giocatori sociali in cerca di esperienze accessibili e originali, oppure divertenti e accattivanti senza necessariamente essere molto frenetiche.
 
-Il mercato dei party game e giochi turn-based "leggeri" è in crescita, soprattutto su piattaforme come Steam, itch.io e Mobile. Il gioco ha potenziale sia per il mercato europeo che per il Nord America.
+Il mercato dei party game e giochi turn-based "leggeri" è in crescita, soprattutto su piattaforme come Steam, itch.io e Mobile. Questo mercato offre ottimo potenziale in quanto permette di investire risorse contenute per sviluppare giochi che possano attirare l'attenzione di un pubblico moderatamente grande. Il cuore di questo genere di giochi è un _gameplay loop_ che sia soddisfacente per il player e possa offrire estensibilità e scalabilità per contenuti futuri, anche attraverso una currency in game utile per monetizzare espansioni o nuove esperienze di gioco post-lancio. 
+
+Trattandosi di una nicchia di mercato in forte crescita, oltre ai vantaggi evidenziati, è da tenere in considerazione lo sviluppo di prodotti analoghi che può generare una dispersione dell'utenza. Di conseguenza, per il _MinoTeam_, oltre alla definizione di un gameplay accattivante e coinvolgente, l'obiettivo è puntare nche sul fattore estetico e di game design del gioco, offrendo originalità e distinguendosi dagli altri già presenti e consolidati.
+
+Il gioco ha potenziale sia per il mercato europeo che per il Nord America.
 
 Finanziamento tramite:
 - Fondi per la creatività digitale
@@ -269,11 +273,11 @@ Finanziamento tramite:
 - Giocatori casual, famiglie, educatori, creativi
 - Persone attratte da narrazione leggera e stile grafico distintivo
 
-Il gioco offre un'alternativa alle esperienze frenetiche, proponendo un ritmo rilassato ma coinvolgente, con forte appeal estetico e una componente cooperativa/comunitaria.
+Il target di riferimento individuato per **minomino** coinvolge giocatori casual di tutte le età a partire dagli 8 anni, famiglie, educatori e creativi. L'utente medio che ci si aspetta interessato dal prodotto è attratto da narrazioni leggere, nostalgiche e uno stile grafico distintivo. Il gioco deve rappresentare un'alternativa valida alle esperienze frenetiche, con forte appeal estetico e una componente cooperativa/comunitaria, ma anche competitiva nel caso di partite in multiplayer locale/online.
 
-Descrivere il target/pubblico di riferimento. Cercate di descrivere il vostro giocatore “tipo” e quali aspettative ha. Come il vostro gioco soddisfa le aspettative del vostro target?
 ### Piattaforma e monetizzazione
-- PC (Steam) – versione base a pagamento con contenuti completi
+- Itch.io - Demo
+- PC (Steam) – Versione base a pagamento con contenuti completi
 - Valutazione di console (Switch, Xbox Indie Program)
 - Monetizzazione tramite:
 	- DLC estetici e con ulteriori eroi (basati su altre mitologie),
