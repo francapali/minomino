@@ -6,3 +6,9 @@ extends Node
 
 var player1 = ""
 var player2 = ""
+
+var kitplayer1 = ""
+var kitplayer2 = ""
+
+var winner: Player = null
+var winner_number: int = 0

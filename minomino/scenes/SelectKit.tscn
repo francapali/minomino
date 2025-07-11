@@ -1,0 +1,99 @@
+[gd_scene load_steps=11 format=3 uid="uid://cmencif5vxphs"]
+
+[ext_resource type="Script" path="res://scripts/SelectKitScript.gd" id="1_b23q3"]
+[ext_resource type="Texture2D" uid="uid://dm3kgxfgg4b8n" path="res://assets/starterkit.png" id="1_lbv35"]
+[ext_resource type="Texture2D" uid="uid://bhtg6fh7lgjvj" path="res://assets/RagePack.png" id="2_7rrvi"]
+[ext_resource type="Texture2D" uid="uid://clk61igu7f585" path="res://assets/SafetyPack.png" id="3_qge3p"]
+[ext_resource type="Texture2D" uid="uid://bmxp3qk7ssbvo" path="res://assets/selezionep2.png" id="4_s6fuo"]
+[ext_resource type="Texture2D" uid="uid://dpv2ws63pvk7s" path="res://assets/selezionep1.png" id="5_fy2u5"]
+[ext_resource type="AudioStream" uid="uid://cixosehkjnygh" path="res://ost/main theme.mp3" id="6_eh0ny"]
+[ext_resource type="Theme" uid="uid://c3r5vf46bmsjk" path="res://ui/orange_theme.tres" id="8_3423x"]
+[ext_resource type="Texture2D" uid="uid://b7r2ffo0gnty3" path="res://assets/settingsicon.png" id="9_eeh8s"]
+
+[sub_resource type="GDScript" id="GDScript_hymsj"]
+script/source = "extends Button
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="SelectKit" type="Node2D"]
+script = ExtResource("1_b23q3")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1153.0
+offset_bottom = 650.0
+texture = ExtResource("1_lbv35")
+expand_mode = 1
+
+[node name="RagePack" type="TextureRect" parent="TextureRect"]
+layout_mode = 0
+offset_left = 557.0
+offset_top = 282.0
+offset_right = 1134.0
+offset_bottom = 622.0
+texture = ExtResource("2_7rrvi")
+expand_mode = 1
+
+[node name="SafetyPack" type="TextureRect" parent="TextureRect"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 286.0
+offset_right = 617.0
+offset_bottom = 626.0
+texture = ExtResource("3_qge3p")
+expand_mode = 1
+
+[node name="RageButton" type="Button" parent="."]
+visible = false
+offset_left = 993.0
+offset_top = 317.0
+offset_right = 1095.0
+offset_bottom = 523.0
+
+[node name="SafetyButton" type="Button" parent="."]
+visible = false
+offset_left = 85.0
+offset_top = 325.0
+offset_right = 187.0
+offset_bottom = 531.0
+
+[node name="FrameP2" type="TextureRect" parent="."]
+offset_left = 970.0
+offset_top = 289.0
+offset_right = 1131.0
+offset_bottom = 588.0
+texture = ExtResource("4_s6fuo")
+expand_mode = 1
+
+[node name="FrameP1" type="TextureRect" parent="."]
+offset_left = 942.0
+offset_top = 241.0
+offset_right = 1139.0
+offset_bottom = 689.0
+texture = ExtResource("5_fy2u5")
+expand_mode = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_eh0ny")
+autoplay = true
+parameters/looping = true
+
+[node name="SettingsButton" type="Button" parent="."]
+offset_left = -1.0
+offset_top = 556.0
+offset_right = 90.0
+offset_bottom = 657.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("8_3423x")
+theme_override_icons/icon = ExtResource("9_eeh8s")
+icon = ExtResource("9_eeh8s")
+flat = true
+expand_icon = true
+script = SubResource("GDScript_hymsj")
